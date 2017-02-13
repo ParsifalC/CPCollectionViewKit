@@ -1,0 +1,126 @@
+//
+//  CPCollectionViewCaterpillarLayout.swift
+//  CPCollectionViewKit
+//
+//  Created by Parsifal on 2017/1/21.
+//  Copyright © 2017年 Parsifal. All rights reserved.
+//
+
+import Foundation
+
+open class CPCaterpillarLayoutConfiguration:CPLayoutConfiguration {
+    // MARK: Properties
+    open var topCellSizeScale:CGFloat
+    
+    // MARK: Methods
+    public init(withCellSize cellSize:CGSize,
+                         visibleCount:Int,
+                             fadeAway:Bool = true,
+                     topCellSizeScale:CGFloat = 1.0,
+                              spacing:CGFloat = 0.0,
+                              offsetX:CGFloat = 0.0,
+                              offsetY:CGFloat = 0.0) {
+        self.topCellSizeScale = topCellSizeScale
+        super.init(withCellSize:cellSize,
+                   visibleCount:visibleCount,
+                       fadeAway:fadeAway,
+                        spacing:spacing,
+                        offsetX:offsetX,
+                        offsetY:offsetY)
+    }
+}
+
+open class CPCollectionViewCaterpillarLayout:CPCollectionViewLayout {
+    open var configuration: CPCaterpillarLayoutConfiguration
+    
+    // MARK: Properties
+    public init(withConfiguration configuration:CPCaterpillarLayoutConfiguration) {
+        self.configuration = configuration
+        super.init()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        self.configuration = CPCaterpillarLayoutConfiguration.init(withCellSize: CGSize(width: 50, height: 50), visibleCount: 1)
+        super.init(coder: aDecoder)
+    }
+
+    // MARK: Methods
+    override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let attributes = super.layoutAttributesForItem(at: indexPath)!
+        guard let collectionView = collectionView,
+                                   cellCount > 0 else { return attributes }
+        let floatCellCount = CGFloat(cellCount)
+        let contentOffsetY = collectionView.contentOffset.y
+        let width = collectionView.bounds.size.width
+        let height = collectionView.bounds.size.height
+        let cellSize = configuration.cellSize
+        let topCellSizeScale = configuration.topCellSizeScale
+        let cellWidth = cellSize.width
+        let cellSpacing = configuration.spacing
+        var topItemIndex = contentOffsetY/cellSize.height
+        topItemIndex = topItemIndex>=floatCellCount ? topItemIndex-floatCellCount : topItemIndex
+        topItemIndex = topItemIndex<0 ? topItemIndex+floatCellCount : topItemIndex
+        let visibleCount = CGFloat(configuration.visibleCount)/2
+        let index = CGFloat(indexPath.item)
+        attributes.size = configuration.cellSize
+        attributes.isHidden = false
+        
+        var itemOffset = index-topItemIndex
+        
+        if itemOffset<0 && itemOffset >= -1.0 ||
+           itemOffset>=0 && itemOffset<=1 ||
+           itemOffset>0 && floatCellCount-itemOffset<=1 ||
+           itemOffset<0 && floatCellCount+itemOffset<=1 {
+            if itemOffset>0 && floatCellCount-itemOffset<=1 {
+                itemOffset -= floatCellCount
+            }
+            if itemOffset<0 && floatCellCount+itemOffset<=1 {
+                itemOffset += floatCellCount
+            }
+            // y = (1-s)x+s
+            let scaleFactor:CGFloat = (1-topCellSizeScale)*fabs(itemOffset)+topCellSizeScale
+            attributes.size = CGSize(width:cellSize.width*scaleFactor,
+                                     height:cellSize.height*scaleFactor)
+
+            // circle
+            let floatPI = CGFloat(M_PI)
+            let radian = CGFloat(floatPI/2*itemOffset)
+            let x = sin(radian)*(cellSpacing/2)+width/2
+            let y = height/2+contentOffsetY-cos(radian)*(cellSpacing/2)
+            attributes.center = CGPoint(x:x, y:y)
+        } else if fabs(itemOffset)<visibleCount ||
+                  itemOffset>0 && (floatCellCount-itemOffset<visibleCount) ||
+                  itemOffset<0 && (floatCellCount+itemOffset<visibleCount){
+            if itemOffset>0 && (floatCellCount-itemOffset<visibleCount) {
+                itemOffset -= floatCellCount
+            }
+            
+            if itemOffset<0 && (floatCellCount+itemOffset<visibleCount) {
+                itemOffset += floatCellCount
+            }
+            // vetical linear
+            let x = itemOffset>0 ? (width/2+cellSpacing/2) : (width/2-cellSpacing/2)
+            let y = height/2+contentOffsetY+(fabs(itemOffset)-1)*cellSpacing/2
+            attributes.center = CGPoint(x:x, y:y)
+        } else {
+            attributes.center = CGPoint(x:-cellWidth,
+                                        y:height+contentOffsetY+cellSize.height)
+            attributes.isHidden = true
+        }
+        
+        attributes.center = CGPoint(x:attributes.center.x+configuration.offsetX,
+                                    y:attributes.center.y+configuration.offsetY)
+        
+        if configuration.fadeAway {
+            attributes.alpha = 1-fabs(itemOffset)/visibleCount
+        }
+//        print("index:\(index)topItemIndex:\(topItemIndex) itemOffset:\(itemOffset) isHidden:\(attributes.isHidden)")
+        return attributes
+    }
+    
+    open override var collectionViewContentSize: CGSize {
+        guard let collectionView = collectionView else { return CGSize.zero }
+        let bounds = collectionView.bounds.size
+        return CGSize(width:bounds.width, height:bounds.height+CGFloat(cellCount)*configuration.cellSize.height)
+    }
+}
