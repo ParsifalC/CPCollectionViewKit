@@ -22,6 +22,7 @@ open class CPCaterpillarLayoutConfiguration:CPLayoutConfiguration {
                               offsetX:CGFloat = 0.0,
                               offsetY:CGFloat = 0.0) {
         self.topCellSizeScale = topCellSizeScale
+        self.visibleCount = visibleCount
         super.init(withCellSize:cellSize,
                        fadeAway:fadeAway,
                         spacing:spacing,
