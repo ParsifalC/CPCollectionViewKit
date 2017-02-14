@@ -98,8 +98,7 @@ open class CPCollectionViewWheelLayout: CPCollectionViewLayout {
     
     override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         let attributes = super.layoutAttributesForItem(at: indexPath)!
-        guard let collectionView = collectionView,
-                                   cellCount > 0 else { return attributes }
+        guard let collectionView = collectionView else { return attributes }
 
         let viewSize = collectionView.bounds.size
         let cellSize = configuration.cellSize

@@ -47,8 +47,7 @@ open class CPCollectionViewCaterpillarLayout:CPCollectionViewLayout {
     // MARK: Methods
     override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         let attributes = super.layoutAttributesForItem(at: indexPath)!
-        guard let collectionView = collectionView,
-                                   cellCount > 0 else { return attributes }
+        guard let collectionView = collectionView else { return attributes }
         let floatCellCount = CGFloat(cellCount)
         let contentOffsetY = collectionView.contentOffset.y
         let width = collectionView.bounds.size.width
