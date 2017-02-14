@@ -15,17 +15,16 @@ open class CPCircleLayoutConfiguration:CPLayoutConfiguration {
     // MARK: Methods
     public init(withCellSize cellSize:CGSize,
                 visibleCount:Int,
-                fadeAway:Bool = true,
                 spacing:CGFloat = 0.0,
                 offsetX:CGFloat = 0.0,
                 offsetY:CGFloat = 0.0) {
+        self.visibleCount = visibleCount
         super.init(withCellSize:cellSize,
-                   fadeAway:fadeAway,
                    spacing:spacing,
                    offsetX:offsetX,
                    offsetY:offsetY)
     }
-
+    
 }
 
 open class CPCollectionViewCircleLayout:CPCollectionViewLayout {
@@ -75,7 +74,7 @@ open class CPCollectionViewCircleLayout:CPCollectionViewLayout {
             let radian = CGFloat(floatPI/visibleCount*itemOffset)
             let y = height+contentOffsetY-cellWidth/2-cos(radian)*(cellWidth/2+configuration.spacing)
             let x = sin(radian)*(cellSize.width/2+configuration.spacing)+width/2
-            attributes.center = CGPoint(x:x+configuration.offsetX, y:y+configuration.offsetY)
+            attributes.center = CGPoint(x:x-configuration.offsetX, y:y-configuration.offsetY)
         } else {
             attributes.isHidden = true
         }

@@ -50,10 +50,7 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
         centerX = (item+0.5)*cellWidth+item*configuration.spacing
         centerY = height/2.0
         
-        if configuration.fadeAway {
-            attributes.alpha = 1-configuration.fadeFactor*(fabs(item-topItemIndex))
-        }
-        
+        attributes.alpha = 1-configuration.fadeFactor*(fabs(item-topItemIndex))
         attributes.center = CGPoint(x: centerX+configuration.offsetX, y: centerY+configuration.offsetY)
         
         return attributes

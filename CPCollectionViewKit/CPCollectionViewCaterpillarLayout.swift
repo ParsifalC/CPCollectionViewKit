@@ -9,10 +9,12 @@
 import Foundation
 
 open class CPCaterpillarLayoutConfiguration:CPLayoutConfiguration {
+    
     // MARK: Properties
     public var topCellSizeScale:CGFloat
     public var visibleCount:Int = 1
-    
+    public var fadeAway: Bool = true
+
     // MARK: Methods
     public init(withCellSize cellSize:CGSize,
                          visibleCount:Int,
@@ -23,12 +25,13 @@ open class CPCaterpillarLayoutConfiguration:CPLayoutConfiguration {
                               offsetY:CGFloat = 0.0) {
         self.topCellSizeScale = topCellSizeScale
         self.visibleCount = visibleCount
+        self.fadeAway = fadeAway
         super.init(withCellSize:cellSize,
-                       fadeAway:fadeAway,
                         spacing:spacing,
                         offsetX:offsetX,
                         offsetY:offsetY)
     }
+    
 }
 
 open class CPCollectionViewCaterpillarLayout:CPCollectionViewLayout {
