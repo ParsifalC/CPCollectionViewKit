@@ -9,9 +9,9 @@
 import UIKit
 
 open class CPLayoutConfiguration {
+    
     // MARK: Properties
-
-    open var cellSize:CGSize {
+    public var cellSize:CGSize {
         didSet {
             if cellSize.width<=0.0 || cellSize.height<=0.0 {
                 cellSize = CGSize.init(width: 50.0, height: 50.0)
@@ -19,11 +19,11 @@ open class CPLayoutConfiguration {
         }
     }
     
-    open var fadeAway:Bool = true
-    open var visibleCount:Int = 1
-    open var spacing:CGFloat = 0
-    open var offsetX:CGFloat = 0
-    open var offsetY:CGFloat = 0
+    public var fadeAway:Bool = true
+    public var visibleCount:Int = 1
+    public var spacing:CGFloat = 0
+    public var offsetX:CGFloat = 0
+    public var offsetY:CGFloat = 0
     
     // MARK: Methods
     public init(withCellSize cellSize:CGSize,
