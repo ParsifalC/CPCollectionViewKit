@@ -10,7 +10,8 @@ import Foundation
 
 open class CPCaterpillarLayoutConfiguration:CPLayoutConfiguration {
     // MARK: Properties
-    open var topCellSizeScale:CGFloat
+    public var topCellSizeScale:CGFloat
+    public var visibleCount:Int = 1
     
     // MARK: Methods
     public init(withCellSize cellSize:CGSize,
@@ -22,7 +23,6 @@ open class CPCaterpillarLayoutConfiguration:CPLayoutConfiguration {
                               offsetY:CGFloat = 0.0) {
         self.topCellSizeScale = topCellSizeScale
         super.init(withCellSize:cellSize,
-                   visibleCount:visibleCount,
                        fadeAway:fadeAway,
                         spacing:spacing,
                         offsetX:offsetX,

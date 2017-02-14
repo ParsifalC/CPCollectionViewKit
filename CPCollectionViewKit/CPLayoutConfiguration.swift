@@ -20,20 +20,17 @@ open class CPLayoutConfiguration {
     }
     
     public var fadeAway:Bool = true
-    public var visibleCount:Int = 1
     public var spacing:CGFloat = 0
     public var offsetX:CGFloat = 0
     public var offsetY:CGFloat = 0
     
     // MARK: Methods
     public init(withCellSize cellSize:CGSize,
-                visibleCount:Int,
                 fadeAway:Bool = true,
                 spacing:CGFloat = 0.0,
                 offsetX:CGFloat = 0.0,
                 offsetY:CGFloat = 0.0) {
         self.cellSize = cellSize
-        self.visibleCount = visibleCount
         self.spacing = spacing
         self.offsetX = offsetX
         self.offsetY = offsetY
