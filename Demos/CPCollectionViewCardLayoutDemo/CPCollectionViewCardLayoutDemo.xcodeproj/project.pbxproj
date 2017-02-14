@@ -13,6 +13,7 @@
 		901AA5811E5193E800B12889 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 901AA57F1E5193E800B12889 /* Main.storyboard */; };
 		901AA5831E5193E800B12889 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 901AA5821E5193E800B12889 /* Assets.xcassets */; };
 		901AA5861E5193E800B12889 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 901AA5841E5193E800B12889 /* LaunchScreen.storyboard */; };
+		901AA58E1E51950000B12889 /* CPCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901AA58D1E51950000B12889 /* CPCardCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		901AA5821E5193E800B12889 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		901AA5851E5193E800B12889 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		901AA5871E5193E800B12889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		901AA58D1E51950000B12889 /* CPCardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB043837C23F43F30C1CA755 /* Pods-CPCollectionViewCardLayoutDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPCollectionViewCardLayoutDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CPCollectionViewCardLayoutDemo/Pods-CPCollectionViewCardLayoutDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +82,7 @@
 			children = (
 				901AA57B1E5193E800B12889 /* AppDelegate.swift */,
 				901AA57D1E5193E800B12889 /* ViewController.swift */,
+				901AA58D1E51950000B12889 /* CPCardCollectionViewCell.swift */,
 				901AA57F1E5193E800B12889 /* Main.storyboard */,
 				901AA5821E5193E800B12889 /* Assets.xcassets */,
 				901AA5841E5193E800B12889 /* LaunchScreen.storyboard */,
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				901AA57E1E5193E800B12889 /* ViewController.swift in Sources */,
+				901AA58E1E51950000B12889 /* CPCardCollectionViewCell.swift in Sources */,
 				901AA57C1E5193E800B12889 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +381,7 @@
 				901AA58C1E5193E800B12889 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
