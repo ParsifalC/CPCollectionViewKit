@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,7 +35,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVf-TD-8eU">
-                                                    <rect key="frame" x="1" y="0.0" width="147" height="175"/>
+                                                    <rect key="frame" x="3.5" y="17.5" width="140" height="140"/>
                                                     <color key="backgroundColor" red="1" green="0.72448395314356162" blue="0.42697420726038193" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <nil key="textColor"/>
@@ -42,12 +43,12 @@
                                                 </label>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="1" green="0.86742104090000005" blue="0.38273205719999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="EVf-TD-8eU" firstAttribute="centerX" secondItem="rMU-Gn-tnA" secondAttribute="centerX" constant="0.5" id="CmM-DH-3Wv"/>
-                                            <constraint firstItem="EVf-TD-8eU" firstAttribute="width" secondItem="rMU-Gn-tnA" secondAttribute="width" constant="0.5" id="Mw9-wv-Ev9"/>
-                                            <constraint firstItem="EVf-TD-8eU" firstAttribute="centerY" secondItem="rMU-Gn-tnA" secondAttribute="centerY" constant="0.5" id="jaF-la-hG0"/>
-                                            <constraint firstItem="EVf-TD-8eU" firstAttribute="height" secondItem="rMU-Gn-tnA" secondAttribute="height" constant="0.5" id="yer-Sn-C6O"/>
+                                            <constraint firstItem="EVf-TD-8eU" firstAttribute="centerX" secondItem="rMU-Gn-tnA" secondAttribute="centerX" id="8YN-yb-g38"/>
+                                            <constraint firstItem="EVf-TD-8eU" firstAttribute="centerY" secondItem="rMU-Gn-tnA" secondAttribute="centerY" id="Bdc-tG-uad"/>
+                                            <constraint firstItem="EVf-TD-8eU" firstAttribute="height" secondItem="rMU-Gn-tnA" secondAttribute="height" multiplier="4:5" id="kaJ-sQ-PtM"/>
+                                            <constraint firstItem="EVf-TD-8eU" firstAttribute="width" secondItem="rMU-Gn-tnA" secondAttribute="width" multiplier="0.95" id="sxW-YN-kmf"/>
                                         </constraints>
                                         <size key="customSize" width="147" height="175"/>
                                         <connections>

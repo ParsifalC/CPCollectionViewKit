@@ -10,8 +10,12 @@ import Foundation
 
 open class CPCardLayoutConfiguration: CPLayoutConfiguration {
     
-    public var fadeFactor: CGFloat = 0.1//0-1
+    public var fadeFactor: CGFloat = 0//(0,1)
+    public var scaleFactorX: CGFloat = 0//zoomin:(-1,0) zoomout:(0,1)
+    public var scaleFactorY: CGFloat = 0//zoomin:(-1,0) zoomout:(0,1)
+    public var rotateFactor: CGFloat = 0//0-1
     public var stopAtItemBoundary: Bool = true
+    
 }
 
 open class CPCollectionViewCardLayout: CPCollectionViewLayout {
@@ -45,14 +49,26 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
         var centerX: CGFloat = 0.0
         var centerY: CGFloat = 0.0
         let topItemIndex = calculateTopItemIndex(contentOffset: collectionView.contentOffset.x)
+        let itemOffset = item-topItemIndex
         
         attributes.size = cellSize
         centerX = (item+0.5)*cellWidth+item*configuration.spacing
         centerY = height/2.0
-        
-        attributes.alpha = 1-configuration.fadeFactor*(fabs(item-topItemIndex))
         attributes.center = CGPoint(x: centerX+configuration.offsetX, y: centerY+configuration.offsetY)
         
+        attributes.alpha = 1-configuration.fadeFactor*fabs(itemOffset)
+
+        let scaleFactorX = fabs(1-configuration.scaleFactorX*fabs(itemOffset))
+        let scaleFactorY = fabs(1-configuration.scaleFactorY*fabs(itemOffset))
+        let scaleTransform = CGAffineTransform(scaleX: scaleFactorX, y: scaleFactorY)
+        
+        let rotateFactor = configuration.rotateFactor*itemOffset
+        let rotateTransform = CGAffineTransform(rotationAngle: rotateFactor)
+    
+        let transform = rotateTransform.concatenating(scaleTransform)
+        attributes.transform = transform
+        
+        //print("index:\(item) topItemIndex:\(topItemIndex) itemOffset:\(itemOffset)")
         return attributes
     }
     
@@ -61,7 +77,7 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
         let cellHeight = configuration.cellSize.height
 
         guard cellWidth+configuration.spacing != 0 else { return 0 }
-        return  (contentOffset-configuration.offsetX)/(cellWidth+configuration.spacing)
+        return  (contentOffset)/(cellWidth+configuration.spacing)
     }
     
     open override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
@@ -73,7 +89,7 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
         let cellHeight = configuration.cellSize.height
 
         let topItemIndex = round(calculateTopItemIndex(contentOffset: proposedContentOffset.x))
-        let x = configuration.offsetX+(cellWidth+configuration.spacing)*topItemIndex
+        let x = (cellWidth+configuration.spacing)*topItemIndex
         let y = proposedContentOffset.y
         return CGPoint(x: x, y: y)
     }
