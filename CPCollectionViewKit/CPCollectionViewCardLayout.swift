@@ -15,6 +15,7 @@ open class CPCardLayoutConfiguration: CPLayoutConfiguration {
     public var scaleFactorY: CGFloat = 0//zoomin:(-1,0) zoomout:(0,1)
     public var rotateFactor: CGFloat = 0//0-1
     public var stopAtItemBoundary: Bool = true
+    //TODO: support vertical type
     
 }
 
