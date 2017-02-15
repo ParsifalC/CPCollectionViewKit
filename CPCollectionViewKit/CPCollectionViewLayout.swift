@@ -35,7 +35,7 @@ open class CPCollectionViewLayout:UICollectionViewLayout {
         
         for index in 0..<cellCount {
             let attributes = layoutAttributesForItem(at: IndexPath(row:index, section:0))!
-            if rect.intersects(attributes.frame) {
+            if rect.intersects(attributes.frame) && !attributes.isHidden {
                 visibleAttributesArray.append(attributes)
             }
         }
