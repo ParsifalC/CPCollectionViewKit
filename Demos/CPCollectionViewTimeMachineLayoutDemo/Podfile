@@ -1,0 +1,6 @@
+use_frameworks!
+
+target 'CPCollectionViewTimeMachineLayoutDemo' do
+    pod 'CPCollectionViewKit', :path => '../..'
+    pod 'Reveal-iOS-SDK', :configurations => ['Debug']
+end
