@@ -52,7 +52,7 @@ open class CPCollectionViewCircleLayout:CPCollectionViewLayout {
         let cellWidth = cellSize.width
         var topItemIndex = contentOffsetY/cellSize.height
         topItemIndex = topItemIndex>=CGFloat(cellCount) ? topItemIndex-CGFloat(cellCount) : topItemIndex
-        let visibleCount = CGFloat(configuration.visibleCount)/2
+        let visibleCount = CGFloat(min(configuration.visibleCount, cellCount))/2
         let index = CGFloat(indexPath.item)
         attributes.size = cellSize
         attributes.isHidden = false
