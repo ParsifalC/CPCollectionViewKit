@@ -63,7 +63,7 @@ open class CPCollectionViewCaterpillarLayout:CPCollectionViewLayout {
         var topItemIndex = contentOffsetY/cellSize.height
         topItemIndex = topItemIndex>=floatCellCount ? topItemIndex-floatCellCount : topItemIndex
         topItemIndex = topItemIndex<0 ? topItemIndex+floatCellCount : topItemIndex
-        let visibleCount = CGFloat(configuration.visibleCount)/2
+        let visibleCount = CGFloat(min(configuration.visibleCount, cellCount))/2
         let index = CGFloat(indexPath.item)
         attributes.size = configuration.cellSize
         attributes.isHidden = false
