@@ -40,22 +40,28 @@ class ViewController: UIViewController {
         return UIColor.init(colorLiteralRed: Float(arc4random_uniform(256))/255.0, green: Float(arc4random_uniform(256))/255.0, blue: Float(arc4random_uniform(256))/255.0, alpha: 1)
     }
     
-    @IBAction func reversedValueChanged(_ sender: UISwitch) {
+    func updateLayout(closure:() -> Void) {
         timeMachineLayout.invalidateLayout()
-        layoutConfiguration.reversed = sender.isOn
+        closure()
         collectionView.reloadData()
+    }
+    
+    @IBAction func reversedValueChanged(_ sender: UISwitch) {
+        updateLayout {
+            layoutConfiguration.reversed = sender.isOn
+        }
     }
     
     @IBAction func spacingXValueChanged(_ sender: UISlider) {
-        timeMachineLayout.invalidateLayout()
-        layoutConfiguration.spacingX = CGFloat(sender.value)
-        collectionView.reloadData()
+        updateLayout {
+            layoutConfiguration.spacingX = CGFloat(sender.value)
+        }
     }
     
     @IBAction func spacingYValueChanged(_ sender: UISlider) {
-        timeMachineLayout.invalidateLayout()
-        layoutConfiguration.spacingY = CGFloat(sender.value)
-        collectionView.reloadData()
+        updateLayout {
+            layoutConfiguration.spacingY = CGFloat(sender.value)
+        }
     }
     
 //    func updateCollectionView(withLayoutConfiguration configuration:CPTimeMachineLayoutConfiguration) {
