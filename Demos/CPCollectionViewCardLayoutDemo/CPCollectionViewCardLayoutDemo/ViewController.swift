@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         
         cellSizeSlider.minimumValue = 0.1
         cellSizeSlider.maximumValue = 1.0
-        cellSizeSlider.value = 0.9
+        cellSizeSlider.value = 1
         
         spacingSlider.minimumValue = 0
         spacingSlider.maximumValue = 100
