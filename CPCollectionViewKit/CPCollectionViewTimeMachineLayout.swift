@@ -13,6 +13,14 @@ open class CPTimeMachineLayoutConfiguration: CPLayoutConfiguration {
     public var visibleCount:Int = 1
     public var minCellSize = CGSize(width: 50, height: 50)
     public var scaleFactor: CGFloat = 0.5//(0, 1)
+    public var spacingX: CGFloat = 20
+    public var spacingY: CGFloat = 0
+    override public var spacing: CGFloat {
+        didSet {
+            spacingX = spacing
+            spacingY = spacing
+        }
+    }
     //TODO: support left/right/middle reversed type
     
 }
@@ -53,8 +61,8 @@ open class CPCollectionViewTimeMachineLayout: CPCollectionViewLayout {
         var transform = CGAffineTransform.identity
         
         if itemOffset<visibleCount+1 && itemOffset >= -1 {
-            centerX = width/2+(itemOffset)*20
-            centerY = height/2+collectionView.contentOffset.y
+            centerX = width/2+itemOffset*configuration.spacingX
+            centerY = height/2+collectionView.contentOffset.y+itemOffset*configuration.spacingY
             
             let scaleFactor = 1-itemOffset/CGFloat(visibleCount)*configuration.scaleFactor
             let scaleTransform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)

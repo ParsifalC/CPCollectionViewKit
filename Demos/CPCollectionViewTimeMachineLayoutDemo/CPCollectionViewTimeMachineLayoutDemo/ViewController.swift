@@ -28,6 +28,8 @@ class ViewController: UIViewController {
         layoutConfiguration.cellSize = CGSize(width: 250, height: 250)
         layoutConfiguration.visibleCount = 6
         layoutConfiguration.scaleFactor = 0.8
+        layoutConfiguration.spacingX = 0
+        layoutConfiguration.spacingY = -30
     }
 
     func randomColor() -> UIColor {
