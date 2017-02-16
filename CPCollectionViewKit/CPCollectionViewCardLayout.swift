@@ -95,7 +95,7 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
         }
         attributes.transform3D = transform3D
         
-        //print("index:\(item) topItemIndex:\(topItemIndex) itemOffset:\(itemOffset)")
+//        print("index:\(item) topItemIndex:\(topItemIndex) itemOffset:\(itemOffset)")
         return attributes
     }
     
@@ -142,11 +142,11 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
         var width: CGFloat
         var height: CGFloat
         if configuration.scrollDirection == .horizontal {
-            width = CGFloat(cellCount)*cellWidth+max(CGFloat(cellCount-1), 0)*spacing+2*configuration.offsetX
+            width = CGFloat(cellCount)*cellWidth+max(CGFloat(cellCount-1), 0)*spacing+2*configuration.offsetX+0.5*cellWidth
             height = collectionView.bounds.height
         } else {
             width = collectionView.bounds.width
-            height =  CGFloat(cellCount)*cellHeight+max(CGFloat(cellCount-1), 0)*spacing+2*configuration.offsetX
+            height =  CGFloat(cellCount)*cellHeight+max(CGFloat(cellCount-1), 0)*spacing+2*configuration.offsetX+0.5*cellHeight
         }
 
         return CGSize(width: width, height: height)
