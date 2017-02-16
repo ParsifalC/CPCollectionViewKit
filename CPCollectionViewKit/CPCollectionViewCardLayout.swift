@@ -8,12 +8,19 @@
 
 import Foundation
 
+public enum CPCardRotateDirection {
+    case x
+    case y
+    case z
+}
+
 open class CPCardLayoutConfiguration: CPLayoutConfiguration {
     
     public var fadeFactor: CGFloat = 0//(0,1)
     public var scaleFactorX: CGFloat = 0//zoomin:(-1,0) zoomout:(0,1)
     public var scaleFactorY: CGFloat = 0//zoomin:(-1,0) zoomout:(0,1)
     public var rotateFactor: CGFloat = 0//0-1
+    public var rotateDirection: CPCardRotateDirection = .z
     public var stopAtItemBoundary: Bool = true
     //TODO: support vertical type
     
@@ -61,13 +68,20 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
 
         let scaleFactorX = fabs(1-configuration.scaleFactorX*fabs(itemOffset))
         let scaleFactorY = fabs(1-configuration.scaleFactorY*fabs(itemOffset))
-        let scaleTransform = CGAffineTransform(scaleX: scaleFactorX, y: scaleFactorY)
-        
         let rotateFactor = configuration.rotateFactor*itemOffset
-        let rotateTransform = CGAffineTransform(rotationAngle: rotateFactor)
-    
-        let transform = rotateTransform.concatenating(scaleTransform)
-        attributes.transform = transform
+        
+        var transform3D = CATransform3DIdentity
+        transform3D.m34 = -1/550
+        transform3D = CATransform3DScale(transform3D, scaleFactorX, scaleFactorY, 1)
+        switch configuration.rotateDirection {
+        case .x:
+            transform3D = CATransform3DRotate(transform3D, rotateFactor, 1, 0, 0)
+        case .y:
+            transform3D = CATransform3DRotate(transform3D, rotateFactor, 0, 1, 0)
+        default:
+            transform3D = CATransform3DRotate(transform3D, rotateFactor, 0, 0, 1)
+        }
+        attributes.transform3D = transform3D
         
         //print("index:\(item) topItemIndex:\(topItemIndex) itemOffset:\(itemOffset)")
         return attributes

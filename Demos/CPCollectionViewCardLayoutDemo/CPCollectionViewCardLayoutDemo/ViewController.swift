@@ -26,7 +26,8 @@ class ViewController: UIViewController {
         configuration.fadeFactor = 0.3
         configuration.scaleFactorX = 0.3
         configuration.scaleFactorY = 0.3
-//        configuration.rotateFactor = CGFloat(M_PI_4)
+        configuration.rotateFactor = CGFloat(M_PI_4)
+        configuration.rotateDirection = .y
         configuration.cellSize = CGSize(width: collectionView.bounds.size.width-100,
                                         height: collectionView.bounds.size.height-50)
     }
