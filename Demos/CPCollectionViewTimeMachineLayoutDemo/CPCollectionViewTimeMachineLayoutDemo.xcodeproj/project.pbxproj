@@ -12,6 +12,7 @@
 		90232C3E1E54911A004EEA5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90232C3C1E54911A004EEA5B /* Main.storyboard */; };
 		90232C401E54911A004EEA5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90232C3F1E54911A004EEA5B /* Assets.xcassets */; };
 		90232C431E54911A004EEA5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90232C411E54911A004EEA5B /* LaunchScreen.storyboard */; };
+		90232C4B1E549269004EEA5B /* CPCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90232C4A1E549269004EEA5B /* CPCollectionViewCell.swift */; };
 		A2BF20CF699BFFEDB36A067D /* Pods_CPCollectionViewTimeMachineLayoutDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B48646CC7A51575242C9F2C /* Pods_CPCollectionViewTimeMachineLayoutDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		90232C3F1E54911A004EEA5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90232C421E54911A004EEA5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90232C441E54911A004EEA5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90232C4A1E549269004EEA5B /* CPCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			children = (
 				90232C381E54911A004EEA5B /* AppDelegate.swift */,
 				90232C3A1E54911A004EEA5B /* ViewController.swift */,
+				90232C4A1E549269004EEA5B /* CPCollectionViewCell.swift */,
 				90232C3C1E54911A004EEA5B /* Main.storyboard */,
 				90232C3F1E54911A004EEA5B /* Assets.xcassets */,
 				90232C411E54911A004EEA5B /* LaunchScreen.storyboard */,
@@ -214,6 +217,7 @@
 			files = (
 				90232C3B1E54911A004EEA5B /* ViewController.swift in Sources */,
 				90232C391E54911A004EEA5B /* AppDelegate.swift in Sources */,
+				90232C4B1E549269004EEA5B /* CPCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +381,7 @@
 				90232C491E54911A004EEA5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
