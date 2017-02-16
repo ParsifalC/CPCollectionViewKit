@@ -27,9 +27,14 @@ class ViewController: UIViewController {
     var configuration: CPCardLayoutConfiguration!
     var layout: CPCollectionViewCardLayout!
     let identifier = "CPCardCollectionViewCell"
+    var colorsArray = [UIColor]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        for _ in 0...19 {
+            colorsArray.append(randomColor())
+        }
+        
         settingView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         settingView.isHidden = true
         
@@ -77,6 +82,10 @@ class ViewController: UIViewController {
         configuration.cellSize =
             CGSize(width: collectionView.bounds.size.width*CGFloat(cellSizeSlider.value),
                    height: collectionView.bounds.size.height*CGFloat(cellSizeSlider.value))
+    }
+    
+    func randomColor() -> UIColor {
+        return UIColor.init(colorLiteralRed: Float(arc4random_uniform(256))/255.0, green: Float(arc4random_uniform(256))/255.0, blue: Float(arc4random_uniform(256))/255.0, alpha: 1)
     }
     
     func rotateDirection() -> CPCardRotateDirection {
@@ -190,17 +199,34 @@ class ViewController: UIViewController {
             self.settingView.isHidden = true
         }
     }
+    
+    @IBAction func deleteTapped(_ sender: UIButton) {
+        let index = layout.currentIndex
+        guard index<colorsArray.count else { return }
+        colorsArray.remove(at: index)
+        collectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
+//        print("currentIndex:\(layout.currentIndex)")
+    }
+    
+    @IBAction func insertTapped(_ sender: UIButton) {
+        let index = layout.currentIndex
+        guard index<colorsArray.count else { return }
+        colorsArray.insert(randomColor(), at: index)
+        collectionView.insertItems(at: [IndexPath(item: index, section: 0)])
+    }
+    
 }
 
 extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return colorsArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CPCardCollectionViewCell", for: indexPath) as! CPCardCollectionViewCell
         cell.label.text = "\(indexPath.item)"
+        cell.backgroundColor = colorsArray[indexPath.item]
         return cell
     }
     
