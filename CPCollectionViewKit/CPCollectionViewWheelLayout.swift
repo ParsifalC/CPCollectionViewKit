@@ -92,10 +92,6 @@ open class CPCollectionViewWheelLayout: CPCollectionViewLayout {
         invisibleCellCount = Double(collectionView.contentOffset.y/configuration.cellSize.height)
     }
     
-    override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        return true
-    }
-    
     override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         let attributes = super.layoutAttributesForItem(at: indexPath)!
         guard let collectionView = collectionView else { return attributes }
