@@ -141,12 +141,13 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
         let spacing = configuration.spacing
         var width: CGFloat
         var height: CGFloat
+        
         if configuration.scrollDirection == .horizontal {
-            width = CGFloat(cellCount)*cellWidth+max(CGFloat(cellCount-1), 0)*spacing+2*configuration.offsetX+0.5*cellWidth
+            width = CGFloat(cellCount)*cellWidth+max(CGFloat(cellCount-1), 0)*spacing+2*configuration.offsetX+collectionView.bounds.width-cellWidth
             height = collectionView.bounds.height
         } else {
             width = collectionView.bounds.width
-            height =  CGFloat(cellCount)*cellHeight+max(CGFloat(cellCount-1), 0)*spacing+2*configuration.offsetX+0.5*cellHeight
+            height =  CGFloat(cellCount)*cellHeight+max(CGFloat(cellCount-1), 0)*spacing+2*configuration.offsetX+collectionView.bounds.height-cellHeight
         }
 
         return CGSize(width: width, height: height)
