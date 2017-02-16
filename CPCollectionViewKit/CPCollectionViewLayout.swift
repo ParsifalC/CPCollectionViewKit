@@ -27,7 +27,9 @@ open class CPCollectionViewLayout:UICollectionViewLayout {
     }
     
     override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return cachedAttributesArray[indexPath.item]
+        let attributes = cachedAttributesArray[indexPath.item]
+        attributes.zIndex = indexPath.item
+        return attributes
     }
     
     override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
