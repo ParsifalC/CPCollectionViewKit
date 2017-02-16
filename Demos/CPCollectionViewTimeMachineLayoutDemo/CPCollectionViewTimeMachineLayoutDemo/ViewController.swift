@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     var timeMachineLayout: CPCollectionViewTimeMachineLayout!
     var layoutConfiguration: CPTimeMachineLayoutConfiguration!
     var colorsArray = [UIColor]()
+    @IBOutlet weak var spacingXSlider: UISlider!
+    @IBOutlet weak var spacingYSlider: UISlider!
+    @IBOutlet weak var reversedSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +31,40 @@ class ViewController: UIViewController {
         layoutConfiguration.cellSize = CGSize(width: 250, height: 250)
         layoutConfiguration.visibleCount = 6
         layoutConfiguration.scaleFactor = 0.8
-        layoutConfiguration.spacingX = 0
-        layoutConfiguration.spacingY = -30
+        layoutConfiguration.spacingX = CGFloat(spacingXSlider.value)
+        layoutConfiguration.spacingY = CGFloat(spacingYSlider.value)
+        layoutConfiguration.reversed = reversedSwitch.isOn
     }
 
     func randomColor() -> UIColor {
         return UIColor.init(colorLiteralRed: Float(arc4random_uniform(256))/255.0, green: Float(arc4random_uniform(256))/255.0, blue: Float(arc4random_uniform(256))/255.0, alpha: 1)
     }
+    
+    @IBAction func reversedValueChanged(_ sender: UISwitch) {
+        timeMachineLayout.invalidateLayout()
+        layoutConfiguration.reversed = sender.isOn
+        collectionView.reloadData()
+    }
+    
+    @IBAction func spacingXValueChanged(_ sender: UISlider) {
+        timeMachineLayout.invalidateLayout()
+        layoutConfiguration.spacingX = CGFloat(sender.value)
+        collectionView.reloadData()
+    }
+    
+    @IBAction func spacingYValueChanged(_ sender: UISlider) {
+        timeMachineLayout.invalidateLayout()
+        layoutConfiguration.spacingY = CGFloat(sender.value)
+        collectionView.reloadData()
+    }
+    
+//    func updateCollectionView(withLayoutConfiguration configuration:CPTimeMachineLayoutConfiguration) {
+//        let newLayout = CPCollectionViewTimeMachineLayout(withConfiguration: configuration)
+//        colletionView.collectionViewLayout.invalidateLayout()
+//        colletionView.collectionViewLayout = newLayout
+//        colletionView.reloadData()
+//    }
+    
 }
 
 extension ViewController: UICollectionViewDataSource {

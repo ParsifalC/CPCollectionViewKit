@@ -59,17 +59,74 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="zpo-zp-vad"/>
                                 </connections>
                             </collectionView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="-50" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="vnK-rb-BCI">
+                                <rect key="frame" x="78" y="597" width="204" height="31"/>
+                                <connections>
+                                    <action selector="spacingXValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="7dq-KR-aMc"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="-50" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="gE9-XI-5Yl">
+                                <rect key="frame" x="78" y="637" width="204" height="31"/>
+                                <connections>
+                                    <action selector="spacingYValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="MKz-eN-5m3"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="spacingY:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkl-Ll-FQ2">
+                                <rect key="frame" x="5" y="642" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="spacingX:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fs-eT-quJ">
+                                <rect key="frame" x="5" y="602" width="76" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="reversed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CF-Zn-PWL">
+                                <rect key="frame" x="301" y="603" width="67" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rxO-ga-gID">
+                                <rect key="frame" x="310" y="626" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="Ac2-gd-mHE"/>
+                                    <constraint firstAttribute="height" constant="31" id="u75-yW-1NF"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="reversedValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="rGr-BE-8aj"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6fs-eT-quJ" firstAttribute="centerY" secondItem="vnK-rb-BCI" secondAttribute="centerY" id="9Sj-vX-YGa"/>
                             <constraint firstItem="buo-aQ-7HY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Crd-u7-SvI"/>
                             <constraint firstAttribute="trailing" secondItem="buo-aQ-7HY" secondAttribute="trailing" id="IDG-eW-OYg"/>
+                            <constraint firstItem="gE9-XI-5Yl" firstAttribute="leading" secondItem="kkl-Ll-FQ2" secondAttribute="trailing" id="ScY-81-Z75"/>
+                            <constraint firstItem="rxO-ga-gID" firstAttribute="leading" secondItem="gE9-XI-5Yl" secondAttribute="trailing" constant="30" id="UGQ-wj-nhk"/>
                             <constraint firstItem="buo-aQ-7HY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Vxf-nm-BnB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rxO-ga-gID" secondAttribute="bottom" constant="10" id="WYm-2J-rbo"/>
+                            <constraint firstItem="gE9-XI-5Yl" firstAttribute="top" secondItem="vnK-rb-BCI" secondAttribute="bottom" constant="10" id="af0-ov-Dh8"/>
+                            <constraint firstItem="5CF-Zn-PWL" firstAttribute="centerX" secondItem="rxO-ga-gID" secondAttribute="centerX" id="cdO-5T-NCS"/>
+                            <constraint firstItem="6fs-eT-quJ" firstAttribute="leading" secondItem="kkl-Ll-FQ2" secondAttribute="leading" id="dgf-IM-0vs"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="buo-aQ-7HY" secondAttribute="bottom" id="fWE-gs-T7n"/>
+                            <constraint firstAttribute="trailing" secondItem="rxO-ga-gID" secondAttribute="trailing" constant="16" id="lVT-Yf-ALU"/>
+                            <constraint firstItem="rxO-ga-gID" firstAttribute="top" secondItem="5CF-Zn-PWL" secondAttribute="bottom" constant="2" id="olu-s0-qX7"/>
+                            <constraint firstItem="vnK-rb-BCI" firstAttribute="trailing" secondItem="gE9-XI-5Yl" secondAttribute="trailing" id="poM-0U-wBG"/>
+                            <constraint firstItem="kkl-Ll-FQ2" firstAttribute="centerY" secondItem="gE9-XI-5Yl" secondAttribute="centerY" id="uu7-ky-Fyd"/>
+                            <constraint firstItem="gE9-XI-5Yl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="80" id="vLi-En-Tn3"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gE9-XI-5Yl" secondAttribute="bottom" id="vOY-4q-mX8"/>
+                            <constraint firstItem="vnK-rb-BCI" firstAttribute="leading" secondItem="gE9-XI-5Yl" secondAttribute="leading" id="yan-Jf-aPi"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="buo-aQ-7HY" id="1fY-hq-6xd"/>
+                        <outlet property="reversedSwitch" destination="rxO-ga-gID" id="RHi-Xf-hNy"/>
+                        <outlet property="spacingXSlider" destination="vnK-rb-BCI" id="8kT-FP-mCS"/>
+                        <outlet property="spacingYSlider" destination="gE9-XI-5Yl" id="VBc-MZ-G3W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
