@@ -34,6 +34,13 @@ open class CPCardLayoutConfiguration: CPLayoutConfiguration {
 open class CPCollectionViewCardLayout: CPCollectionViewLayout {
     
     public var configuration: CPCardLayoutConfiguration
+    public var currentIndex: Int {
+        get {
+            guard let collectionView = collectionView else { return 0 }
+            let contentOffset = configuration.scrollDirection == .horizontal ? collectionView.contentOffset.x : collectionView.contentOffset.y
+            return Int(round(calculateTopItemIndex(contentOffset: contentOffset)))
+        }
+    }
     
     public init(withConfiguration configuration: CPCardLayoutConfiguration) {
         self.configuration = configuration
