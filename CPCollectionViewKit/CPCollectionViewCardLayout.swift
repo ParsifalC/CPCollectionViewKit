@@ -14,15 +14,20 @@ public enum CPCardRotateDirection {
     case z
 }
 
+public enum CPCardScrollDiretion {
+    case horizontal
+    case vertical
+}
+
 open class CPCardLayoutConfiguration: CPLayoutConfiguration {
     
     public var fadeFactor: CGFloat = 0//(0,1)
     public var scaleFactorX: CGFloat = 0//zoomin:(-1,0) zoomout:(0,1)
     public var scaleFactorY: CGFloat = 0//zoomin:(-1,0) zoomout:(0,1)
-    public var rotateFactor: CGFloat = 0//0-1
+    public var rotateFactor: CGFloat = 0
     public var rotateDirection: CPCardRotateDirection = .z
     public var stopAtItemBoundary: Bool = true
-    //TODO: support vertical type
+    public var scrollDirection: CPCardScrollDiretion = .horizontal
     
 }
 
@@ -56,12 +61,19 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
         let cellHeight = cellSize.height
         var centerX: CGFloat = 0.0
         var centerY: CGFloat = 0.0
-        let topItemIndex = calculateTopItemIndex(contentOffset: collectionView.contentOffset.x)
+        let contentOffset = configuration.scrollDirection == .horizontal ? collectionView.contentOffset.x : collectionView.contentOffset.y
+        let topItemIndex = calculateTopItemIndex(contentOffset: contentOffset)
         let itemOffset = item-topItemIndex
         
         attributes.size = cellSize
-        centerX = (item+0.5)*cellWidth+item*configuration.spacing
-        centerY = height/2.0
+        if configuration.scrollDirection == .horizontal {
+            centerX = (item+0.5)*cellWidth+item*configuration.spacing
+            centerY = height/2.0
+        } else {
+            centerX = width/2.0
+            centerY = (item+0.5)*cellHeight+item*configuration.spacing
+        }
+        
         attributes.center = CGPoint(x: centerX+configuration.offsetX, y: centerY+configuration.offsetY)
         
         attributes.alpha = 1-configuration.fadeFactor*fabs(itemOffset)
@@ -90,9 +102,13 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
     func calculateTopItemIndex(contentOffset: CGFloat) -> CGFloat {
         let cellWidth = configuration.cellSize.width
         let cellHeight = configuration.cellSize.height
-
-        guard cellWidth+configuration.spacing != 0 else { return 0 }
-        return  (contentOffset)/(cellWidth+configuration.spacing)
+        if configuration.scrollDirection == .horizontal {
+            guard cellWidth+configuration.spacing != 0 else { return 0 }
+            return  (contentOffset)/(cellWidth+configuration.spacing)
+        } else {
+            guard cellHeight+configuration.spacing != 0 else { return 0 }
+            return  (contentOffset)/(cellHeight+configuration.spacing)
+        }
     }
     
     open override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
@@ -102,10 +118,19 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
         
         let cellWidth = configuration.cellSize.width
         let cellHeight = configuration.cellSize.height
-
-        let topItemIndex = round(calculateTopItemIndex(contentOffset: proposedContentOffset.x))
-        let x = (cellWidth+configuration.spacing)*topItemIndex
-        let y = proposedContentOffset.y
+        var x: CGFloat
+        var y: CGFloat
+        
+        if configuration.scrollDirection == .horizontal {
+            let topItemIndex = round(calculateTopItemIndex(contentOffset: proposedContentOffset.x))
+            x = (cellWidth+configuration.spacing)*topItemIndex
+            y = proposedContentOffset.y
+        } else {
+            let topItemIndex = round(calculateTopItemIndex(contentOffset: proposedContentOffset.y))
+            x = proposedContentOffset.x
+            y =  (cellHeight+configuration.spacing)*topItemIndex
+        }
+        
         return CGPoint(x: x, y: y)
     }
     
@@ -114,8 +139,17 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
         let cellWidth = configuration.cellSize.width
         let cellHeight = configuration.cellSize.height
         let spacing = configuration.spacing
-        var width = CGFloat(cellCount)*cellWidth+max(CGFloat(cellCount-1), 0)*spacing+2*configuration.offsetX
-        return CGSize(width: width, height: collectionView.bounds.height)
+        var width: CGFloat
+        var height: CGFloat
+        if configuration.scrollDirection == .horizontal {
+            width = CGFloat(cellCount)*cellWidth+max(CGFloat(cellCount-1), 0)*spacing+2*configuration.offsetX
+            height = collectionView.bounds.height
+        } else {
+            width = collectionView.bounds.width
+            height =  CGFloat(cellCount)*cellHeight+max(CGFloat(cellCount-1), 0)*spacing+2*configuration.offsetX
+        }
+
+        return CGSize(width: width, height: height)
     }
     
 }

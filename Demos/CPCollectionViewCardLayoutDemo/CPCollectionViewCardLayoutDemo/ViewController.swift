@@ -22,12 +22,13 @@ class ViewController: UIViewController {
         configuration = layout.configuration
         configuration.stopAtItemBoundary = true
         configuration.spacing = 0
-        configuration.offsetX = 50
+        configuration.offsetX = 0
         configuration.fadeFactor = 0.3
         configuration.scaleFactorX = 0.3
         configuration.scaleFactorY = 0.3
         configuration.rotateFactor = CGFloat(M_PI_4)
-        configuration.rotateDirection = .y
+        configuration.rotateDirection = .x
+        configuration.scrollDirection = .vertical
         configuration.cellSize = CGSize(width: collectionView.bounds.size.width-100,
                                         height: collectionView.bounds.size.height-50)
     }
