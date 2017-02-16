@@ -21,7 +21,7 @@ open class CPTimeMachineLayoutConfiguration: CPLayoutConfiguration {
             spacingY = spacing
         }
     }
-    //TODO: support left/right/middle reversed type
+    public var reversed: Bool = false
     
 }
 
@@ -50,14 +50,24 @@ open class CPCollectionViewTimeMachineLayout: CPCollectionViewLayout {
         let cellWidth = cellSize.width
         let cellHeight = cellSize.height
         let visibleCount = CGFloat(min(configuration.visibleCount, cellCount))
-        let topItemIndex = CGFloat(cellCount-1)-collectionView.contentOffset.y/cellHeight
-        let itemOffset = topItemIndex-item
         var centerX: CGFloat = 0.0
         var centerY: CGFloat = 0.0
 
         //update attributes
+        var topItemIndex: CGFloat
+        var itemOffset: CGFloat
+        
+        if configuration.reversed {
+            topItemIndex = CGFloat(cellCount-1)-collectionView.contentOffset.y/cellHeight
+            itemOffset = topItemIndex-item
+            attributes.zIndex = indexPath.item
+        } else {
+            topItemIndex = collectionView.contentOffset.y/cellHeight
+            itemOffset =  item-topItemIndex
+            attributes.zIndex = -indexPath.item
+        }
         attributes.size = cellSize
-
+        
         var transform = CGAffineTransform.identity
         
         if itemOffset<visibleCount+1 && itemOffset >= -1 {
