@@ -63,7 +63,7 @@ class ViewController: UIViewController {
             layoutConfiguration.spacingY = CGFloat(sender.value)
         }
     }
-        
+    
 }
 
 extension ViewController: UICollectionViewDataSource {
