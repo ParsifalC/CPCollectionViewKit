@@ -63,14 +63,7 @@ class ViewController: UIViewController {
             layoutConfiguration.spacingY = CGFloat(sender.value)
         }
     }
-    
-//    func updateCollectionView(withLayoutConfiguration configuration:CPTimeMachineLayoutConfiguration) {
-//        let newLayout = CPCollectionViewTimeMachineLayout(withConfiguration: configuration)
-//        colletionView.collectionViewLayout.invalidateLayout()
-//        colletionView.collectionViewLayout = newLayout
-//        colletionView.reloadData()
-//    }
-    
+        
 }
 
 extension ViewController: UICollectionViewDataSource {
