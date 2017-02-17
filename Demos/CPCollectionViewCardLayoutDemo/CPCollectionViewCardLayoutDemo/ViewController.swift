@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         offsetYSlider.value = 0
         
         layout = collectionView.collectionViewLayout as! CPCollectionViewCardLayout
-        layout.updateAnimationStyle = .base
+        layout.updateAnimationStyle = .custom
         configuration = layout.configuration
         configuration.stopAtItemBoundary = stopAtBoundarySwitch.isOn
         configuration.spacing = CGFloat(spacingSlider.value)

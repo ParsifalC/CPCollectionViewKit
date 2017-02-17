@@ -141,6 +141,48 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
         return CGPoint(x: x, y: y)
     }
     
+    open override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        guard let attributes = super.initialLayoutAttributesForAppearingItem(at: itemIndexPath) else {
+            return nil
+        }
+        
+        if updateAnimationStyle == .custom && insertIndexPaths.contains(itemIndexPath) {
+            var centerX = attributes.center.x
+            var centerY = attributes.center.y
+            
+            if configuration.scrollDirection == .horizontal {
+                centerY = 0
+            } else {
+                centerX = 0
+            }
+            
+            attributes.center = CGPoint(x: centerX, y: centerY)
+        }
+        
+        return attributes
+    }
+    
+    open override func finalLayoutAttributesForDisappearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        guard let attributes = super.finalLayoutAttributesForDisappearingItem(at: itemIndexPath) else {
+            return nil
+        }
+        
+        if updateAnimationStyle == .custom && deleteIndexPaths.contains(itemIndexPath) {
+            var centerX = attributes.center.x
+            var centerY = attributes.center.y
+            
+            if configuration.scrollDirection == .horizontal {
+                centerY = collectionView!.bounds.height
+            } else {
+                centerX = collectionView!.bounds.width
+            }
+            
+            attributes.center = CGPoint(x: centerX, y: centerY)
+        }
+        
+        return attributes
+    }
+    
     open override var collectionViewContentSize: CGSize {
         guard let collectionView = collectionView else { return super.collectionViewContentSize }
         let cellWidth = configuration.cellSize.width
