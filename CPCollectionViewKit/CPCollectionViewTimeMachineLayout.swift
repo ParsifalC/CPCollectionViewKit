@@ -47,7 +47,6 @@ open class CPCollectionViewTimeMachineLayout: CPCollectionViewLayout {
         let width = collectionView.bounds.size.width
         let height = collectionView.bounds.size.height
         let cellSize = configuration.cellSize
-        let cellWidth = cellSize.width
         let cellHeight = cellSize.height
         let visibleCount = CGFloat(min(configuration.visibleCount, cellCount))
         var centerX: CGFloat = 0.0
@@ -96,10 +95,8 @@ open class CPCollectionViewTimeMachineLayout: CPCollectionViewLayout {
  
     open override var collectionViewContentSize: CGSize {
         guard let collectionView = collectionView else { return super.collectionViewContentSize }
-        let cellWidth = configuration.cellSize.width
         let cellHeight = configuration.cellSize.height
-        let spacing = configuration.spacing
-        var height = CGFloat(cellCount-1)*cellHeight+collectionView.bounds.height
+        let height = CGFloat(cellCount-1)*cellHeight+collectionView.bounds.height
         return CGSize(width: collectionView.bounds.width, height: height)
     }
 }
