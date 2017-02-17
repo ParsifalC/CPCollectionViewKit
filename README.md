@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/CPCollectionViewKit.svg?style=flat)](http://cocoapods.org/pods/CPCollectionViewKit)
 [![Platform](https://img.shields.io/cocoapods/p/CPCollectionViewKit.svg?style=flat)](http://cocoapods.org/pods/CPCollectionViewKit)
 
-#### CPCollectionViewTimeMachineLayout
+#### CPCollectionViewTimeMachineLayout [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTimeMachineLayoutDemo/README.md)
 <table>
 <tr>
 <th>Left</th>
@@ -27,7 +27,7 @@
 </tr>
 </table>
 
-#### CPCollectionViewWheelLayout  
+#### CPCollectionViewWheelLayout  [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewWheelLayoutSwiftDemo/README.md)
 <table>
 <tr>
 </tr>
@@ -55,7 +55,7 @@
 </tr>
 </table>
 
-#### CPCollectionViewCardLayout
+#### CPCollectionViewCardLayout   [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCardLayoutDemo/README.md)
 <table>
 <tr>
 </tr>
@@ -83,7 +83,7 @@
 </tr>
 </table>
 
-#### CPCollectionViewCircleLayout
+#### CPCollectionViewCircleLayout   [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCircleLayoutDemo/README.md)
 <table>
 <tr>
 <th>Circle</th>
@@ -94,7 +94,7 @@
 </table>
 
 
-#### CPCollectionViewCaterpillarLayout   
+#### CPCollectionViewCaterpillarLayout   [Readme]()
 <table>
 <tr>
 <th>Caterpillar</th>
@@ -118,6 +118,15 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "CPCollectionViewKit"
 ```
+## TODO
+- [ ] Update Usage
+- [ ] Support `CPCollectionViewCaterpillarLayout` Direction Settings
+- [ ] Unit Test
+- [ ] Support `Cocoapods` & `Carthage`
+- [ ] Layout Transition
+- [ ] More Delete/Insert Animations
+- [ ] More Interesting UICollectionView Layouts
+
 
 ## Author
 
