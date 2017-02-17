@@ -56,6 +56,33 @@
 </table>
 
 #### CPCollectionViewCardLayout
+<table>
+<tr>
+</tr>
+<th>Zoominout</th>
+<th>Rotateinout</th>
+<th>Waltz</th>
+<th>VerticalRotation</th>
+<tr>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCardLayoutDemo/CardLayoutZoominout.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCardLayoutDemo/CardLayoutRotateinout.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCardLayoutDemo/CardLayoutWaltz.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCardLayoutDemo/CardLayoutVerticalRotation.gif?raw=true"/></td>
+</tr>
+<tr>
+<th>Cylinder</th>
+<th>Somersault</th>
+<th>Delete</th>
+<th>Insert</th>
+</tr>
+<tr>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCardLayoutDemo/CardLayoutCylinder.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCardLayoutDemo/CardLayoutSomersault.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCardLayoutDemo/CardLayoutDelete.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCardLayoutDemo/CardLayoutInsert.gif?raw=true"/></td>
+</tr>
+</table>
+
 #### CPCollectionViewCircleLayout
 #### CPCollectionViewCaterpillarLayout
 #### Delete/Insert Animations
