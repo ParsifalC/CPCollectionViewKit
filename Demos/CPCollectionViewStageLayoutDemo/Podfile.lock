@@ -1,0 +1,19 @@
+PODS:
+  - CPCollectionViewKit (0.1.0)
+  - Reveal-iOS-SDK (1.6.2)
+
+DEPENDENCIES:
+  - CPCollectionViewKit (from `../..`)
+  - Reveal-iOS-SDK
+
+EXTERNAL SOURCES:
+  CPCollectionViewKit:
+    :path: "../.."
+
+SPEC CHECKSUMS:
+  CPCollectionViewKit: 0ef29d2e604bd333e0cad2514d3c73809b42e0a7
+  Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
+
+PODFILE CHECKSUM: 84002f063840459dba4451e053bc974a36e23823
+
+COCOAPODS: 1.1.1
