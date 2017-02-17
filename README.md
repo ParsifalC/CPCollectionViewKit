@@ -84,8 +84,25 @@
 </table>
 
 #### CPCollectionViewCircleLayout
-#### CPCollectionViewCaterpillarLayout
-#### Delete/Insert Animations
+<table>
+<tr>
+<th>Circle</th>
+</tr>
+<tr>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCircleLayoutDemo/CircleLayout.gif?raw=true"/></td>
+</tr>
+</table>
+
+
+#### CPCollectionViewCaterpillarLayout   
+<table>
+<tr>
+<th>Caterpillar</th>
+</tr>
+<tr>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCaterpillarLayoutDemo/CaterpillarLayout.gif?raw=true"/></td>
+</tr>
+</table>
 
 ## Example
 
