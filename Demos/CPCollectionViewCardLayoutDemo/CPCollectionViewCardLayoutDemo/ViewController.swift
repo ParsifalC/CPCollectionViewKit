@@ -69,6 +69,7 @@ class ViewController: UIViewController {
         offsetYSlider.value = 0
         
         layout = collectionView.collectionViewLayout as! CPCollectionViewCardLayout
+        layout.updateAnimationStyle = .base
         configuration = layout.configuration
         configuration.stopAtItemBoundary = stopAtBoundarySwitch.isOn
         configuration.spacing = CGFloat(spacingSlider.value)
@@ -225,14 +226,17 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CPCardCollectionViewCell", for: indexPath) as! CPCardCollectionViewCell
-        cell.label.text = "\(indexPath.item)"
+        cell.label.text = ""
         cell.backgroundColor = colorsArray[indexPath.item]
+        print(indexPath)
         return cell
     }
     
 }
 
 extension ViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selectItem:\(indexPath.item)")
+    }
 }
 

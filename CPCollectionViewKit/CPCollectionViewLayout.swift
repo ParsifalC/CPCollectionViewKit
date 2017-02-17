@@ -8,10 +8,20 @@
 
 import UIKit
 
+public enum CPItemUpdateAnimation {
+    case common //iOS default delete/insert animation
+    case base  // zoomin/out animation
+    case custom  //custom by sublayout
+}
+
+
 open class CPCollectionViewLayout:UICollectionViewLayout {
     // MARK: Properties
     var cellCount = 0
     var cachedAttributesArray = [UICollectionViewLayoutAttributes]()
+    var deleteIndexPaths = [IndexPath]()
+    var insertIndexPaths = [IndexPath]()
+    public var updateAnimationStyle: CPItemUpdateAnimation = .common
 
     // MARK: Methods
     override open func prepare() {
@@ -24,6 +34,26 @@ open class CPCollectionViewLayout:UICollectionViewLayout {
             let attrbutes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             cachedAttributesArray.append(attrbutes)
         }
+    }
+    
+    open override func prepare(forCollectionViewUpdates updateItems: [UICollectionViewUpdateItem]) {
+        super.prepare(forCollectionViewUpdates: updateItems)
+        
+        for updateItem in updateItems {
+            if updateItem.updateAction == .delete {
+                guard let indexPath = updateItem.indexPathBeforeUpdate else { return }
+                deleteIndexPaths.append(indexPath)
+            } else if updateItem.updateAction == .insert {
+                guard let indexPath = updateItem.indexPathAfterUpdate else { return }
+                insertIndexPaths.append(indexPath)
+            }
+        }
+    }
+    
+    open override func finalizeCollectionViewUpdates() {
+        super.finalizeCollectionViewUpdates()
+        deleteIndexPaths.removeAll()
+        insertIndexPaths.removeAll()
     }
     
     override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -43,6 +73,32 @@ open class CPCollectionViewLayout:UICollectionViewLayout {
         }
         
         return visibleAttributesArray
+    }
+    
+    open override func finalLayoutAttributesForDisappearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        guard let attributes = super.finalLayoutAttributesForDisappearingItem(at: itemIndexPath) else { return nil }
+        
+        if updateAnimationStyle == .base {
+            if deleteIndexPaths.contains(itemIndexPath) {
+                attributes.transform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
+                attributes.alpha = 0
+            }
+        }
+        
+        return attributes
+    }
+    
+    open override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        guard let attributes = super.initialLayoutAttributesForAppearingItem(at: itemIndexPath) else { return nil }
+        
+        if updateAnimationStyle == .base {
+            if insertIndexPaths.contains(itemIndexPath) {
+                attributes.alpha = 1
+                attributes.transform = CGAffineTransform.init(scaleX: 2, y: 2)
+            }
+        }
+        
+        return attributes
     }
     
     override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {

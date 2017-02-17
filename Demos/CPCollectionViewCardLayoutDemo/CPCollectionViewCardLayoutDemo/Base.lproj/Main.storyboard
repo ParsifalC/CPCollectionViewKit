@@ -23,6 +23,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vam-QH-vPe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewLayout key="collectionViewLayout" id="BLH-lC-6fy" customClass="CPCollectionViewCardLayout" customModule="CPCollectionViewKit"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CPCardCollectionViewCell" id="rMU-Gn-tnA" customClass="CPCardCollectionViewCell" customModule="CPCollectionViewCardLayoutDemo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="147" height="175"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="147" height="175"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVf-TD-8eU">
+                                                    <rect key="frame" x="3.5" y="17.5" width="140" height="140"/>
+                                                    <color key="backgroundColor" red="1" green="0.72448395314356162" blue="0.42697420726038193" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="EVf-TD-8eU" firstAttribute="centerX" secondItem="rMU-Gn-tnA" secondAttribute="centerX" id="8YN-yb-g38"/>
+                                            <constraint firstItem="EVf-TD-8eU" firstAttribute="centerY" secondItem="rMU-Gn-tnA" secondAttribute="centerY" id="Bdc-tG-uad"/>
+                                            <constraint firstItem="EVf-TD-8eU" firstAttribute="height" secondItem="rMU-Gn-tnA" secondAttribute="height" multiplier="4:5" id="kaJ-sQ-PtM"/>
+                                            <constraint firstItem="EVf-TD-8eU" firstAttribute="width" secondItem="rMU-Gn-tnA" secondAttribute="width" multiplier="0.95" id="sxW-YN-kmf"/>
+                                        </constraints>
+                                        <size key="customSize" width="147" height="175"/>
+                                        <connections>
+                                            <outlet property="label" destination="EVf-TD-8eU" id="uda-0T-YlD"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="rBt-U1-ZAD"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="n3g-ZN-7Ea"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psy-fb-xQ4">
+                                <rect key="frame" x="155.5" y="617" width="63" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.90083705359999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="SETTING">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="settingTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZZq-iT-wpy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEY-43-fcH">
+                                <rect key="frame" x="16" y="617" width="43" height="30"/>
+                                <state key="normal" title="delete"/>
+                                <connections>
+                                    <action selector="deleteTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AZl-L8-X8v"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9r-SR-5o8">
+                                <rect key="frame" x="319" y="617" width="40" height="30"/>
+                                <state key="normal" title="insert"/>
+                                <connections>
+                                    <action selector="insertTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8T2-RL-Lsa"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hv-VD-ZUW">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
@@ -233,69 +296,6 @@
                                     <constraint firstItem="Iqw-jT-FNr" firstAttribute="centerY" secondItem="T1h-dH-mOX" secondAttribute="centerY" id="zda-qc-5Xi"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vam-QH-vPe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewLayout key="collectionViewLayout" id="BLH-lC-6fy" customClass="CPCollectionViewCardLayout" customModule="CPCollectionViewKit"/>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CPCardCollectionViewCell" id="rMU-Gn-tnA" customClass="CPCardCollectionViewCell" customModule="CPCollectionViewCardLayoutDemo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="147" height="175"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="147" height="175"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVf-TD-8eU">
-                                                    <rect key="frame" x="3.5" y="17.5" width="140" height="140"/>
-                                                    <color key="backgroundColor" red="1" green="0.72448395314356162" blue="0.42697420726038193" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </view>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="EVf-TD-8eU" firstAttribute="centerX" secondItem="rMU-Gn-tnA" secondAttribute="centerX" id="8YN-yb-g38"/>
-                                            <constraint firstItem="EVf-TD-8eU" firstAttribute="centerY" secondItem="rMU-Gn-tnA" secondAttribute="centerY" id="Bdc-tG-uad"/>
-                                            <constraint firstItem="EVf-TD-8eU" firstAttribute="height" secondItem="rMU-Gn-tnA" secondAttribute="height" multiplier="4:5" id="kaJ-sQ-PtM"/>
-                                            <constraint firstItem="EVf-TD-8eU" firstAttribute="width" secondItem="rMU-Gn-tnA" secondAttribute="width" multiplier="0.95" id="sxW-YN-kmf"/>
-                                        </constraints>
-                                        <size key="customSize" width="147" height="175"/>
-                                        <connections>
-                                            <outlet property="label" destination="EVf-TD-8eU" id="uda-0T-YlD"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="rBt-U1-ZAD"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="n3g-ZN-7Ea"/>
-                                </connections>
-                            </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psy-fb-xQ4">
-                                <rect key="frame" x="155.5" y="617" width="63" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.90083705359999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="SETTING">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="settingTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZZq-iT-wpy"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEY-43-fcH">
-                                <rect key="frame" x="16" y="617" width="43" height="30"/>
-                                <state key="normal" title="delete"/>
-                                <connections>
-                                    <action selector="deleteTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AZl-L8-X8v"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9r-SR-5o8">
-                                <rect key="frame" x="319" y="617" width="40" height="30"/>
-                                <state key="normal" title="insert"/>
-                                <connections>
-                                    <action selector="insertTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8T2-RL-Lsa"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
