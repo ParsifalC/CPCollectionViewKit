@@ -46,10 +46,10 @@ class ViewController: UIViewController {
         rotateFactorSlider.maximumValue = Float(M_PI*2.0)
         rotateFactorSlider.value = Float(M_PI_4)
         
-        scaleFactorXSlider.minimumValue = -1.0
+        scaleFactorXSlider.minimumValue = 0
         scaleFactorXSlider.maximumValue = 1.0
         scaleFactorXSlider.value = 0.6
-        scaleFactorYSlider.minimumValue = -1.0
+        scaleFactorYSlider.minimumValue = 0
         scaleFactorYSlider.maximumValue = 1.0
         scaleFactorYSlider.value = 0.6
         
