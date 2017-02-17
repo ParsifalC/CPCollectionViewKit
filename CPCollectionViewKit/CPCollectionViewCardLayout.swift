@@ -101,6 +101,7 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
             transform3D = CATransform3DRotate(transform3D, rotateFactor, 0, 0, 1)
         }
         attributes.transform3D = transform3D
+        attributes.zIndex = (itemOffset<0.5 && itemOffset > -0.5) ? 1000 : Int(item)
         
 //        print("index:\(item) topItemIndex:\(topItemIndex) itemOffset:\(itemOffset)")
         return attributes
