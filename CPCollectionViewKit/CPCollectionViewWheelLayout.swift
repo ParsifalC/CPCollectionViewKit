@@ -53,7 +53,7 @@ public struct CPWheelLayoutConfiguration {
                 radius:Double,
                 angular:Double,
                 wheelType:CPWheelLayoutType,
-                zoomInOut:Bool = true,
+                zoomInOut:Bool = false,
                 fadeAway:Bool = true,
                 maxContentHeight:Double = 0.0,
                 contentHeigthPadding:Double = 0.0) {
@@ -197,7 +197,12 @@ open class CPCollectionViewWheelLayout: CPCollectionViewLayout {
             fadeFactor = 1-fabs(angle-M_PI_4)
         }
         attributes.alpha = CGFloat(fadeAway ? (fadeFactor) : 1.0)
-        attributes.size = CGSize(width:cellSize.width*CGFloat(fadeFactor), height:cellSize.height*CGFloat(fadeFactor))
+        if configuration.zoomInOut {
+            attributes.size = CGSize(width:cellSize.width*CGFloat(fadeFactor), height:cellSize.height*CGFloat(fadeFactor))
+        } else {
+            attributes.size = cellSize
+        }
+
         return attributes
     }
     
