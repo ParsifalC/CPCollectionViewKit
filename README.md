@@ -83,6 +83,22 @@
 </tr>
 </table>
 
+#### CPCollectionViewStageLayout   [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewStageLayoutDemo/README.md)
+<table>
+<tr>
+<th>Waltz</th>
+<th>Somefault</th>
+<th>Blend</th>
+<th>FadeAway</th>
+</tr>
+<tr>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewStageLayoutDemo/StageLayoutWaltz.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewStageLayoutDemo/StageLayoutSomefault.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewStageLayoutDemo/StageLayoutBlend.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewStageLayoutDemo/StageLayoutFadeAway.gif?raw=true"/></td>
+</tr>
+</table>
+
 #### CPCollectionViewCircleLayout   [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCircleLayoutDemo/README.md)
 <table>
 <tr>
