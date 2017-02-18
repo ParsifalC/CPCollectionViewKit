@@ -15,6 +15,15 @@ open class CPStageLayoutConfiguration: CPLayoutConfiguration {
 open class CPCollectionViewStageLayout: CPCollectionViewLayout {
     
     public var configuration: CPStageLayoutConfiguration
+    public var currentIndex: Int {
+        get {
+            if let collectionView = collectionView {
+                return Int(round(collectionView.contentOffset.x/configuration.cellSize.width))
+            }
+            
+            return 0
+        }
+    }
     
     public init(withConfiguration configuration: CPStageLayoutConfiguration) {
         self.configuration = configuration
