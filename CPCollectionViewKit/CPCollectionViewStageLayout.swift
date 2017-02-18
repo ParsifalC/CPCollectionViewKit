@@ -10,6 +10,8 @@ import Foundation
 
 open class CPStageLayoutConfiguration: CPLayoutConfiguration {
     
+    public var topCellSize = CGSize(width: 100, height: 100)
+    
 }
 
 open class CPCollectionViewStageLayout: CPCollectionViewLayout {
@@ -42,7 +44,8 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
         let item = CGFloat(indexPath.item)
         let width = collectionView.bounds.size.width
         let height = collectionView.bounds.size.height
-        let cellSize = configuration.cellSize
+        var cellSize = configuration.cellSize
+        let topCellSize = configuration.topCellSize
         let cellHeight = cellSize.height
         let cellWidth = cellSize.width
         var centerX: CGFloat = 0.0
@@ -51,7 +54,6 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
         let itemOffset = item-topItemIndex
         
         attributes.isHidden = false
-        attributes.size = cellSize
         
         if itemOffset > -1 && itemOffset<0 {
             attributes.alpha = fabs(itemOffset)
@@ -60,6 +62,8 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
         } else if itemOffset<=1 && itemOffset>=0 {
             centerX = ((width-cellWidth)/2)*(1-itemOffset)+cellWidth/2+collectionView.contentOffset.x
             centerY = ((cellHeight/2-height)/(2))*(1-itemOffset)+height-cellHeight/2
+            cellSize = CGSize(width: (cellWidth-topCellSize.width)*itemOffset+topCellSize.width,
+                              height: (cellHeight-topCellSize.height)*itemOffset+topCellSize.height)
         } else if itemOffset>1 {
             centerX = collectionView.contentOffset.x+(itemOffset-0.5)*cellWidth+(itemOffset-1)*configuration.spacing
             centerY = height-cellHeight/2
@@ -69,6 +73,9 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
             centerY = -height
         }
         
+        // y = kx+b k+b = cellWidth b = topCellWidth y = (cellWidth-topCellWidth)x+topCellWidth
+        
+        attributes.size = cellSize
 //        print("item:\(item) itemOffset:\(itemOffset) topItemIndex:\(topItemIndex)")
         
         attributes.center = CGPoint(x: centerX+configuration.offsetX,

@@ -26,6 +26,8 @@ class ViewController: UIViewController {
         stageLayout = collectionView.collectionViewLayout as! CPCollectionViewStageLayout
         configuration = stageLayout.configuration
         configuration.cellSize = CGSize(width: 50, height: 50)
+        configuration.topCellSize = CGSize(width: collectionView.bounds.width*0.75,
+                                           height: collectionView.bounds.width*0.75)
     }
 
     func randomColor() -> UIColor {
