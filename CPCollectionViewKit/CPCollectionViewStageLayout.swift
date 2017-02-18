@@ -8,9 +8,17 @@
 
 import Foundation
 
+public enum CPMoveAnimationStyle {
+    case none
+    case waltz
+    case somefault
+}
+
 open class CPStageLayoutConfiguration: CPLayoutConfiguration {
     
     public var topCellSize = CGSize(width: 100, height: 100)
+    public var rotateInOut = true
+    public var moveAnimationStyle: CPMoveAnimationStyle = .none
     
 }
 
@@ -73,11 +81,20 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
             centerY = -height
         }
         
-        // y = kx+b k+b = cellWidth b = topCellWidth y = (cellWidth-topCellWidth)x+topCellWidth
+        let rotateFactor = fabs(itemOffset*100).remainder(dividingBy: 100)/100
         
-        attributes.size = cellSize
+        switch configuration.moveAnimationStyle {
+        case .waltz:
+            attributes.transform3D =  CATransform3DRotate(attributes.transform3D, CGFloat(M_PI*2)*rotateFactor, 0, 1, 0)
+        case .somefault:
+            attributes.transform3D =  CATransform3DRotate(attributes.transform3D, CGFloat(M_PI*2)*rotateFactor, 0, 0, 1)
+        default:
+            attributes.transform3D = CATransform3D()
+        }
+        
 //        print("item:\(item) itemOffset:\(itemOffset) topItemIndex:\(topItemIndex)")
         
+        attributes.size = cellSize
         attributes.center = CGPoint(x: centerX+configuration.offsetX,
                                     y: centerY+configuration.offsetY)
         
