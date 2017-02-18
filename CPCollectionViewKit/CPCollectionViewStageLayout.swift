@@ -130,6 +130,14 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
         return attributes
     }
     
+    open override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+        guard let collectionView = collectionView else { return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity) }
+        let topIndexItem = proposedContentOffset.x/configuration.cellSize.width
+        let x = round(topIndexItem)*(configuration.cellSize.width)
+        let y = proposedContentOffset.y
+        return CGPoint(x: x, y: y)
+    }
+    
     open override var collectionViewContentSize: CGSize {
         guard let collectionView = collectionView else { return super.collectionViewContentSize }
         let cellWidth = configuration.cellSize.width
