@@ -35,11 +35,36 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
         let height = collectionView.bounds.size.height
         let cellSize = configuration.cellSize
         let cellHeight = cellSize.height
+        let cellWidth = cellSize.width
         var centerX: CGFloat = 0.0
         var centerY: CGFloat = 0.0
-        let topItemIndex = collectionView.contentOffset.y/cellHeight
+        let topItemIndex = collectionView.contentOffset.x/cellWidth
         let itemOffset = item-topItemIndex
-                
+        
+        attributes.isHidden = false
+        attributes.size = cellSize
+        
+        if itemOffset > -1 && itemOffset<0 {
+            attributes.alpha = fabs(itemOffset)
+            centerX = collectionView.contentOffset.x+(fabs(itemOffset)+0.5)*width
+            centerY = (height-cellHeight)/2
+        } else if itemOffset<=1 && itemOffset>=0 {
+            centerX = ((width-cellWidth)/2)*(1-itemOffset)+cellWidth/2+collectionView.contentOffset.x
+            centerY = ((cellHeight/2-height)/(2))*(1-itemOffset)+height-cellHeight/2
+        } else if itemOffset>1 {
+            centerX = collectionView.contentOffset.x+(itemOffset-0.5)*cellWidth+(itemOffset-1)*configuration.spacing
+            centerY = height-cellHeight/2
+        } else {
+            attributes.isHidden = true
+            centerX = -width
+            centerY = -height
+        }
+        
+//        print("item:\(item) itemOffset:\(itemOffset) topItemIndex:\(topItemIndex)")
+        
+        attributes.center = CGPoint(x: centerX+configuration.offsetX,
+                                    y: centerY+configuration.offsetY)
+        
         return attributes
     }
     

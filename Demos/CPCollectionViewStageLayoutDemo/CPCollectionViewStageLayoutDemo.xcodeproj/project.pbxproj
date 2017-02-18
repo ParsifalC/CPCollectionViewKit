@@ -13,6 +13,7 @@
 		90BC8FBC1E57265F00C49A21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90BC8FBA1E57265F00C49A21 /* Main.storyboard */; };
 		90BC8FBE1E57265F00C49A21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90BC8FBD1E57265F00C49A21 /* Assets.xcassets */; };
 		90BC8FC11E57265F00C49A21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90BC8FBF1E57265F00C49A21 /* LaunchScreen.storyboard */; };
+		90BC8FCB1E572C6200C49A21 /* CPCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8FCA1E572C6200C49A21 /* CPCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		90BC8FBD1E57265F00C49A21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90BC8FC01E57265F00C49A21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90BC8FC21E57265F00C49A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90BC8FCA1E572C6200C49A21 /* CPCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPCollectionViewCell.swift; sourceTree = "<group>"; };
 		E81DA720DABA7D07A66FF352 /* Pods-CPCollectionViewStageLayoutDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPCollectionViewStageLayoutDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CPCollectionViewStageLayoutDemo/Pods-CPCollectionViewStageLayoutDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F3A4ABBFC4B4E84C153BD07E /* Pods_CPCollectionViewStageLayoutDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CPCollectionViewStageLayoutDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -63,6 +65,7 @@
 			children = (
 				90BC8FB61E57265F00C49A21 /* AppDelegate.swift */,
 				90BC8FB81E57265F00C49A21 /* ViewController.swift */,
+				90BC8FCA1E572C6200C49A21 /* CPCollectionViewCell.swift */,
 				90BC8FBA1E57265F00C49A21 /* Main.storyboard */,
 				90BC8FBD1E57265F00C49A21 /* Assets.xcassets */,
 				90BC8FBF1E57265F00C49A21 /* LaunchScreen.storyboard */,
@@ -214,6 +217,7 @@
 			files = (
 				90BC8FB91E57265F00C49A21 /* ViewController.swift in Sources */,
 				90BC8FB71E57265F00C49A21 /* AppDelegate.swift in Sources */,
+				90BC8FCB1E572C6200C49A21 /* CPCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +381,7 @@
 				90BC8FC71E57265F00C49A21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
