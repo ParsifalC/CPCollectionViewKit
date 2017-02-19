@@ -19,6 +19,8 @@
 		90445D341E3494C30092EF88 /* CPLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90445D331E3494C30092EF88 /* CPLayoutConfiguration.swift */; };
 		90445D361E3497BB0092EF88 /* CPCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90445D351E3497BB0092EF88 /* CPCollectionViewLayout.swift */; };
 		90BC8FC91E5726F200C49A21 /* CPCollectionViewStageLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8FC81E5726F200C49A21 /* CPCollectionViewStageLayout.swift */; };
+		90BC8FED1E587F7900C49A21 /* CPCollectionViewTransitionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8FEC1E587F7900C49A21 /* CPCollectionViewTransitionLayout.swift */; };
+		90BC8FEF1E587FCD00C49A21 /* CPCollectionViewTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8FEE1E587FCD00C49A21 /* CPCollectionViewTransitionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		90445D331E3494C30092EF88 /* CPLayoutConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPLayoutConfiguration.swift; sourceTree = "<group>"; };
 		90445D351E3497BB0092EF88 /* CPCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPCollectionViewLayout.swift; sourceTree = "<group>"; };
 		90BC8FC81E5726F200C49A21 /* CPCollectionViewStageLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPCollectionViewStageLayout.swift; sourceTree = "<group>"; };
+		90BC8FEC1E587F7900C49A21 /* CPCollectionViewTransitionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPCollectionViewTransitionLayout.swift; sourceTree = "<group>"; };
+		90BC8FEE1E587FCD00C49A21 /* CPCollectionViewTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPCollectionViewTransitionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,15 +73,8 @@
 		90445CB91E3314110092EF88 /* CPCollectionViewKit */ = {
 			isa = PBXGroup;
 			children = (
-				90445CBA1E3314110092EF88 /* CPCollectionViewKit.h */,
-				90445D331E3494C30092EF88 /* CPLayoutConfiguration.swift */,
-				90445D351E3497BB0092EF88 /* CPCollectionViewLayout.swift */,
-				90445CC21E3314410092EF88 /* CPCollectionViewCircleLayout.swift */,
-				90445CC31E3314410092EF88 /* CPCollectionViewWheelLayout.swift */,
-				90445CED1E333CA40092EF88 /* CPCollectionViewCaterpillarLayout.swift */,
-				901AA5691E51919900B12889 /* CPCollectionViewCardLayout.swift */,
-				901AA56D1E51922C00B12889 /* CPCollectionViewTimeMachineLayout.swift */,
-				90BC8FC81E5726F200C49A21 /* CPCollectionViewStageLayout.swift */,
+				90BC8FEB1E587F0000C49A21 /* Public */,
+				90BC8FEA1E587EC700C49A21 /* Layout */,
 				90445CBB1E3314110092EF88 /* Info.plist */,
 			);
 			path = CPCollectionViewKit;
@@ -91,6 +88,31 @@
 				90445CC91E33146A0092EF88 /* README.md */,
 			);
 			name = metadatafile;
+			sourceTree = "<group>";
+		};
+		90BC8FEA1E587EC700C49A21 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				90445CC21E3314410092EF88 /* CPCollectionViewCircleLayout.swift */,
+				90445CC31E3314410092EF88 /* CPCollectionViewWheelLayout.swift */,
+				90445CED1E333CA40092EF88 /* CPCollectionViewCaterpillarLayout.swift */,
+				901AA5691E51919900B12889 /* CPCollectionViewCardLayout.swift */,
+				901AA56D1E51922C00B12889 /* CPCollectionViewTimeMachineLayout.swift */,
+				90BC8FC81E5726F200C49A21 /* CPCollectionViewStageLayout.swift */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		90BC8FEB1E587F0000C49A21 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				90445CBA1E3314110092EF88 /* CPCollectionViewKit.h */,
+				90445D331E3494C30092EF88 /* CPLayoutConfiguration.swift */,
+				90445D351E3497BB0092EF88 /* CPCollectionViewLayout.swift */,
+				90BC8FEC1E587F7900C49A21 /* CPCollectionViewTransitionLayout.swift */,
+				90BC8FEE1E587FCD00C49A21 /* CPCollectionViewTransitionManager.swift */,
+			);
+			name = Public;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,12 +200,14 @@
 			files = (
 				90445D341E3494C30092EF88 /* CPLayoutConfiguration.swift in Sources */,
 				90BC8FC91E5726F200C49A21 /* CPCollectionViewStageLayout.swift in Sources */,
+				90BC8FEF1E587FCD00C49A21 /* CPCollectionViewTransitionManager.swift in Sources */,
 				901AA56A1E51919900B12889 /* CPCollectionViewCardLayout.swift in Sources */,
 				90445CCC1E33146A0092EF88 /* README.md in Sources */,
 				90445CEE1E333CA50092EF88 /* CPCollectionViewCaterpillarLayout.swift in Sources */,
 				90445CC41E3314410092EF88 /* CPCollectionViewCircleLayout.swift in Sources */,
 				90445CC51E3314410092EF88 /* CPCollectionViewWheelLayout.swift in Sources */,
 				901AA56E1E51922C00B12889 /* CPCollectionViewTimeMachineLayout.swift in Sources */,
+				90BC8FED1E587F7900C49A21 /* CPCollectionViewTransitionLayout.swift in Sources */,
 				90445D361E3497BB0092EF88 /* CPCollectionViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
