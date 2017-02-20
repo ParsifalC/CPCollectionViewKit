@@ -48,7 +48,8 @@ open class CPCollectionViewTimeMachineLayout: CPCollectionViewLayout {
         let height = collectionView.bounds.size.height
         let cellSize = configuration.cellSize
         let cellHeight = cellSize.height
-        let visibleCount = CGFloat(min(configuration.visibleCount, cellCount))
+        var visibleCount = CGFloat(min(configuration.visibleCount, cellCount))
+        visibleCount = max(1, visibleCount)
         var centerX: CGFloat = 0.0
         var centerY: CGFloat = 0.0
 
