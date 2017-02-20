@@ -37,8 +37,8 @@ class CPCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.layer.cornerRadius = frame.width/2
-        textLabel.frame = CGRect(x:0, y:0, width:frame.width, height:frame.height)
+        contentView.layer.cornerRadius = bounds.width/2
+        textLabel.frame = CGRect(x:0, y:0, width:bounds.width, height:bounds.height)
     }
     
 }

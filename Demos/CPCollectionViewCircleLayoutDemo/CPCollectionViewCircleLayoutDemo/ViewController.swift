@@ -28,7 +28,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // It's just a demo below
         configuration = CPCircleLayoutConfiguration(withCellSize: CGSize(width:60, height:60), spacing: 50, offsetX: 0, offsetY: 200)
         circleLayout = CPCollectionViewCircleLayout(withConfiguration: configuration)
-        circleLayout.updateAnimationStyle = .base
+        circleLayout.updateAnimationStyle = .custom
         collectionView = UICollectionView.init(frame: view.frame, collectionViewLayout:circleLayout)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
