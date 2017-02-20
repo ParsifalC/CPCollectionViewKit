@@ -38,7 +38,13 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
         get {
             guard let collectionView = collectionView else { return 0 }
             let contentOffset = configuration.scrollDirection == .horizontal ? collectionView.contentOffset.x : collectionView.contentOffset.y
-            return Int(round(calculateTopItemIndex(contentOffset: contentOffset)))
+            var index = Int(round(calculateTopItemIndex(contentOffset: contentOffset)))
+            
+            if index>=cellCount && cellCount>0 {
+                index = cellCount-1
+            }
+
+            return index
         }
     }
     
