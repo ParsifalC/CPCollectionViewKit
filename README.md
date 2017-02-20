@@ -103,9 +103,15 @@
 <table>
 <tr>
 <th>Circle</th>
+<th>DeleteCustom</th>
+<th>InsertCustom</th>
+<th>InsertBase</th>
 </tr>
 <tr>
 <td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCircleLayoutDemo/CircleLayout.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCircleLayoutDemo/CircleLayoutDeleteCustom.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCircleLayoutDemo/CircleLayoutInsertCustom.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCircleLayoutDemo/CircleLayoutInsertBase.gif?raw=true"/></td>
 </tr>
 </table>
 
