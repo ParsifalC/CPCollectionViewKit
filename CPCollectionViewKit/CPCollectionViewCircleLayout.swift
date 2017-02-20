@@ -71,7 +71,7 @@ open class CPCollectionViewCircleLayout: CPCollectionViewLayout {
             return nil
         }
         
-        if insertIndexPaths.contains(itemIndexPath) {
+        if insertIndexPaths.contains(itemIndexPath) && updateAnimationStyle == .custom {
             let x = collectionView!.bounds.width/2
             let y = collectionView!.bounds.height+collectionView!.contentOffset.y
             attributes.center = CGPoint(x: x-configuration.offsetX,
@@ -86,7 +86,8 @@ open class CPCollectionViewCircleLayout: CPCollectionViewLayout {
             return nil
         }
         
-        if deleteIndexPaths.contains(itemIndexPath) {
+        if deleteIndexPaths.contains(itemIndexPath)
+            && updateAnimationStyle == .custom {
             let x = collectionView!.bounds.width/2
             let y = collectionView!.bounds.height+collectionView!.contentOffset.y
             attributes.center = CGPoint(x: x-configuration.offsetX,
