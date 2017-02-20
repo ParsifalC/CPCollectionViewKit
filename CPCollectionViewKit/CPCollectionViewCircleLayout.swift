@@ -61,7 +61,6 @@ open class CPCollectionViewCircleLayout: CPCollectionViewLayout {
         let x = sin(radian)*(cellSize.width/2+configuration.spacing)+width/2
         attributes.center = CGPoint(x:x-configuration.offsetX, y:y-configuration.offsetY)
         attributes.zIndex = round(topItemIndex)==index ? 1000 : indexPath.item
-        
 //        print("topItemIndex:\(topItemIndex) itemOffset:\(itemOffset) isHidden:\(attributes.isHidden)")
         return attributes
     }
@@ -71,7 +70,8 @@ open class CPCollectionViewCircleLayout: CPCollectionViewLayout {
             return nil
         }
         
-        if insertIndexPaths.contains(itemIndexPath) && updateAnimationStyle == .custom {
+        if insertIndexPaths.contains(itemIndexPath)
+            && updateAnimationStyle == .custom {
             let x = collectionView!.bounds.width/2
             let y = collectionView!.bounds.height+collectionView!.contentOffset.y
             attributes.center = CGPoint(x: x-configuration.offsetX,
@@ -92,6 +92,8 @@ open class CPCollectionViewCircleLayout: CPCollectionViewLayout {
             let y = collectionView!.bounds.height+collectionView!.contentOffset.y
             attributes.center = CGPoint(x: x-configuration.offsetX,
                                         y: y-configuration.offsetY)
+            attributes.alpha = 0
+            attributes.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         }
         
         return attributes
