@@ -24,7 +24,6 @@ class CPCollectionViewCell: UICollectionViewCell {
     
     // MARK:- Private Methods
     fileprivate func setupViews(frame:CGRect) {
-        contentView.backgroundColor = .yellow
         contentView.layer.masksToBounds = true
         contentView.layer.borderColor = UIColor.red.cgColor
         contentView.layer.borderWidth = 1

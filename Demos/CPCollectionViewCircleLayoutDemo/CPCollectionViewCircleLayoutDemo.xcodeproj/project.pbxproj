@@ -126,7 +126,7 @@
 				TargetAttributes = {
 					90445CD51E3314C30092EF88 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 558X9W8374;
+						DevelopmentTeam = QPY54Z9HV5;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -339,7 +339,7 @@
 			baseConfigurationReference = AA83A212FF8A068BED4398BD /* Pods-CPCollectionViewCircleLayoutDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 558X9W8374;
+				DEVELOPMENT_TEAM = QPY54Z9HV5;
 				INFOPLIST_FILE = CPCollectionViewCircleLayoutDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Parsifal.CPCollectionViewCircleLayoutDemo;
@@ -353,7 +353,7 @@
 			baseConfigurationReference = 5F42011A912C8C7E0E78E732 /* Pods-CPCollectionViewCircleLayoutDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 558X9W8374;
+				DEVELOPMENT_TEAM = QPY54Z9HV5;
 				INFOPLIST_FILE = CPCollectionViewCircleLayoutDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Parsifal.CPCollectionViewCircleLayoutDemo;

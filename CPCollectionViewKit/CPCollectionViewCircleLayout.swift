@@ -9,36 +9,33 @@
 import UIKit
 
 open class CPCircleLayoutConfiguration:CPLayoutConfiguration {
-    
-    public var visibleCount:Int = 1
-    
-    // MARK: Methods
-    public init(withCellSize cellSize:CGSize,
-                visibleCount:Int,
-                spacing:CGFloat = 0.0,
-                offsetX:CGFloat = 0.0,
-                offsetY:CGFloat = 0.0) {
-        self.visibleCount = visibleCount
-        super.init(withCellSize:cellSize,
-                   spacing:spacing,
-                   offsetX:offsetX,
-                   offsetY:offsetY)
-    }
-    
+
 }
 
-open class CPCollectionViewCircleLayout:CPCollectionViewLayout {
+open class CPCollectionViewCircleLayout: CPCollectionViewLayout {
     // MARK: Properties
-    public var configuration:CPCircleLayoutConfiguration
+    public var configuration: CPCircleLayoutConfiguration
+    public var currentIndex: Int {
+        get {
+            guard let collectionView = collectionView else { return 0 }
+            var index = Int(round(collectionView.contentOffset.y/configuration.cellSize.height))
+            
+            if index>=cellCount && cellCount>0 {
+                index = cellCount-1
+            }
+            
+            return index
+        }
+    }
 
     // MARK: Methods
-    public init(withConfiguration configuration:CPCircleLayoutConfiguration) {
+    public init(withConfiguration configuration: CPCircleLayoutConfiguration) {
         self.configuration = configuration
         super.init()
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        self.configuration = CPCircleLayoutConfiguration.init(withCellSize: CGSize(width:50, height:50), visibleCount: 1)
+        self.configuration = CPCircleLayoutConfiguration(withCellSize: CGSize(width:50, height:50))
         super.init(coder: aDecoder)
     }
     
@@ -52,33 +49,50 @@ open class CPCollectionViewCircleLayout:CPCollectionViewLayout {
         let cellWidth = cellSize.width
         var topItemIndex = contentOffsetY/cellSize.height
         topItemIndex = topItemIndex>=CGFloat(cellCount) ? topItemIndex-CGFloat(cellCount) : topItemIndex
-        let visibleCount = CGFloat(min(configuration.visibleCount, cellCount))/2
+        var visibleCount = CGFloat(max(1, cellCount))/2
         let index = CGFloat(indexPath.item)
+        
         attributes.size = cellSize
-        attributes.isHidden = false
         
         var itemOffset = index-topItemIndex
-        //example:0,1,2,3,4 exposedItem=2,visibleCount=2 0==-2 1==-1 2==0 3==1 4==2
-        if itemOffset>=0 && itemOffset<=visibleCount ||
-            itemOffset<0 && fabsf(Float(itemOffset))<Float(visibleCount) ||
-            itemOffset>0 && (CGFloat(cellCount)-itemOffset)<visibleCount ||
-            itemOffset<0 && (CGFloat(cellCount)+itemOffset)<visibleCount{
-            if itemOffset>0 && (CGFloat(cellCount)-itemOffset)<visibleCount {
-                itemOffset -= CGFloat(cellCount)
-            }
-            if itemOffset<0 && (CGFloat(cellCount)+itemOffset)<visibleCount {
-                itemOffset += CGFloat(cellCount)
-            }
-            
-            let floatPI = CGFloat(M_PI)
-            let radian = CGFloat(floatPI/visibleCount*itemOffset)
-            let y = height+contentOffsetY-cellWidth/2-cos(radian)*(cellWidth/2+configuration.spacing)
-            let x = sin(radian)*(cellSize.width/2+configuration.spacing)+width/2
-            attributes.center = CGPoint(x:x-configuration.offsetX, y:y-configuration.offsetY)
-        } else {
-            attributes.isHidden = true
+        let floatPI = CGFloat(M_PI)
+        let radian = CGFloat(floatPI/visibleCount*itemOffset)
+        let y = height+contentOffsetY-cellWidth/2-cos(radian)*(cellWidth/2+configuration.spacing)
+        let x = sin(radian)*(cellSize.width/2+configuration.spacing)+width/2
+        attributes.center = CGPoint(x:x-configuration.offsetX, y:y-configuration.offsetY)
+        attributes.zIndex = round(topItemIndex)==index ? 1000 : indexPath.item
+        
+//        print("topItemIndex:\(topItemIndex) itemOffset:\(itemOffset) isHidden:\(attributes.isHidden)")
+        return attributes
+    }
+    
+    open override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        guard let attributes = super.initialLayoutAttributesForAppearingItem(at: itemIndexPath) else {
+            return nil
         }
-//            print("topItemIndex:\(topItemIndex) itemOffset:\(itemOffset) isHidden:\(attributes.isHidden)")
+        
+        if insertIndexPaths.contains(itemIndexPath) {
+            let x = collectionView!.bounds.width/2
+            let y = collectionView!.bounds.height+collectionView!.contentOffset.y
+            attributes.center = CGPoint(x: x-configuration.offsetX,
+                                        y: y-configuration.offsetY)
+        }
+        
+        return attributes
+    }
+    
+    open override func finalLayoutAttributesForDisappearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        guard let attributes = super.finalLayoutAttributesForDisappearingItem(at: itemIndexPath) else {
+            return nil
+        }
+        
+        if deleteIndexPaths.contains(itemIndexPath) {
+            let x = collectionView!.bounds.width/2
+            let y = collectionView!.bounds.height+collectionView!.contentOffset.y
+            attributes.center = CGPoint(x: x-configuration.offsetX,
+                                        y: y-configuration.offsetY)
+        }
+        
         return attributes
     }
     
