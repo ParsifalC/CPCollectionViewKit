@@ -42,6 +42,7 @@ open class CPCollectionViewCircleLayout: CPCollectionViewLayout {
     override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         let attributes = super.layoutAttributesForItem(at: indexPath)!
         guard let collectionView = collectionView else { return attributes }
+        
         let contentOffsetY = collectionView.contentOffset.y
         let width = collectionView.bounds.size.width
         let height = collectionView.bounds.size.height
@@ -59,8 +60,10 @@ open class CPCollectionViewCircleLayout: CPCollectionViewLayout {
         let radian = CGFloat(floatPI/visibleCount*itemOffset)
         let y = height+contentOffsetY-cellWidth/2-cos(radian)*(cellWidth/2+configuration.spacing)
         let x = sin(radian)*(cellSize.width/2+configuration.spacing)+width/2
+        
         attributes.center = CGPoint(x:x-configuration.offsetX, y:y-configuration.offsetY)
         attributes.zIndex = round(topItemIndex)==index ? 1000 : indexPath.item
+        
 //        print("topItemIndex:\(topItemIndex) itemOffset:\(itemOffset) isHidden:\(attributes.isHidden)")
         return attributes
     }
@@ -101,7 +104,12 @@ open class CPCollectionViewCircleLayout: CPCollectionViewLayout {
     
     open override var collectionViewContentSize: CGSize {
         guard let collectionView = collectionView else { return CGSize.zero }
+        
+        var contentSize = CGSize(width: CGFloat(), height: CGFloat())
         let bounds = collectionView.bounds.size
-        return CGSize(width:bounds.width, height:bounds.height+CGFloat(cellCount)*configuration.cellSize.height)
+        contentSize.width = bounds.width
+        contentSize.height = bounds.height+CGFloat(cellCount)*configuration.cellSize.height
+        
+        return contentSize
     }
 }

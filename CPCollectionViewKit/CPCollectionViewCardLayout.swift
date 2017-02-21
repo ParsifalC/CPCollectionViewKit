@@ -132,20 +132,20 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
         
         let cellWidth = configuration.cellSize.width
         let cellHeight = configuration.cellSize.height
-        var x: CGFloat
-        var y: CGFloat
+        
+        var contentOffset = CGPoint(x: CGFloat(), y: CGFloat())
         
         if configuration.scrollDirection == .horizontal {
             let topItemIndex = round(calculateTopItemIndex(contentOffset: proposedContentOffset.x))
-            x = (cellWidth+configuration.spacing)*topItemIndex
-            y = proposedContentOffset.y
+            contentOffset.x = (cellWidth+configuration.spacing)*topItemIndex
+            contentOffset.y = proposedContentOffset.y
         } else {
             let topItemIndex = round(calculateTopItemIndex(contentOffset: proposedContentOffset.y))
-            x = proposedContentOffset.x
-            y =  (cellHeight+configuration.spacing)*topItemIndex
+            contentOffset.x = proposedContentOffset.x
+            contentOffset.y =  (cellHeight+configuration.spacing)*topItemIndex
         }
         
-        return CGPoint(x: x, y: y)
+        return contentOffset
     }
     
     open override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -192,21 +192,23 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
     
     open override var collectionViewContentSize: CGSize {
         guard let collectionView = collectionView else { return super.collectionViewContentSize }
+        
         let cellWidth = configuration.cellSize.width
         let cellHeight = configuration.cellSize.height
         let spacing = configuration.spacing
         var width: CGFloat
         var height: CGFloat
+        var contentSize = CGSize(width: CGFloat(), height: CGFloat())
         
         if configuration.scrollDirection == .horizontal {
-            width = CGFloat(cellCount)*cellWidth+max(CGFloat(cellCount-1), 0)*spacing+2*configuration.offsetX+collectionView.bounds.width-cellWidth
-            height = collectionView.bounds.height
+            contentSize.width = CGFloat(cellCount)*cellWidth+max(CGFloat(cellCount-1), 0)*spacing+2*configuration.offsetX+collectionView.bounds.width-cellWidth
+            contentSize.height = collectionView.bounds.height
         } else {
-            width = collectionView.bounds.width
-            height =  CGFloat(cellCount)*cellHeight+max(CGFloat(cellCount-1), 0)*spacing+2*configuration.offsetX+collectionView.bounds.height-cellHeight
+            contentSize.width = collectionView.bounds.width
+            contentSize.height =  CGFloat(cellCount)*cellHeight+max(CGFloat(cellCount-1), 0)*spacing+2*configuration.offsetX+collectionView.bounds.height-cellHeight
         }
 
-        return CGSize(width: width, height: height)
+        return contentSize
     }
     
 }

@@ -96,8 +96,13 @@ open class CPCollectionViewTimeMachineLayout: CPCollectionViewLayout {
  
     open override var collectionViewContentSize: CGSize {
         guard let collectionView = collectionView else { return super.collectionViewContentSize }
+        
+        var contentSize = CGSize(width: CGFloat(), height: CGFloat())
         let cellHeight = configuration.cellSize.height
         let height = CGFloat(cellCount-1)*cellHeight+collectionView.bounds.height
-        return CGSize(width: collectionView.bounds.width, height: height)
+        contentSize.width = collectionView.bounds.width
+        contentSize.height = height
+        
+        return contentSize
     }
 }

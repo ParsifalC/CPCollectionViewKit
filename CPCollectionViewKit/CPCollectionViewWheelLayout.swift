@@ -103,12 +103,14 @@ open class CPCollectionViewWheelLayout: CPCollectionViewLayout {
         let fadeAway = configuration.fadeAway
         let contentOffset = collectionView.contentOffset
         let visibleCellIndex = Double(indexPath.item)-invisibleCellCount
-        attributes.size = cellSize
-        attributes.isHidden = true
         var angle = angular/90.0*Double(visibleCellIndex)*M_PI_2
         let angleOffset = asin(Double(cellSize.width)/radius)
+        
         var translation = CGAffineTransform.identity
         
+        attributes.size = cellSize
+        attributes.isHidden = true
+
         switch configuration.wheelType {
         case .leftBottom:
             attributes.center = CGPoint.init(x: cellSize.width/2.0,
@@ -219,9 +221,11 @@ open class CPCollectionViewWheelLayout: CPCollectionViewLayout {
     
     override open var collectionViewContentSize: CGSize {
         guard let collectionView = collectionView else { return CGSize.zero }
+        
         let viewSize = collectionView.bounds.size
         var visibleCellCount:CGFloat
         var contentSize:CGSize
+        
         switch configuration.wheelType {
         case .bottomCenter,.topCenter,.rightCenter,.leftCenter:
             visibleCellCount = CGFloat(180.0/configuration.angular+1.0)

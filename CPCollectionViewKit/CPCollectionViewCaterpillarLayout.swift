@@ -52,6 +52,7 @@ open class CPCollectionViewCaterpillarLayout:CPCollectionViewLayout {
     override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         let attributes = super.layoutAttributesForItem(at: indexPath)!
         guard let collectionView = collectionView else { return attributes }
+        
         let floatCellCount = CGFloat(cellCount)
         let contentOffsetY = collectionView.contentOffset.y
         let width = collectionView.bounds.size.width
@@ -60,11 +61,14 @@ open class CPCollectionViewCaterpillarLayout:CPCollectionViewLayout {
         let topCellSizeScale = configuration.topCellSizeScale
         let cellWidth = cellSize.width
         let cellSpacing = configuration.spacing
+        
         var topItemIndex = contentOffsetY/cellSize.height
         topItemIndex = topItemIndex>=floatCellCount ? topItemIndex-floatCellCount : topItemIndex
         topItemIndex = topItemIndex<0 ? topItemIndex+floatCellCount : topItemIndex
+        
         let visibleCount = CGFloat(min(configuration.visibleCount, cellCount))/2
         let index = CGFloat(indexPath.item)
+        
         attributes.size = configuration.cellSize
         attributes.isHidden = false
         
@@ -123,7 +127,12 @@ open class CPCollectionViewCaterpillarLayout:CPCollectionViewLayout {
     
     open override var collectionViewContentSize: CGSize {
         guard let collectionView = collectionView else { return CGSize.zero }
+        
         let bounds = collectionView.bounds.size
-        return CGSize(width:bounds.width, height:bounds.height+CGFloat(cellCount)*configuration.cellSize.height)
+        var contentSize = CGSize(width: CGFloat(), height: CGFloat())
+        contentSize.width = bounds.width
+        contentSize.height = bounds.height+CGFloat(cellCount)*configuration.cellSize.height
+        
+        return contentSize
     }
 }
