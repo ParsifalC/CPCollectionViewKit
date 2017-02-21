@@ -1,0 +1,6 @@
+use_frameworks!
+
+target 'CPCollectionViewStackLayoutTransitionDemo' do
+    pod 'CPCollectionViewKit', :path => '../..'
+    pod 'Reveal-iOS-SDK', :configurations => ['Debug']
+end

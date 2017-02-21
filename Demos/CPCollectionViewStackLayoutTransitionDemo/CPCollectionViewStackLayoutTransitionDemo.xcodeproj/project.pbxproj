@@ -12,9 +12,12 @@
 		90BC8FDE1E587EA900C49A21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90BC8FDC1E587EA900C49A21 /* Main.storyboard */; };
 		90BC8FE01E587EA900C49A21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90BC8FDF1E587EA900C49A21 /* Assets.xcassets */; };
 		90BC8FE31E587EA900C49A21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90BC8FE11E587EA900C49A21 /* LaunchScreen.storyboard */; };
+		90BC90101E5C5A6500C49A21 /* CPCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC900F1E5C5A6500C49A21 /* CPCollectionViewCell.swift */; };
+		E489C15F4276BD8E788084E0 /* Pods_CPCollectionViewStackLayoutTransitionDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95F71A63501F8C1BAE77DE0 /* Pods_CPCollectionViewStackLayoutTransitionDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19E2037BD58A39C6F58ED54A /* Pods-CPCollectionViewStackLayoutTransitionDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPCollectionViewStackLayoutTransitionDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CPCollectionViewStackLayoutTransitionDemo/Pods-CPCollectionViewStackLayoutTransitionDemo.release.xcconfig"; sourceTree = "<group>"; };
 		90BC8FD51E587EA800C49A21 /* CPCollectionViewStackLayoutTransitionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CPCollectionViewStackLayoutTransitionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90BC8FD81E587EA800C49A21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90BC8FDA1E587EA800C49A21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,9 @@
 		90BC8FDF1E587EA900C49A21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90BC8FE21E587EA900C49A21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90BC8FE41E587EA900C49A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90BC900F1E5C5A6500C49A21 /* CPCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPCollectionViewCell.swift; sourceTree = "<group>"; };
+		E95F71A63501F8C1BAE77DE0 /* Pods_CPCollectionViewStackLayoutTransitionDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CPCollectionViewStackLayoutTransitionDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE564D8AC477EE3089D6FF50 /* Pods-CPCollectionViewStackLayoutTransitionDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPCollectionViewStackLayoutTransitionDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CPCollectionViewStackLayoutTransitionDemo/Pods-CPCollectionViewStackLayoutTransitionDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E489C15F4276BD8E788084E0 /* Pods_CPCollectionViewStackLayoutTransitionDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,8 @@
 			children = (
 				90BC8FD71E587EA800C49A21 /* CPCollectionViewStackLayoutTransitionDemo */,
 				90BC8FD61E587EA800C49A21 /* Products */,
+				CFED7B6DC980D8A8FF6AC20A /* Pods */,
+				F315886CCB0E194AD391E640 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +65,30 @@
 			children = (
 				90BC8FD81E587EA800C49A21 /* AppDelegate.swift */,
 				90BC8FDA1E587EA800C49A21 /* ViewController.swift */,
+				90BC900F1E5C5A6500C49A21 /* CPCollectionViewCell.swift */,
 				90BC8FDC1E587EA900C49A21 /* Main.storyboard */,
 				90BC8FDF1E587EA900C49A21 /* Assets.xcassets */,
 				90BC8FE11E587EA900C49A21 /* LaunchScreen.storyboard */,
 				90BC8FE41E587EA900C49A21 /* Info.plist */,
 			);
 			path = CPCollectionViewStackLayoutTransitionDemo;
+			sourceTree = "<group>";
+		};
+		CFED7B6DC980D8A8FF6AC20A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EE564D8AC477EE3089D6FF50 /* Pods-CPCollectionViewStackLayoutTransitionDemo.debug.xcconfig */,
+				19E2037BD58A39C6F58ED54A /* Pods-CPCollectionViewStackLayoutTransitionDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F315886CCB0E194AD391E640 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E95F71A63501F8C1BAE77DE0 /* Pods_CPCollectionViewStackLayoutTransitionDemo.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90BC8FE71E587EA900C49A21 /* Build configuration list for PBXNativeTarget "CPCollectionViewStackLayoutTransitionDemo" */;
 			buildPhases = (
+				545EBACF6553D62EE09BD348 /* [CP] Check Pods Manifest.lock */,
 				90BC8FD11E587EA800C49A21 /* Sources */,
 				90BC8FD21E587EA800C49A21 /* Frameworks */,
 				90BC8FD31E587EA800C49A21 /* Resources */,
+				6AB3949F5099BB6EADD6EBB7 /* [CP] Embed Pods Frameworks */,
+				0E0C2B014E40B1E0340976CA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -132,6 +162,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0E0C2B014E40B1E0340976CA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CPCollectionViewStackLayoutTransitionDemo/Pods-CPCollectionViewStackLayoutTransitionDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		545EBACF6553D62EE09BD348 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6AB3949F5099BB6EADD6EBB7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CPCollectionViewStackLayoutTransitionDemo/Pods-CPCollectionViewStackLayoutTransitionDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		90BC8FD11E587EA800C49A21 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -139,6 +217,7 @@
 			files = (
 				90BC8FDB1E587EA800C49A21 /* ViewController.swift in Sources */,
 				90BC8FD91E587EA800C49A21 /* AppDelegate.swift in Sources */,
+				90BC90101E5C5A6500C49A21 /* CPCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +336,7 @@
 		};
 		90BC8FE81E587EA900C49A21 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE564D8AC477EE3089D6FF50 /* Pods-CPCollectionViewStackLayoutTransitionDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = QPY54Z9HV5;
@@ -270,6 +350,7 @@
 		};
 		90BC8FE91E587EA900C49A21 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19E2037BD58A39C6F58ED54A /* Pods-CPCollectionViewStackLayoutTransitionDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = QPY54Z9HV5;
@@ -300,6 +381,7 @@
 				90BC8FE91E587EA900C49A21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
