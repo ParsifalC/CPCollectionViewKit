@@ -16,16 +16,15 @@ open class CPCollectionViewCircleLayout: CPCollectionViewLayout {
     // MARK: Properties
     public var configuration: CPCircleLayoutConfiguration
     public var currentIndex: Int {
-        get {
-            guard let collectionView = collectionView else { return 0 }
-            var index = Int(round(collectionView.contentOffset.y/configuration.cellSize.height))
-            
-            if index>=cellCount && cellCount>0 {
-                index = cellCount-1
-            }
-            
-            return index
+        guard let collectionView = collectionView else { return 0 }
+        
+        var index = Int(round(collectionView.contentOffset.y/configuration.cellSize.height))
+        
+        if index>=cellCount && cellCount>0 {
+            index = cellCount-1
         }
+        
+        return index
     }
 
     // MARK: Methods

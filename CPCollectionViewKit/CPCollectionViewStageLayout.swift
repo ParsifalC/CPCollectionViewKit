@@ -34,19 +34,17 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
     
     public var configuration: CPStageLayoutConfiguration
     public var currentIndex: Int {
-        get {
-            if let collectionView = collectionView {
-                var index = Int(round(collectionView.contentOffset.x/configuration.cellSize.width))
-                
-                if index>=cellCount && cellCount>0 {
-                    index = cellCount-1
-                }
-                
-                return index
+        if let collectionView = collectionView {
+            var index = Int(round(collectionView.contentOffset.x/configuration.cellSize.width))
+            
+            if index>=cellCount && cellCount>0 {
+                index = cellCount-1
             }
             
-            return 0
+            return index
         }
+        
+        return 0
     }
     
     public init(withConfiguration configuration: CPStageLayoutConfiguration) {

@@ -26,9 +26,12 @@ open class CPCollectionViewLayout:UICollectionViewLayout {
     // MARK: Methods
     override open func prepare() {
         super.prepare()
+        
         guard let collectionView = collectionView else { return }
+        
         cellCount = collectionView.numberOfItems(inSection: 0)
         cachedAttributesArray.removeAll()
+        
         for i in 0..<cellCount {
             let indexPath = IndexPath(item: i, section: 0)
             let attrbutes = UICollectionViewLayoutAttributes(forCellWith: indexPath)

@@ -87,8 +87,10 @@ open class CPCollectionViewWheelLayout: CPCollectionViewLayout {
     
     override open func prepare() {
         super.prepare()
+        
         guard let collectionView = collectionView,
                                    cellCount > 0  else { return }
+        
         invisibleCellCount = Double(collectionView.contentOffset.y/configuration.cellSize.height)
     }
     
