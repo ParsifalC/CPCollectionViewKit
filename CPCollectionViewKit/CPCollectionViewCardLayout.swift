@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum CPCardRotateDirection {
+public enum CPCardRotationAxis {
     case x
     case y
     case z
@@ -25,7 +25,7 @@ open class CPCardLayoutConfiguration: CPLayoutConfiguration {
     public var scaleFactorX: CGFloat = 0//zoomin:(-1,0) zoomout:(0,1)
     public var scaleFactorY: CGFloat = 0//zoomin:(-1,0) zoomout:(0,1)
     public var rotateFactor: CGFloat = 0
-    public var rotateDirection: CPCardRotateDirection = .z
+    public var rotateDirection: CPCardRotationAxis = .z
     public var stopAtItemBoundary: Bool = true
     public var scrollDirection: CPCardScrollDiretion = .horizontal
     

@@ -89,7 +89,7 @@ class ViewController: UIViewController {
         return UIColor.init(colorLiteralRed: Float(arc4random_uniform(256))/255.0, green: Float(arc4random_uniform(256))/255.0, blue: Float(arc4random_uniform(256))/255.0, alpha: 1)
     }
     
-    func rotateDirection() -> CPCardRotateDirection {
+    func rotateDirection() -> CPCardRotationAxis {
         switch rotateDicretionControl.selectedSegmentIndex {
         case 0:
             return .x
