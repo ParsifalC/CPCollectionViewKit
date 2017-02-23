@@ -22,20 +22,26 @@ class ViewController: UIViewController {
     var flowLayout: UICollectionViewFlowLayout!
     var stageLayout: CPCollectionViewStageLayout!
     var currentLayoutType: LayoutType = .flowLayout
-
+    var transitionManager: TransitionManager!
+    var flowCellSize: CGSize!
+    var fromContentOffset = CGPoint(x: 0, y: 0)
+    var toContentOffset = CGPoint(x: 0, y: 0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Data Array
-        for index in 0...29 {
+        for index in 0...49 {
             dataArray.append((index, randomColor()))
         }
+        
+        flowCellSize = CGSize(width: view.bounds.width/3,
+                              height: view.bounds.width/3)
         
         //UI
         flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
-        flowLayout.itemSize = CGSize(width: view.bounds.width/3,
-                                     height: view.bounds.width/3)
+        flowLayout.itemSize = flowCellSize
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
         collectionView.setCollectionViewLayout(flowLayout, animated: false)
@@ -70,10 +76,33 @@ extension ViewController: UICollectionViewDataSource {
 }
 
 extension ViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let layout = currentLayoutType == .flowLayout ? stageLayout : flowLayout
-        collectionView.setCollectionViewLayout(layout, animated: true) { (_) in
-            self.currentLayoutType = self.currentLayoutType == .flowLayout ? .stageLayout : .flowLayout
+        var layout: UICollectionViewLayout = stageLayout
+        var layoutType = LayoutType.stageLayout
+        toContentOffset = stageLayout.contentOffsetFor(indexPath: indexPath)
+        fromContentOffset = collectionView.contentOffset
+        
+        if currentLayoutType == .stageLayout {
+            layout = flowLayout
+            layoutType = .flowLayout
+            let y = floor(CGFloat(indexPath.item) / 3.0) * flowCellSize.height
+            toContentOffset = CGPoint(x: 0, y: min(flowLayout.collectionViewContentSize.height-collectionView.bounds.height, y))
+        }
+
+        transitionManager = TransitionManager(duration: 1, collectionView: collectionView, toLayout: layout)
+        
+        transitionManager.startInteractiveTransition {
+            self.collectionView.contentOffset = self.toContentOffset
+            self.currentLayoutType = layoutType
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout {
+        let customTransitionLayout = CPCollectionViewTransitionLayout(currentLayout: fromLayout, nextLayout: toLayout)
+        customTransitionLayout.fromContentOffset = fromContentOffset
+        customTransitionLayout.toContentOffset = toContentOffset
+        return customTransitionLayout
+    }
+    
 }
