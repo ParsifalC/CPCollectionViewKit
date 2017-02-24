@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     var dataArray = [(index: Int, color: UIColor)]()
     var flowLayout: UICollectionViewFlowLayout!
     var stageLayout: CPCollectionViewStageLayout!
+    var circleLayout: CPCollectionViewCircleLayout!
     var currentLayoutType: LayoutType = .flowLayout
     var transitionManager: TransitionManager!
     var flowCellSize: CGSize!
@@ -31,7 +32,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         //Data Array
-        for index in 0...49 {
+        for index in 0...19 {
             dataArray.append((index, randomColor()))
         }
         
@@ -45,6 +46,9 @@ class ViewController: UIViewController {
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
         collectionView.setCollectionViewLayout(flowLayout, animated: false)
+        
+        let circleConfiguration = CPCircleLayoutConfiguration(withCellSize: CGSize(width: 50, height: 50))
+        circleLayout = CPCollectionViewCircleLayout.init(withConfiguration: circleConfiguration)
         
         let stageConfiguration = CPStageLayoutConfiguration.init(withCellSize: CGSize(width: 50, height: 50))
         stageLayout = CPCollectionViewStageLayout(withConfiguration: stageConfiguration)

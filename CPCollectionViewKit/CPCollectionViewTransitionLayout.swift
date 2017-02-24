@@ -52,17 +52,24 @@ open class CPCollectionViewTransitionLayout: UICollectionViewTransitionLayout {
                     let ty = toAttributes.center.y
                     
                     var center = CGPoint(x: fx, y: fy)
-                    
-                    center.x = fx + (tx - fx) * transitionProgress
-                    center.y = fx == tx ? ((fy - ty) * transitionProgress + fy) : ty + ((fy - ty) * (center.x - tx)) / (fx - tx)
-                    
-                    //(y-y2)/(y1-y2) = (x-x2)/(x1-x2)
+                    center.x = updateValue(fromValue: fx, toValue: tx)
+                    center.y = fx == tx ? (updateValue(fromValue: fy, toValue: ty)) : ty + ((fy - ty) * (center.x - tx)) / (fx - tx)
                     attributes.center = center
-                    attributes.size = toAttributes.size
+
+                    //(y-y2)/(y1-y2) = (x-x2)/(x1-x2)
+                    var newSize = fromAttributes.size
+                    newSize.width = updateValue(fromValue: fromAttributes.size.width, toValue: toAttributes.size.width)
+                    newSize.height = updateValue(fromValue: fromAttributes.size.height, toValue: toAttributes.size.height)
+                    attributes.size = newSize
+                    
                     attributesArray.append(attributes)
                 }
             }
         }
+    }
+    
+    func updateValue(fromValue: CGFloat, toValue: CGFloat) -> CGFloat {
+        return ((toValue - fromValue) * transitionProgress + fromValue)
     }
     
     open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -75,6 +82,10 @@ open class CPCollectionViewTransitionLayout: UICollectionViewTransitionLayout {
         }
         
         return attributesArray
+    }
+    
+    open override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
     }
     
 }
