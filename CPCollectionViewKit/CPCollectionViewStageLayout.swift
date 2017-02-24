@@ -117,8 +117,8 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
             centerY = height - cellHeight / 2
         } else {
             attributes.isHidden = true
-            centerX = -width
-            centerY = -height
+            centerX = collectionView.contentOffset.x + (itemOffset - 0.5) * cellWidth + (itemOffset - 1) * configuration.spacing
+            centerY = height - cellHeight / 2
         }
         
         let rotateFactor = fabs(itemOffset * 100).remainder(dividingBy: 100) / 100
