@@ -82,7 +82,7 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
         
         attributes.isHidden = false
         
-        if itemOffset > -1 && itemOffset<=0 {
+        if itemOffset > -1 && itemOffset <= 0 {
             if configuration.leaveStageAnimationStyle == .outOfBoundary
                 || configuration.leaveStageAnimationStyle == .blend{
                 centerX = collectionView.contentOffset.x + (fabs(itemOffset) + 0.5) * width
@@ -109,7 +109,7 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
             }
         } else if itemOffset <= 1 && itemOffset > 0 {
             centerX = ((width - cellWidth) / 2) * (1 - itemOffset) + cellWidth / 2 + collectionView.contentOffset.x
-            centerY = ((cellHeight / 2 - height) / 2) * (1 - itemOffset) + height - cellHeight / 2
+            centerY = (height / 2) * (itemOffset) + (height - cellHeight) / 2
             cellSize = CGSize(width: (cellWidth - topCellSize.width) * itemOffset + topCellSize.width,
                               height: (cellHeight - topCellSize.height) * itemOffset + topCellSize.height)
         } else if itemOffset > 1 {
@@ -117,7 +117,7 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
             centerY = height - cellHeight / 2
         } else {
             attributes.isHidden = true
-            centerX = collectionView.contentOffset.x + (itemOffset - 0.5) * cellWidth + (itemOffset - 1) * configuration.spacing
+            centerX = collectionView.contentOffset.x + (itemOffset + 0.5) * cellWidth + (itemOffset) * configuration.spacing
             centerY = height - cellHeight / 2
         }
         
