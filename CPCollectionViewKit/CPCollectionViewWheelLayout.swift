@@ -91,7 +91,11 @@ open class CPCollectionViewWheelLayout: CPCollectionViewLayout {
         guard let collectionView = collectionView,
                                    cellCount > 0  else { return }
         
-        invisibleCellCount = Double(collectionView.contentOffset.y/configuration.cellSize.height)
+        if configuration.wheelType == .bottomCenter || configuration.wheelType == .topCenter {
+            invisibleCellCount = Double(collectionView.contentOffset.x/configuration.cellSize.width)
+        } else {
+            invisibleCellCount = Double(collectionView.contentOffset.y/configuration.cellSize.height)
+        }
     }
     
     override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -115,80 +119,78 @@ open class CPCollectionViewWheelLayout: CPCollectionViewLayout {
 
         switch configuration.wheelType {
         case .leftBottom:
-            attributes.center = CGPoint.init(x: cellSize.width/2.0,
-                                             y: (contentOffset.y)+(viewSize.height)-cellSize.height/2)
+            attributes.center = CGPoint(x: contentOffset.x+cellSize.width/2.0,
+                                        y: contentOffset.y+viewSize.height-cellSize.height/2)
             
             if (angle <= (M_PI_2+2.0*angleOffset+angular/90.0)) && (angle >= -angleOffset) {
                 attributes.isHidden = false
-                translation = CGAffineTransform.init(translationX: CGFloat(sin(angle)*radius),
-                                                     y: -(CGFloat(cos(angle)*radius)+cellSize.height/2.0))
+                translation = CGAffineTransform(translationX: CGFloat(sin(angle)*radius),
+                                                y: -(CGFloat(cos(angle)*radius)+cellSize.height/2.0))
             }
         case .rightBottom:
-            attributes.center = CGPoint.init(x: (viewSize.width)-cellSize.width/2.0,
-                                             y: (contentOffset.y)+(viewSize.height)-cellSize.height/2)
+            attributes.center = CGPoint(x: contentOffset.x+viewSize.width-cellSize.width/2.0,
+                                        y: contentOffset.y+viewSize.height-cellSize.height/2)
             
             if (angle <= (M_PI_2+2.0*angleOffset+angular/90.0)) && (angle >= -angleOffset) {
                 attributes.isHidden = false
-                translation = CGAffineTransform.init(translationX: CGFloat(-sin(angle)*radius),
-                                                     y: -(CGFloat(cos(angle)*radius)+cellSize.height/2.0))
+                translation = CGAffineTransform(translationX: CGFloat(-sin(angle)*radius),
+                                                y: -(CGFloat(cos(angle)*radius)+cellSize.height/2.0))
             }
         case .leftTop:
-            attributes.center = CGPoint.init(x: cellSize.width/2.0,
-                                             y: (contentOffset.y))
+            attributes.center = CGPoint(x: contentOffset.x+cellSize.width/2.0,
+                                        y: contentOffset.y)
             
             if (angle <= (M_PI_2+2.0*angleOffset+angular/90.0)) && (angle >= -angleOffset) {
                 attributes.isHidden = false
-                translation = CGAffineTransform.init(translationX: CGFloat(cos(angle)*radius),
-                                                     y: (CGFloat(sin(angle)*radius)+cellSize.height/2.0))
+                translation = CGAffineTransform(translationX: CGFloat(cos(angle)*radius), y: (CGFloat(sin(angle)*radius)+cellSize.height/2.0))
             }
         case .rightTop:
-            attributes.center = CGPoint.init(x: (viewSize.width)-cellSize.width/2.0,
-                                             y: (contentOffset.y))
+            attributes.center = CGPoint(x: contentOffset.x+viewSize.width-cellSize.width/2.0,
+                                        y: contentOffset.y)
             
             if (angle <= (M_PI_2+2.0*angleOffset+angular/90.0)) && (angle >= -angleOffset) {
                 attributes.isHidden = false
-                translation = CGAffineTransform.init(translationX: CGFloat(-cos(angle)*radius),
-                                                     y: (CGFloat(sin(angle)*radius)+cellSize.height/2.0))
+                translation = CGAffineTransform(translationX: CGFloat(-cos(angle)*radius), y: (CGFloat(sin(angle)*radius)+cellSize.height/2.0))
             }
         case .leftCenter:
-            attributes.center = CGPoint.init(x: cellSize.width/2.0,
-                                             y: (contentOffset.y)+(viewSize.height)/2)
+            attributes.center = CGPoint(x: contentOffset.x+cellSize.width/2.0,
+                                        y: contentOffset.y+viewSize.height/2)
             angle = visibleCellIndex*angular/180*M_PI;
             
             if (angle <= (M_PI+2.0*angleOffset+angular/180.0)) && (angle >= -angleOffset) {
                 attributes.isHidden = false
-                translation = CGAffineTransform.init(translationX: CGFloat(sin(angle)*radius),
-                                                     y: -CGFloat(cos(angle)*radius))
+                translation = CGAffineTransform(translationX: CGFloat(sin(angle)*radius),
+                                                           y: -CGFloat(cos(angle)*radius))
             }
             
         case .rightCenter:
-            attributes.center = CGPoint.init(x: (viewSize.width)-cellSize.width/2.0,
-                                             y: (contentOffset.y)+(viewSize.height)/2)
+            attributes.center = CGPoint(x: contentOffset.x+viewSize.width-cellSize.width/2.0,
+                                        y: contentOffset.y+(viewSize.height)/2)
             
             if (angle <= (M_PI+2.0*angleOffset+angular/180.0)) && (angle >= -angleOffset) {
                 attributes.isHidden = false
-                translation = CGAffineTransform.init(translationX: -CGFloat(sin(angle)*radius),
-                                                     y: -CGFloat(cos(angle)*radius))
+                translation = CGAffineTransform(translationX: -CGFloat(sin(angle)*radius),
+                                                           y: -CGFloat(cos(angle)*radius))
             }
         case .topCenter:
-            attributes.center = CGPoint.init(x: (viewSize.width)/2.0,
-                                             y: (contentOffset.y)+cellSize.width/2)
+            attributes.center = CGPoint(x: contentOffset.x+(viewSize.width)/2.0,
+                                        y: (contentOffset.y)+cellSize.height/2)
             angle = visibleCellIndex*angular/180*M_PI;
             
             if (angle <= (M_PI+2.0*angleOffset+angular/180.0)) && (angle >= -angleOffset) {
                 attributes.isHidden = false
-                translation = CGAffineTransform.init(translationX: -CGFloat(cos(angle)*radius),
-                                                     y: (CGFloat(sin(angle)*radius)))
+                translation = CGAffineTransform(translationX: -CGFloat(cos(angle)*radius),
+                                                y: (CGFloat(sin(angle)*radius)))
             }
         case .bottomCenter:
-            attributes.center = CGPoint.init(x: (viewSize.width)/2.0,
-                                             y: (contentOffset.y)+(viewSize.height)-cellSize.height/2)
+            attributes.center = CGPoint(x: contentOffset.x+viewSize.width/2.0,
+                                        y: contentOffset.y+viewSize.height-cellSize.height/2)
             angle = visibleCellIndex*angular/180*M_PI;
             
             if (angle <= (M_PI+2.0*angleOffset+angular/180.0)) && (angle >= -angleOffset) {
                 attributes.isHidden = false
-                translation = CGAffineTransform.init(translationX: -CGFloat(cos(angle)*radius),
-                                                     y: -CGFloat(sin(angle)*radius))
+                translation = CGAffineTransform(translationX: -CGFloat(cos(angle)*radius),
+                                                y: -CGFloat(sin(angle)*radius))
             }
         }
         
@@ -229,10 +231,14 @@ open class CPCollectionViewWheelLayout: CPCollectionViewLayout {
         var contentSize:CGSize
         
         switch configuration.wheelType {
-        case .bottomCenter,.topCenter,.rightCenter,.leftCenter:
+        case .bottomCenter,.topCenter:
             visibleCellCount = CGFloat(180.0/configuration.angular+1.0)
-            contentSize = CGSize.init(width: viewSize.width,
-                                      height: (viewSize.height)+(CGFloat(cellCount)-visibleCellCount)*(configuration.cellSize.height)+CGFloat(configuration.contentHeigthPadding))
+            contentSize = CGSize(width: (viewSize.width)+(CGFloat(cellCount)-visibleCellCount)*(configuration.cellSize.width)+CGFloat(configuration.contentHeigthPadding),
+                                height:viewSize.height)
+        case .rightCenter,.leftCenter:
+            visibleCellCount = CGFloat(180.0/configuration.angular+1.0)
+            contentSize = CGSize(width: viewSize.width,
+                                height: (viewSize.height)+(CGFloat(cellCount)-visibleCellCount)*(configuration.cellSize.height)+CGFloat(configuration.contentHeigthPadding))
         default:
             visibleCellCount = CGFloat(90.0/configuration.angular+1.0)
             contentSize = CGSize.init(width: viewSize.width,

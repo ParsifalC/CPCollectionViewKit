@@ -221,7 +221,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 558X9W8374;
+						DevelopmentTeam = QPY54Z9HV5;
 						LastSwiftMigration = 0820;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -508,7 +508,7 @@
 			baseConfigurationReference = 8E112F12B5C767F23AD7099D /* Pods-CPCollectionViewWheelLayoutSwift_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 558X9W8374;
+				DEVELOPMENT_TEAM = QPY54Z9HV5;
 				INFOPLIST_FILE = CPCollectionViewWheelLayoutSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -524,7 +524,7 @@
 			baseConfigurationReference = 919FB0C3E417776A3BC60111 /* Pods-CPCollectionViewWheelLayoutSwift_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 558X9W8374;
+				DEVELOPMENT_TEAM = QPY54Z9HV5;
 				INFOPLIST_FILE = CPCollectionViewWheelLayoutSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
