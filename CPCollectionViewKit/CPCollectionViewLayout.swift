@@ -14,6 +14,9 @@ public enum CPItemUpdateAnimation {
     case custom  //custom by sublayout
 }
 
+protocol CollectionViewLayoutProtocol {
+    func attributesForCollectionView(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewLayoutAttributes?
+}
 
 open class CPCollectionViewLayout:UICollectionViewLayout {
     // MARK: Properties

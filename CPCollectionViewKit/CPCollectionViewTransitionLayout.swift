@@ -41,9 +41,22 @@ open class CPCollectionViewTransitionLayout: UICollectionViewTransitionLayout {
             for index in 0..<cellCount {
                 let indexPath = IndexPath(item: index, section: 0)
                 var attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-                let fromAttributes = self.currentLayout.layoutAttributesForItem(at: indexPath)
-                let toAttributes = self.nextLayout.layoutAttributesForItem(at: indexPath)
-
+                
+                var fromAttributes: UICollectionViewLayoutAttributes?
+                var toAttributes: UICollectionViewLayoutAttributes?
+                
+                if let tempAttributes = (self.currentLayout as? CollectionViewLayoutProtocol)?.attributesForCollectionView(collectionView: collectionView, indexPath: indexPath) {
+                    fromAttributes = tempAttributes
+                } else {
+                    fromAttributes = self.currentLayout.layoutAttributesForItem(at: indexPath)
+                }
+                
+                if let tempAttributes = (self.nextLayout as? CollectionViewLayoutProtocol)?.attributesForCollectionView(collectionView: collectionView, indexPath: indexPath) {
+                    toAttributes = tempAttributes
+                } else {
+                    toAttributes = self.nextLayout.layoutAttributesForItem(at: indexPath)
+                }
+                
                 if let fromAttributes = fromAttributes,
                    let toAttributes = toAttributes {
                     let fx = fromAttributes.center.x

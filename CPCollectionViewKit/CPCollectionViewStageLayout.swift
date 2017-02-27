@@ -65,9 +65,30 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
     }
 
     open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        guard let collectionView = collectionView else { return super.layoutAttributesForItem(at: indexPath) }
+        return attributesForCollectionView(collectionView: collectionView, indexPath: indexPath)
+    }
+    
+    open override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+        guard let collectionView = collectionView else { return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity) }
+        let topIndexItem = proposedContentOffset.x / configuration.cellSize.width
+        let x = round(topIndexItem) * (configuration.cellSize.width)
+        let y = proposedContentOffset.y
+        return CGPoint(x: x, y: y)
+    }
+    
+    open override var collectionViewContentSize: CGSize {
+        guard let collectionView = collectionView else { return super.collectionViewContentSize }
+        let cellWidth = configuration.cellSize.width
+        let width = CGFloat(cellCount - 1) * cellWidth+collectionView.bounds.width
+        return CGSize(width: width, height: collectionView.bounds.width)
+    }
+
+}
+
+extension CPCollectionViewStageLayout: CollectionViewLayoutProtocol {
+    open func attributesForCollectionView(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         let attributes = super.layoutAttributesForItem(at: indexPath)!
-        guard let collectionView = collectionView else { return  attributes}
-        
         let item = CGFloat(indexPath.item)
         let width = collectionView.bounds.size.width
         let height = collectionView.bounds.size.height
@@ -90,7 +111,7 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
                 centerX = collectionView.contentOffset.x + 0.5 * width
             }
             centerY = (height - cellHeight) / 2
-
+            
             if configuration.leaveStageAnimationStyle == .fadeAway
                 || configuration.leaveStageAnimationStyle == .fadeAwayAndZoomin
                 || configuration.leaveStageAnimationStyle == .blend {
@@ -132,7 +153,7 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
             attributes.transform3D = CATransform3DIdentity
         }
         
-//        print("item:\(item) itemOffset:\(itemOffset) topItemIndex:\(topItemIndex)")
+        //        print("item:\(item) itemOffset:\(itemOffset) topItemIndex:\(topItemIndex)")
         
         attributes.size = cellSize
         attributes.center = CGPoint(x: centerX + configuration.offsetX,
@@ -140,20 +161,4 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
         
         return attributes
     }
-    
-    open override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-        guard let collectionView = collectionView else { return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity) }
-        let topIndexItem = proposedContentOffset.x / configuration.cellSize.width
-        let x = round(topIndexItem) * (configuration.cellSize.width)
-        let y = proposedContentOffset.y
-        return CGPoint(x: x, y: y)
-    }
-    
-    open override var collectionViewContentSize: CGSize {
-        guard let collectionView = collectionView else { return super.collectionViewContentSize }
-        let cellWidth = configuration.cellSize.width
-        let width = CGFloat(cellCount - 1) * cellWidth+collectionView.bounds.width
-        return CGSize(width: width, height: collectionView.bounds.width)
-    }
-
 }
