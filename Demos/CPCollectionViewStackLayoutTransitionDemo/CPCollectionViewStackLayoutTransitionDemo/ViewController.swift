@@ -47,9 +47,6 @@ class ViewController: UIViewController {
         flowLayout.minimumInteritemSpacing = 0
         collectionView.setCollectionViewLayout(flowLayout, animated: false)
         
-        let circleConfiguration = CPCircleLayoutConfiguration(withCellSize: CGSize(width: 50, height: 50))
-        circleLayout = CPCollectionViewCircleLayout.init(withConfiguration: circleConfiguration)
-        
         let stageConfiguration = CPStageLayoutConfiguration.init(withCellSize: CGSize(width: 50, height: 50))
         stageLayout = CPCollectionViewStageLayout(withConfiguration: stageConfiguration)
     }
