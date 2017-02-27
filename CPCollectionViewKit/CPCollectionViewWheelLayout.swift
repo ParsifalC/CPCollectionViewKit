@@ -233,8 +233,7 @@ open class CPCollectionViewWheelLayout: CPCollectionViewLayout {
         switch configuration.wheelType {
         case .bottomCenter,.topCenter:
             visibleCellCount = CGFloat(180.0/configuration.angular+1.0)
-            contentSize = CGSize(width: (viewSize.width)+(CGFloat(cellCount)-visibleCellCount)*(configuration.cellSize.width)+CGFloat(configuration.contentHeigthPadding),
-                                height:viewSize.height)
+            contentSize = CGSize(width: (viewSize.width)+(CGFloat(cellCount)-visibleCellCount)*(configuration.cellSize.width)+CGFloat(configuration.contentHeigthPadding), height:viewSize.height)
         case .rightCenter,.leftCenter:
             visibleCellCount = CGFloat(180.0/configuration.angular+1.0)
             contentSize = CGSize(width: viewSize.width,
