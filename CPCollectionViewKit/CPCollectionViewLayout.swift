@@ -15,7 +15,12 @@ public enum CPItemUpdateAnimation {
 }
 
 protocol CollectionViewLayoutProtocol {
+    
+    var currentIndex: Int { get }
+    
+    func contentOffsetFor(indexPath: IndexPath) -> CGPoint
     func attributesForCollectionView(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewLayoutAttributes?
+    
 }
 
 open class CPCollectionViewLayout:UICollectionViewLayout {

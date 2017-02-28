@@ -33,19 +33,6 @@ open class CPStageLayoutConfiguration: CPLayoutConfiguration {
 open class CPCollectionViewStageLayout: CPCollectionViewLayout {
     
     public var configuration: CPStageLayoutConfiguration
-    public var currentIndex: Int {
-        if let collectionView = collectionView {
-            var index = Int(round(collectionView.contentOffset.x / configuration.cellSize.width))
-            
-            if index>=cellCount && cellCount>0 {
-                index = cellCount - 1
-            }
-            
-            return index
-        }
-        
-        return 0
-    }
     
     public init(withConfiguration configuration: CPStageLayoutConfiguration) {
         self.configuration = configuration
@@ -55,13 +42,6 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
     required public init?(coder aDecoder: NSCoder) {
         self.configuration =  CPStageLayoutConfiguration(withCellSize: CGSize(width: 100, height: 100))
         super.init(coder: aDecoder)
-    }
-    
-    public func contentOffsetFor(indexPath: IndexPath) -> CGPoint {
-        var contentOffset = CGPoint(x: CGFloat(), y: CGFloat())
-        contentOffset.x = CGFloat(indexPath.item) * configuration.cellSize.width
-        contentOffset.y = 0
-        return contentOffset
     }
 
     open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -87,6 +67,28 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
 }
 
 extension CPCollectionViewStageLayout: CollectionViewLayoutProtocol {
+    
+    public var currentIndex: Int {
+        if let collectionView = collectionView {
+            var index = Int(round(collectionView.contentOffset.x / configuration.cellSize.width))
+            
+            if index>=cellCount && cellCount>0 {
+                index = cellCount - 1
+            }
+            
+            return index
+        }
+        
+        return 0
+    }
+    
+    public func contentOffsetFor(indexPath: IndexPath) -> CGPoint {
+        var contentOffset = CGPoint(x: CGFloat(), y: CGFloat())
+        contentOffset.x = CGFloat(indexPath.item) * configuration.cellSize.width
+        contentOffset.y = 0
+        return contentOffset
+    }
+    
     open func attributesForCollectionView(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         let attributes = super.layoutAttributesForItem(at: indexPath)!
         let item = CGFloat(indexPath.item)
@@ -161,4 +163,5 @@ extension CPCollectionViewStageLayout: CollectionViewLayoutProtocol {
         
         return attributes
     }
+    
 }
