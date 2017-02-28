@@ -39,6 +39,7 @@ class CPViewController: UIViewController {
         
         collectionView.setCollectionViewLayout(fromLayout, animated: false, completion: nil)
     }
+    
     @IBAction func dismiss(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -78,7 +79,7 @@ extension CPViewController: UICollectionViewDelegate {
         } else if toLayout is UICollectionViewFlowLayout {
             let cellSize = (toLayout as! UICollectionViewFlowLayout).itemSize
             let y = floor(CGFloat(indexPath.item) / 3.0) * cellSize.height
-            toContentOffset = CGPoint(x: 0, y: min(toLayout.collectionViewContentSize.height-collectionView.bounds.height, y))
+            toContentOffset = CGPoint(x: 0, y: min(fabs(toLayout.collectionViewContentSize.height-collectionView.bounds.height), y))
         }
         
         transitionManager = TransitionManager(duration: 0.6, collectionView: collectionView, toLayout: toLayout)
