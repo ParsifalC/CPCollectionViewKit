@@ -1,5 +1,15 @@
 # CPCollectionViewKit
 
+#### CPCollectionViewTransitionLayout [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/README.md)
+<table>
+<tr>
+<th>FlowAndStage</th>
+</tr>
+<tr>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/CPCollectionViewTransitionFlowAndStage.gif?raw=true"/></td>
+</tr>
+</table>
+
 #### CPCollectionViewTimeMachineLayout [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTimeMachineLayoutDemo/README.md)
 <table>
 <tr>
@@ -111,7 +121,7 @@
 </table>
 
 
-#### CPCollectionViewCaterpillarLayout   [Readme]()
+#### CPCollectionViewCaterpillarLayout   [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCaterpillarLayoutDemo/README.md)
 <table>
 <tr>
 <th>Caterpillar</th>
