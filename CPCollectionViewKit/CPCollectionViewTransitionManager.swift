@@ -8,8 +8,6 @@
 
 import UIKit
 
-private let finishTransitionValue = 1.0
-
 open class TransitionManager {
     
     public var toContentOffset = CGPoint(x: 0, y: 0)
@@ -60,7 +58,7 @@ extension TransitionManager {
         transitionLayout.transitionProgress = CGFloat(progress)
         transitionLayout.invalidateLayout()
         
-        if progress == finishTransitionValue {
+        if progress == 1.0 {
             collectionView.finishInteractiveTransition()
             timer.invalidate()
         }
