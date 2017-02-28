@@ -40,9 +40,63 @@ open class CPCollectionViewTimeMachineLayout: CPCollectionViewLayout {
     }
     
     open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        let attributes = super.layoutAttributesForItem(at: indexPath)!
-        guard let collectionView = collectionView else { return  attributes}
+        guard let collectionView = collectionView else { return super.layoutAttributesForItem(at: indexPath)}
+        let attributes = attributesForCollectionView(collectionView: collectionView, indexPath: indexPath)
+        return attributes
+    }
+ 
+    open override var collectionViewContentSize: CGSize {
+        guard let collectionView = collectionView else { return super.collectionViewContentSize }
         
+        var contentSize = CGSize(width: CGFloat(), height: CGFloat())
+        let cellHeight = configuration.cellSize.height
+        let height = CGFloat(cellCount-1)*cellHeight+collectionView.bounds.height
+        contentSize.width = collectionView.bounds.width
+        contentSize.height = height
+        
+        return contentSize
+    }
+    
+    func calculateTopItemIndex() -> CGFloat {
+        guard let collectionView = collectionView else { return 0 }
+        
+        var topItemIndex: CGFloat
+
+        if configuration.reversed {
+            topItemIndex = CGFloat(cellCount-1)-collectionView.contentOffset.y/configuration.cellSize.height
+        } else {
+            topItemIndex = collectionView.contentOffset.y/configuration.cellSize.height
+        }
+        
+        return topItemIndex
+    }
+}
+
+extension CPCollectionViewTimeMachineLayout: CollectionViewLayoutProtocol {
+    
+    public var currentIndex: Int {
+        var topItemIndex = calculateTopItemIndex()
+        var currentIndex = Int(round(topItemIndex))
+        
+        if cellCount > 0 {
+            currentIndex = min(cellCount-1, currentIndex)
+        } else {
+            currentIndex = 0
+        }
+        
+        currentIndex = max(0, currentIndex)
+        
+        return currentIndex
+    }
+    
+    public func contentOffsetFor(indexPath: IndexPath) -> CGPoint {
+        var contenOffset = CGPoint.zero
+        contenOffset.y = CGFloat(indexPath.item) * configuration.cellSize.height
+        return contenOffset
+    }
+    
+    public func attributesForCollectionView(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let attributes = super.layoutAttributesForItem(at: indexPath)!
         let item = CGFloat(indexPath.item)
         let width = collectionView.bounds.size.width
         let height = collectionView.bounds.size.height
@@ -52,20 +106,19 @@ open class CPCollectionViewTimeMachineLayout: CPCollectionViewLayout {
         visibleCount = max(1, visibleCount)
         var centerX: CGFloat = 0.0
         var centerY: CGFloat = 0.0
-
+        
         //update attributes
-        var topItemIndex: CGFloat
+        var topItemIndex = calculateTopItemIndex()
         var itemOffset: CGFloat
         
         if configuration.reversed {
-            topItemIndex = CGFloat(cellCount-1)-collectionView.contentOffset.y/cellHeight
             itemOffset = topItemIndex-item
             attributes.zIndex = indexPath.item
         } else {
-            topItemIndex = collectionView.contentOffset.y/cellHeight
             itemOffset =  item-topItemIndex
             attributes.zIndex = -indexPath.item
         }
+        
         attributes.size = cellSize
         
         var transform = CGAffineTransform.identity
@@ -86,23 +139,13 @@ open class CPCollectionViewTimeMachineLayout: CPCollectionViewLayout {
             
             attributes.isHidden = true
         }
-
+        
         attributes.center = CGPoint(x: centerX+configuration.offsetX,
                                     y: centerY+configuration.offsetY)
         attributes.transform = transform
-//        print("item:\(item) itemOffset:\(itemOffset)")
+        //        print("item:\(item) itemOffset:\(itemOffset)")
         return attributes
     }
- 
-    open override var collectionViewContentSize: CGSize {
-        guard let collectionView = collectionView else { return super.collectionViewContentSize }
-        
-        var contentSize = CGSize(width: CGFloat(), height: CGFloat())
-        let cellHeight = configuration.cellSize.height
-        let height = CGFloat(cellCount-1)*cellHeight+collectionView.bounds.height
-        contentSize.width = collectionView.bounds.width
-        contentSize.height = height
-        
-        return contentSize
-    }
+    
 }
+
