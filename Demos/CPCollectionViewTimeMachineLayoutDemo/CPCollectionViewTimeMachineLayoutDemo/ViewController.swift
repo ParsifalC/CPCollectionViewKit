@@ -80,3 +80,20 @@ extension ViewController: UICollectionViewDataSource {
     }
     
 }
+
+extension ViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let contentOffset = timeMachineLayout.contentOffsetFor(indexPath: indexPath)
+        collectionView.setContentOffset(contentOffset, animated: true)
+    }
+    
+}
+
+extension ViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("current index:\(timeMachineLayout.currentIndex)")
+    }
+    
+}
