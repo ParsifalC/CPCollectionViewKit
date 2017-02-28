@@ -1,10 +1,5 @@
 # CPCollectionViewKit
 
-[![CI Status](http://img.shields.io/travis/Parsifal/CPCollectionViewKit.svg?style=flat)](https://travis-ci.org/Parsifal/CPCollectionViewKit)
-[![Version](https://img.shields.io/cocoapods/v/CPCollectionViewKit.svg?style=flat)](http://cocoapods.org/pods/CPCollectionViewKit)
-[![License](https://img.shields.io/cocoapods/l/CPCollectionViewKit.svg?style=flat)](http://cocoapods.org/pods/CPCollectionViewKit)
-[![Platform](https://img.shields.io/cocoapods/p/CPCollectionViewKit.svg?style=flat)](http://cocoapods.org/pods/CPCollectionViewKit)
-
 #### CPCollectionViewTimeMachineLayout [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTimeMachineLayoutDemo/README.md)
 <table>
 <tr>
