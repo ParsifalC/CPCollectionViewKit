@@ -10,8 +10,7 @@
 <tr>
 <td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/CPCollectionViewTransitionFlowAndStage.gif?raw=true"/></td>
 <td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/CPCollectionViewTransitionFlowAndTimeMachine.gif?raw=true"/></td>
-<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/CPCollectionViewTransitionStageAndTimeMachine.gif?raw=true
-?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/CPCollectionViewTransitionStageAndTimeMachine.gif?raw=true"/></td>
 </tr>
 </table>
 
