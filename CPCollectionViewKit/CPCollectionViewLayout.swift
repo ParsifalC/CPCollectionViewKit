@@ -14,7 +14,7 @@ public enum CPItemUpdateAnimation {
     case custom  //custom by sublayout
 }
 
-protocol CollectionViewLayoutProtocol {
+public protocol CollectionViewLayoutProtocol {
     
     var currentIndex: Int { get }
     

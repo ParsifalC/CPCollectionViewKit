@@ -74,8 +74,8 @@ extension CPViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         fromContentOffset = collectionView.contentOffset
 
-        if toLayout is CPCollectionViewStageLayout {
-            toContentOffset = (toLayout as! CPCollectionViewStageLayout).contentOffsetFor(indexPath: indexPath)
+        if let contentOffset = (toLayout as? CollectionViewLayoutProtocol)?.contentOffsetFor(indexPath: indexPath) {
+            toContentOffset = contentOffset
         } else if toLayout is UICollectionViewFlowLayout {
             let cellSize = (toLayout as! UICollectionViewFlowLayout).itemSize
             let y = floor(CGFloat(indexPath.item) / 3.0) * cellSize.height

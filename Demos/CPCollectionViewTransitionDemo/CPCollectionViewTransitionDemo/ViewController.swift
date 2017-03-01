@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         tableView.tableFooterView = UIView()
         fromLayout = createFlowLayout()
         toLayout = createStageLayout()
-        
+        pickerViewDataSource = ["UICollectionViewFlowLayout", "CPCollectionViewStageLayout", "CPCollectionViewTimeMachineLayout"]
     }
 
     func done() {
@@ -97,6 +97,8 @@ class ViewController: UIViewController {
             layout = createFlowLayout()
         case 1:
             layout = createStageLayout()
+        case 2:
+            layout = createTimeMachineLayout()
         default:
             layout = createFlowLayout()
         }
@@ -115,9 +117,18 @@ class ViewController: UIViewController {
     }
     
     func createStageLayout() -> CPCollectionViewStageLayout {
-        let stageConfiguration = CPStageLayoutConfiguration.init(withCellSize: CGSize(width: 50, height: 50))
+        let stageConfiguration = CPStageLayoutConfiguration(withCellSize: CGSize(width: 50, height: 50))
         let stageLayout = CPCollectionViewStageLayout(withConfiguration: stageConfiguration)
         return stageLayout
+    }
+    
+    func createTimeMachineLayout() -> CPCollectionViewTimeMachineLayout {
+        let configuration = CPTimeMachineLayoutConfiguration(withCellSize: CGSize(width: 200, height: 200))
+        configuration.spacingX = 30
+        configuration.spacingY = 30
+        configuration.visibleCount = 20
+        let timeMachineLayout = CPCollectionViewTimeMachineLayout(withConfiguration: configuration)
+        return timeMachineLayout
     }
     
 }
@@ -158,7 +169,6 @@ extension ViewController: UITableViewDelegate {
             transitionViewController = CPViewController.createViewController(fromLayout: fromLayout, toLayout: toLayout)
             present(transitionViewController, animated: true, completion: nil)
         default:
-            pickerViewDataSource = ["UICollectionViewFlowLayout", "CPCollectionViewStageLayout"]
             pickerView.reloadAllComponents()
             showPickerView(true)
         }

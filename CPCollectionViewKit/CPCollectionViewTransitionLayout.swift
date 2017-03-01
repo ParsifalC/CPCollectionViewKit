@@ -74,6 +74,15 @@ open class CPCollectionViewTransitionLayout: UICollectionViewTransitionLayout {
                     newSize.width = updateValue(fromValue: fromAttributes.size.width, toValue: toAttributes.size.width)
                     newSize.height = updateValue(fromValue: fromAttributes.size.height, toValue: toAttributes.size.height)
                     attributes.size = newSize
+                    attributes.zIndex = toAttributes.zIndex
+                    
+                    let toAlpha = toAttributes.isHidden == true ? 0 : toAttributes.alpha
+                    attributes.alpha = updateValue(fromValue: fromAttributes.alpha, toValue: toAlpha)
+                    
+                    var newScale = CGAffineTransform.identity
+                    newScale.a = updateValue(fromValue: fromAttributes.transform.a, toValue: toAttributes.transform.a)
+                    newScale.d = updateValue(fromValue: fromAttributes.transform.d, toValue: toAttributes.transform.d)
+                    attributes.transform = newScale
                     
                     attributesArray.append(attributes)
                 }
