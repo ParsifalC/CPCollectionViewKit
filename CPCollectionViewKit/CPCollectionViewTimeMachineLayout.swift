@@ -10,7 +10,7 @@ import Foundation
 
 open class CPTimeMachineLayoutConfiguration: CPLayoutConfiguration {
     
-    public var visibleCount:Int = 1
+    public var visibleCount = 0
     public var minCellSize = CGSize(width: 50, height: 50)
     public var scaleFactor: CGFloat = 0.5//(0, 1)
     public var spacingX: CGFloat = 20
@@ -21,6 +21,7 @@ open class CPTimeMachineLayoutConfiguration: CPLayoutConfiguration {
             spacingY = spacing
         }
     }
+    
     public var reversed: Bool = false
     
 }
@@ -41,6 +42,7 @@ open class CPCollectionViewTimeMachineLayout: CPCollectionViewLayout {
     
     open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         guard let collectionView = collectionView else { return super.layoutAttributesForItem(at: indexPath)}
+        
         let attributes = attributesForCollectionView(collectionView: collectionView, indexPath: indexPath)
         return attributes
     }
@@ -50,7 +52,7 @@ open class CPCollectionViewTimeMachineLayout: CPCollectionViewLayout {
         
         var contentSize = CGSize(width: CGFloat(), height: CGFloat())
         let cellHeight = configuration.cellSize.height
-        let height = CGFloat(cellCount-1)*cellHeight+collectionView.bounds.height
+        let height = CGFloat(cellCount - 1) * cellHeight + collectionView.bounds.height
         contentSize.width = collectionView.bounds.width
         contentSize.height = height
         
@@ -63,9 +65,9 @@ open class CPCollectionViewTimeMachineLayout: CPCollectionViewLayout {
         var topItemIndex: CGFloat
 
         if configuration.reversed {
-            topItemIndex = CGFloat(cellCount-1)-collectionView.contentOffset.y/configuration.cellSize.height
+            topItemIndex = CGFloat(cellCount - 1) - collectionView.contentOffset.y / configuration.cellSize.height
         } else {
-            topItemIndex = collectionView.contentOffset.y/configuration.cellSize.height
+            topItemIndex = collectionView.contentOffset.y / configuration.cellSize.height
         }
         
         return topItemIndex
@@ -96,14 +98,16 @@ extension CPCollectionViewTimeMachineLayout: CollectionViewLayoutProtocol {
     }
     
     public func attributesForCollectionView(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        let attributes = super.layoutAttributesForItem(at: indexPath)!
+        guard let attributes = super.layoutAttributesForItem(at: indexPath) else {
+            return nil
+        }
+        
         let item = CGFloat(indexPath.item)
         let width = collectionView.bounds.size.width
         let height = collectionView.bounds.size.height
         let cellSize = configuration.cellSize
         let cellHeight = cellSize.height
-        var visibleCount = CGFloat(min(configuration.visibleCount, cellCount))
-        visibleCount = max(1, visibleCount)
+        var visibleCount = configuration.visibleCount <= 0 ? CGFloat(cellCount) : CGFloat(min(configuration.visibleCount, cellCount))
         var centerX: CGFloat = 0.0
         var centerY: CGFloat = 0.0
         
@@ -112,10 +116,10 @@ extension CPCollectionViewTimeMachineLayout: CollectionViewLayoutProtocol {
         var itemOffset: CGFloat
         
         if configuration.reversed {
-            itemOffset = topItemIndex-item
+            itemOffset = topItemIndex - item
             attributes.zIndex = indexPath.item
         } else {
-            itemOffset =  item-topItemIndex
+            itemOffset =  item - topItemIndex
             attributes.zIndex = -indexPath.item
         }
         
@@ -123,25 +127,25 @@ extension CPCollectionViewTimeMachineLayout: CollectionViewLayoutProtocol {
         
         var transform = CGAffineTransform.identity
         
-        if itemOffset<visibleCount+1 && itemOffset >= -1 {
-            centerX = width/2+itemOffset*configuration.spacingX
-            centerY = height/2+collectionView.contentOffset.y+itemOffset*configuration.spacingY
+        if itemOffset < visibleCount + 1 && itemOffset >= -1 {
+            centerX = width / 2 + itemOffset * configuration.spacingX
+            centerY = height / 2 + collectionView.contentOffset.y + itemOffset * configuration.spacingY
             
-            let scaleFactor = 1-itemOffset/CGFloat(visibleCount)*configuration.scaleFactor
+            let scaleFactor = 1 - itemOffset / CGFloat(visibleCount) * configuration.scaleFactor
             let scaleTransform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
             transform = scaleTransform
             
             attributes.isHidden = false
-            attributes.alpha = itemOffset+1
+            attributes.alpha = itemOffset + 1
         } else {
-            centerX = -width/2
-            centerY = -height/2
+            centerX = -width / 2
+            centerY = -height / 2
             
             attributes.isHidden = true
         }
         
-        attributes.center = CGPoint(x: centerX+configuration.offsetX,
-                                    y: centerY+configuration.offsetY)
+        attributes.center = CGPoint(x: centerX + configuration.offsetX,
+                                    y: centerY + configuration.offsetY)
         attributes.transform = transform
         //        print("item:\(item) itemOffset:\(itemOffset)")
         return attributes
