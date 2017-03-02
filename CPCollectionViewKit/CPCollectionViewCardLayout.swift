@@ -62,8 +62,9 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
     }
     
     open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        let attributes = super.layoutAttributesForItem(at: indexPath)!
-        guard let collectionView = collectionView else { return  attributes}
+        
+        guard let collectionView = collectionView,
+              let attributes = super.layoutAttributesForItem(at: indexPath) else { return  super.layoutAttributesForItem(at: indexPath) }
         
         let item = CGFloat(indexPath.item)
         let width = collectionView.bounds.size.width

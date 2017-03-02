@@ -89,7 +89,10 @@ extension CPCollectionViewStageLayout: CollectionViewLayoutProtocol {
     }
     
     open func attributesForCollectionView(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        let attributes = super.layoutAttributesForItem(at: indexPath)!
+        guard let attributes = super.layoutAttributesForItem(at: indexPath) else {
+            return nil
+        }
+        
         let item = CGFloat(indexPath.item)
         let width = collectionView.bounds.size.width
         let height = collectionView.bounds.size.height
