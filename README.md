@@ -5,12 +5,27 @@
 <tr>
 <th>FlowAndStage</th>
 <th>FlowAndTimeMachine</th>
+<th>FlowAndCircle</th>
 <th>StageAndTimeMachine</th>
+<th>StageAndCircle</th>
+<th>TimeMachineAndCircle</th>
 </tr>
 <tr>
-<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/CPCollectionViewTransitionFlowAndStage.gif?raw=true"/></td>
-<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/CPCollectionViewTransitionFlowAndTimeMachine.gif?raw=true"/></td>
-<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/CPCollectionViewTransitionStageAndTimeMachine.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/TransitionFlowAndStage.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/TransitionFlowAndTimeMachine.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/TransitionFlowAndCircle.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/TransitionStageAndTimeMachine.gif?raw=true"/></td>
+</tr>
+</table>
+
+<table>
+<tr>
+<th>StageAndCircle</th>
+<th>TimeMachineAndCircle</th>
+</tr>
+<tr>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/TransitionStageAndCircle.gif?raw=true"/></td>
+<td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/TransitionTimeMachineAndCircle.gif?raw=true"/></td>
 </tr>
 </table>
 
@@ -137,7 +152,21 @@
 
 ## Example
 
-To run the example project, clone the repo, and run `bundle exec pod install` from the Demos directory first.
+To run the example project, clone the repo, and run `bundle install` from the Repo diretory to install `CocoaPods1.2.0` first, then run `bundle exec pod install` from the specific demo directory.
+
+```ruby
+# parsifal @ ParsifaldeMacBook-Pro in ~ [18:08:28]
+$ Repo/CPCollectionViewKit
+
+# parsifal @ ParsifaldeMacBook-Pro in ~/Repo/CPCollectionViewKit on git:master x [18:08:46]
+$ bundle install
+
+# parsifal @ ParsifaldeMacBook-Pro in ~/Repo/CPCollectionViewKit/Demos/CPCollectionViewCardLayoutDemo on git:master
+$ bundle exec pod install
+
+# parsifal @ ParsifaldeMacBook-Pro in ~/Repo/CPCollectionViewKit/Demos/CPCollectionViewCardLayoutDemo on git:master x
+$ open CPCollectionViewCardLayoutDemo.xcworkspace
+```
 
 ## Requirements
 
