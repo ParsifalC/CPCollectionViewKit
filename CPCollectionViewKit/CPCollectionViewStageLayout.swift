@@ -83,9 +83,8 @@ extension CPCollectionViewStageLayout: CollectionViewLayoutProtocol {
     }
     
     public func contentOffsetFor(indexPath: IndexPath) -> CGPoint {
-        var contentOffset = CGPoint(x: CGFloat(), y: CGFloat())
+        var contentOffset = CGPoint.zero
         contentOffset.x = CGFloat(indexPath.item) * configuration.cellSize.width
-        contentOffset.y = 0
         return contentOffset
     }
     
