@@ -7,8 +7,6 @@
 <th>FlowAndTimeMachine</th>
 <th>FlowAndCircle</th>
 <th>StageAndTimeMachine</th>
-<th>StageAndCircle</th>
-<th>TimeMachineAndCircle</th>
 </tr>
 <tr>
 <td><img src="https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/TransitionFlowAndStage.gif?raw=true"/></td>
