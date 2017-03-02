@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         tableView.tableFooterView = UIView()
         fromLayout = createFlowLayout()
         toLayout = createStageLayout()
-        pickerViewDataSource = ["UICollectionViewFlowLayout", "CPCollectionViewStageLayout", "CPCollectionViewTimeMachineLayout"]
+        pickerViewDataSource = ["UICollectionViewFlowLayout", "CPCollectionViewStageLayout", "CPCollectionViewTimeMachineLayout", "CPCollectionViewCircleLayout"]
     }
 
     func done() {
@@ -99,6 +99,8 @@ class ViewController: UIViewController {
             layout = createStageLayout()
         case 2:
             layout = createTimeMachineLayout()
+        case 3:
+            layout = createCircleLayout()
         default:
             layout = createFlowLayout()
         }
@@ -129,6 +131,12 @@ class ViewController: UIViewController {
         configuration.visibleCount = 20
         let timeMachineLayout = CPCollectionViewTimeMachineLayout(withConfiguration: configuration)
         return timeMachineLayout
+    }
+    
+    func createCircleLayout() -> CPCollectionViewCircleLayout {
+        let configuration = CPCircleLayoutConfiguration(withCellSize: CGSize(width: 50, height: 50), spacing: screenWidth/2-50, offsetX: 0, offsetY: screenHeight/2)
+        let circleLayout = CPCollectionViewCircleLayout(withConfiguration: configuration)
+        return circleLayout
     }
     
 }
