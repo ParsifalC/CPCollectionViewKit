@@ -126,7 +126,7 @@
 				TargetAttributes = {
 					90232C341E54911A004EEA5B = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 558X9W8374;
+						DevelopmentTeam = QPY54Z9HV5;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -339,7 +339,7 @@
 			baseConfigurationReference = 4C842088F0F4B9B47C035CE8 /* Pods-CPCollectionViewTimeMachineLayoutDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 558X9W8374;
+				DEVELOPMENT_TEAM = QPY54Z9HV5;
 				INFOPLIST_FILE = CPCollectionViewTimeMachineLayoutDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Parsifal.CPCollectionViewTimeMachineLayoutDemo;
@@ -353,7 +353,7 @@
 			baseConfigurationReference = 4D7882A4A9A1BD7BE8D4C087 /* Pods-CPCollectionViewTimeMachineLayoutDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 558X9W8374;
+				DEVELOPMENT_TEAM = QPY54Z9HV5;
 				INFOPLIST_FILE = CPCollectionViewTimeMachineLayoutDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Parsifal.CPCollectionViewTimeMachineLayoutDemo;
