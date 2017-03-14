@@ -181,8 +181,8 @@ pod "CPCollectionViewKit"
 - [ ] Support `CPCollectionViewCaterpillarLayout` Direction Settings
 - [ ] Unit Test
 - [ ] Support `Cocoapods` & `Carthage`
-- [ ] Layout Transition
-- [ ] More Delete/Insert Animations
+- [x] Layout Transition
+- [x] More Delete/Insert Animations
 - [ ] More Interesting UICollectionView Layouts
 
 
