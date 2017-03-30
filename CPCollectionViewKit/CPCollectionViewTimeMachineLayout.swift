@@ -77,7 +77,7 @@ open class CPCollectionViewTimeMachineLayout: CPCollectionViewLayout {
 extension CPCollectionViewTimeMachineLayout: CollectionViewLayoutProtocol {
     
     public var currentIndex: Int {
-        var topItemIndex = calculateTopItemIndex()
+        let topItemIndex = calculateTopItemIndex()
         var currentIndex = Int(round(topItemIndex))
         
         if cellCount > 0 {
@@ -106,13 +106,12 @@ extension CPCollectionViewTimeMachineLayout: CollectionViewLayoutProtocol {
         let width = collectionView.bounds.size.width
         let height = collectionView.bounds.size.height
         let cellSize = configuration.cellSize
-        let cellHeight = cellSize.height
-        var visibleCount = configuration.visibleCount <= 0 ? CGFloat(cellCount) : CGFloat(min(configuration.visibleCount, cellCount))
+        let visibleCount = configuration.visibleCount <= 0 ? CGFloat(cellCount) : CGFloat(min(configuration.visibleCount, cellCount))
         var centerX: CGFloat = 0.0
         var centerY: CGFloat = 0.0
         
         //update attributes
-        var topItemIndex = calculateTopItemIndex()
+        let topItemIndex = calculateTopItemIndex()
         var itemOffset: CGFloat
         
         if configuration.reversed {

@@ -196,8 +196,6 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
         let cellWidth = configuration.cellSize.width
         let cellHeight = configuration.cellSize.height
         let spacing = configuration.spacing
-        var width: CGFloat
-        var height: CGFloat
         var contentSize = CGSize(width: CGFloat(), height: CGFloat())
         
         if configuration.scrollDirection == .horizontal {

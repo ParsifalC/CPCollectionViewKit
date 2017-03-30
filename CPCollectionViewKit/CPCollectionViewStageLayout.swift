@@ -50,7 +50,7 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
     }
     
     open override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-        guard let collectionView = collectionView else { return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity) }
+        guard collectionView != nil else { return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity) }
         let topIndexItem = proposedContentOffset.x / configuration.cellSize.width
         let x = round(topIndexItem) * (configuration.cellSize.width)
         let y = proposedContentOffset.y
@@ -150,9 +150,9 @@ extension CPCollectionViewStageLayout: CollectionViewLayoutProtocol {
         
         switch configuration.moveAnimationStyle {
         case .waltz where itemOffset > 0:
-            attributes.transform3D =  CATransform3DRotate(attributes.transform3D, CGFloat(M_PI * 2) * rotateFactor, 0, 1, 0)
+            attributes.transform3D =  CATransform3DRotate(attributes.transform3D, CGFloat(Double.pi * 2) * rotateFactor, 0, 1, 0)
         case .somefault where itemOffset > 0:
-            attributes.transform3D =  CATransform3DRotate(attributes.transform3D, CGFloat(M_PI * 2) * rotateFactor, 0, 0, 1)
+            attributes.transform3D =  CATransform3DRotate(attributes.transform3D, CGFloat(Double.pi * 2) * rotateFactor, 0, 0, 1)
         default:
             attributes.transform3D = CATransform3DIdentity
         }
