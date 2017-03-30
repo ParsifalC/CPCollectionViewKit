@@ -24,8 +24,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var offsetXSlider: UISlider!
     @IBOutlet weak var offsetYSlider: UISlider!
     @IBOutlet weak var collectionView: UICollectionView!
-    var configuration: CPCardLayoutConfiguration!
-    var layout: CPCollectionViewCardLayout!
+    var configuration: CardLayoutConfiguration!
+    var layout: CollectionViewCardLayout!
     let identifier = "CPCardCollectionViewCell"
     var colorsArray = [UIColor]()
     
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         offsetYSlider.maximumValue = 100
         offsetYSlider.value = 0
         
-        layout = collectionView.collectionViewLayout as! CPCollectionViewCardLayout
+        layout = collectionView.collectionViewLayout as! CollectionViewCardLayout
         layout.updateAnimationStyle = .custom
         configuration = layout.configuration
         configuration.stopAtItemBoundary = stopAtBoundarySwitch.isOn
@@ -89,7 +89,7 @@ class ViewController: UIViewController {
         return UIColor.init(colorLiteralRed: Float(arc4random_uniform(256))/255.0, green: Float(arc4random_uniform(256))/255.0, blue: Float(arc4random_uniform(256))/255.0, alpha: 1)
     }
     
-    func rotateDirection() -> CPCardRotationAxis {
+    func rotateDirection() -> CardRotationAxis {
         switch rotateDicretionControl.selectedSegmentIndex {
         case 0:
             return .x
@@ -100,7 +100,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func scrollDirection() -> CPCardScrollDiretion {
+    func scrollDirection() -> CardScrollDiretion {
         switch scrollDirectionControl.selectedSegmentIndex {
         case 0:
             return .horizontal
