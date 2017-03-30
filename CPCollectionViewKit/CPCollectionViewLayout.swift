@@ -23,7 +23,7 @@ public protocol CollectionViewLayoutProtocol {
     
 }
 
-open class CPCollectionViewLayout:UICollectionViewLayout {
+open class CPCollectionViewLayout: UICollectionViewLayout {
     // MARK: Properties
     var cellCount = 0
     var cachedAttributesArray = [UICollectionViewLayoutAttributes]()
@@ -77,7 +77,7 @@ open class CPCollectionViewLayout:UICollectionViewLayout {
         var visibleAttributesArray = [UICollectionViewLayoutAttributes]()
         
         for index in 0..<cellCount {
-            let attributes = layoutAttributesForItem(at: IndexPath(row:index, section:0))!
+            let attributes = layoutAttributesForItem(at: IndexPath(row: index, section: 0))!
             if rect.intersects(attributes.frame) && !attributes.isHidden {
                 visibleAttributesArray.append(attributes)
             }
