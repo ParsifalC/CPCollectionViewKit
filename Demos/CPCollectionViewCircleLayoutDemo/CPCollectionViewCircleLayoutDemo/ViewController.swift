@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  CPCollectionViewCircleLayoutDemo
+//  CollectionViewCircleLayoutDemo
 //
 //  Created by Parsifal on 2017/1/21.
 //  Copyright © 2017年 Parsifal. All rights reserved.
@@ -13,8 +13,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     fileprivate let reuseIdentifier = "CPCollectionViewCell"
     var collectionView: UICollectionView!
     var colorsArray = [(item: Int, color: UIColor)]()
-    var configuration: CPCircleLayoutConfiguration!
-    var circleLayout: CPCollectionViewCircleLayout!
+    var configuration: CircleLayoutConfiguration!
+    var circleLayout: CollectionViewCircleLayout!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +26,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Becareful: If visibleCount==itemsCount reused system won't work!!!
         // Recommend: visibleCount<itemsCount
         // It's just a demo below
-        configuration = CPCircleLayoutConfiguration(withCellSize: CGSize(width:60, height:60), spacing: 50, offsetX: 0, offsetY: 200)
-        circleLayout = CPCollectionViewCircleLayout(withConfiguration: configuration)
+        configuration = CircleLayoutConfiguration(withCellSize: CGSize(width:60, height:60), spacing: 50, offsetX: 0, offsetY: 200)
+        circleLayout = CollectionViewCircleLayout(withConfiguration: configuration)
         circleLayout.updateAnimationStyle = .custom
         collectionView = UICollectionView.init(frame: view.frame, collectionViewLayout:circleLayout)
         collectionView.showsVerticalScrollIndicator = false
