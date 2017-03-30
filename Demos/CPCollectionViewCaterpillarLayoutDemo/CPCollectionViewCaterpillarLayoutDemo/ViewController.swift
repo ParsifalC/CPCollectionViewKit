@@ -22,13 +22,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
         
         let cellSize = CGSize(width:60, height:60)
-        let configuration = CPCaterpillarLayoutConfiguration.init(withCellSize: cellSize,
-                                                                  visibleCount: 8,
-                                                              topCellSizeScale:1.5,
-                                                                       spacing: 150,
-                                                                       offsetX: 0,
-                                                                       offsetY: 100)
-        let circleLayout = CPCollectionViewCaterpillarLayout.init(withConfiguration: configuration)
+        let configuration = CaterpillarLayoutConfiguration(withCellSize: cellSize,
+                                                           visibleCount: 8,
+                                                           topCellSizeScale:1.5,
+                                                           spacing: 150,
+                                                           offsetX: 0,
+                                                           offsetY: 100)
+        let circleLayout = CollectionViewCaterpillarLayout(withConfiguration: configuration)
         
         let colletionView = UICollectionView.init(frame: view.frame, collectionViewLayout:circleLayout)
         colletionView.showsVerticalScrollIndicator = false
