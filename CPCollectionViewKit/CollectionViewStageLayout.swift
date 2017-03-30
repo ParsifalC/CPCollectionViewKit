@@ -1,5 +1,5 @@
 //
-//  CPCollectionViewStageLayout.swift
+//  CollectionViewStageLayout.swift
 //  CPCollectionViewKit
 //
 //  Created by Parsifal on 2017/2/17.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-public enum CPMoveAnimationStyle {
+public enum MoveAnimationStyle {
     case none
     case waltz
     case somefault
 }
 
-public enum CPLeaveStageAnimationStyle {
+public enum LeaveStageAnimationStyle {
     case fadeAway
     case zoomin
     case outOfBoundary
@@ -22,25 +22,25 @@ public enum CPLeaveStageAnimationStyle {
     case blend
 }
 
-open class CPStageLayoutConfiguration: CPLayoutConfiguration {
+open class StageLayoutConfiguration: LayoutConfiguration {
     
     public var topCellSize = CGSize(width: 100, height: 100)
-    public var moveAnimationStyle: CPMoveAnimationStyle = .none
-    public var leaveStageAnimationStyle: CPLeaveStageAnimationStyle = .fadeAway
+    public var moveAnimationStyle: MoveAnimationStyle = .none
+    public var leaveStageAnimationStyle: LeaveStageAnimationStyle = .fadeAway
     
 }
 
-open class CPCollectionViewStageLayout: CPCollectionViewLayout {
+open class CollectionViewStageLayout: CollectionViewLayout {
     
-    public var configuration: CPStageLayoutConfiguration
+    public var configuration: StageLayoutConfiguration
     
-    public init(withConfiguration configuration: CPStageLayoutConfiguration) {
+    public init(withConfiguration configuration: StageLayoutConfiguration) {
         self.configuration = configuration
         super.init()
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        self.configuration =  CPStageLayoutConfiguration(withCellSize: CGSize(width: 100, height: 100))
+        self.configuration =  StageLayoutConfiguration(withCellSize: CGSize(width: 100, height: 100))
         super.init(coder: aDecoder)
     }
 
@@ -66,7 +66,7 @@ open class CPCollectionViewStageLayout: CPCollectionViewLayout {
 
 }
 
-extension CPCollectionViewStageLayout: CollectionViewLayoutProtocol {
+extension CollectionViewStageLayout: CollectionViewLayoutProtocol {
     
     public var currentIndex: Int {
         if let collectionView = collectionView {

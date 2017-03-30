@@ -1,5 +1,5 @@
 //
-//  CPCollectionViewLayout.swift
+//  CollectionViewLayout.swift
 //  CPCollectionViewKit
 //
 //  Created by Parsifal on 2017/1/22.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public enum CPItemUpdateAnimation {
+public enum ItemUpdateAnimation {
     case common //iOS default delete/insert animation
     case base  // zoomin/out animation
     case custom  //custom by sublayout
@@ -23,13 +23,13 @@ public protocol CollectionViewLayoutProtocol {
     
 }
 
-open class CPCollectionViewLayout: UICollectionViewLayout {
+open class CollectionViewLayout: UICollectionViewLayout {
     // MARK: Properties
     var cellCount = 0
     var cachedAttributesArray = [UICollectionViewLayoutAttributes]()
     var deleteIndexPaths = [IndexPath]()
     var insertIndexPaths = [IndexPath]()
-    public var updateAnimationStyle: CPItemUpdateAnimation = .common
+    public var updateAnimationStyle: ItemUpdateAnimation = .common
 
     // MARK: Methods
     override open func prepare() {

@@ -1,6 +1,6 @@
 //
-//  CPCollectionViewWheelLayout.swift
-//  CPCollectionViewWheelLayout-Swift
+//  CollectionViewWheelLayout.swift
+//  CollectionViewWheelLayout-Swift
 //
 //  Created by Parsifal on 2016/12/30.
 //  Copyright © 2016年 Parsifal. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public enum CPWheelLayoutType:Int {
+public enum WheelLayoutType:Int {
     case leftBottom = 0
     case rightBottom
     case leftTop
@@ -19,7 +19,7 @@ public enum CPWheelLayoutType:Int {
     case bottomCenter
 }
 
-public struct CPWheelLayoutConfiguration {
+public struct WheelLayoutConfiguration {
     public var cellSize:CGSize {
         didSet {
             if cellSize.width<=0.0 || cellSize.height<=0.0 {
@@ -46,13 +46,13 @@ public struct CPWheelLayoutConfiguration {
     public var zoomInOut:Bool
     public var maxContentHeight:Double
     public var contentHeigthPadding:Double
-    public var wheelType:CPWheelLayoutType
+    public var wheelType:WheelLayoutType
     
     // MARK: - Initial Methods
     public init(withCellSize cellSize:CGSize,
                 radius:Double,
                 angular:Double,
-                wheelType:CPWheelLayoutType,
+                wheelType:WheelLayoutType,
                 zoomInOut:Bool = false,
                 fadeAway:Bool = true,
                 maxContentHeight:Double = 0.0,
@@ -68,20 +68,20 @@ public struct CPWheelLayoutConfiguration {
     }
 }
 
-open class CPCollectionViewWheelLayout: CPCollectionViewLayout {
+open class CollectionViewWheelLayout: CollectionViewLayout {
     
     // MARK: - Properties
     var invisibleCellCount = 0.0
-    open var configuration:CPWheelLayoutConfiguration
+    open var configuration:WheelLayoutConfiguration
     
     // MARK: - Open Methods
-    public init(withConfiguration configuration:CPWheelLayoutConfiguration) {
+    public init(withConfiguration configuration:WheelLayoutConfiguration) {
         self.configuration = configuration
         super.init()
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        self.configuration = CPWheelLayoutConfiguration.init(withCellSize: CGSize(width: 50, height: 50), radius: 100, angular: 30, wheelType: .leftBottom)
+        self.configuration = WheelLayoutConfiguration.init(withCellSize: CGSize(width: 50, height: 50), radius: 100, angular: 30, wheelType: .leftBottom)
         super.init(coder: aDecoder)
     }
     

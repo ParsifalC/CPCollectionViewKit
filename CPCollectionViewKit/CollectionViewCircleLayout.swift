@@ -1,5 +1,5 @@
 //
-//  CPCollectionViewCircleLayout.swift
+//  CollectionViewCircleLayout.swift
 //  CPCollectionViewKit
 //
 //  Created by Parsifal on 2017/1/20.
@@ -8,22 +8,22 @@
 
 import UIKit
 
-open class CPCircleLayoutConfiguration:CPLayoutConfiguration {
+open class CircleLayoutConfiguration:LayoutConfiguration {
 
 }
 
-open class CPCollectionViewCircleLayout: CPCollectionViewLayout {
+open class CollectionViewCircleLayout: CollectionViewLayout {
     // MARK: Properties
-    public var configuration: CPCircleLayoutConfiguration
+    public var configuration: CircleLayoutConfiguration
 
     // MARK: Methods
-    public init(withConfiguration configuration: CPCircleLayoutConfiguration) {
+    public init(withConfiguration configuration: CircleLayoutConfiguration) {
         self.configuration = configuration
         super.init()
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        self.configuration = CPCircleLayoutConfiguration(withCellSize: CGSize(width:50, height:50))
+        self.configuration = CircleLayoutConfiguration(withCellSize: CGSize(width:50, height:50))
         super.init(coder: aDecoder)
     }
     
@@ -80,7 +80,7 @@ open class CPCollectionViewCircleLayout: CPCollectionViewLayout {
     }
 }
 
-extension CPCollectionViewCircleLayout: CollectionViewLayoutProtocol {
+extension CollectionViewCircleLayout: CollectionViewLayoutProtocol {
     
     public var currentIndex: Int {
         guard let collectionView = collectionView else { return 0 }

@@ -1,5 +1,5 @@
 //
-//  CPCollectionViewTimeMachineLayout.swift
+//  CollectionViewTimeMachineLayout.swift
 //  CPCollectionViewKit
 //
 //  Created by Parsifal on 2017/2/13.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class CPTimeMachineLayoutConfiguration: CPLayoutConfiguration {
+open class TimeMachineLayoutConfiguration: LayoutConfiguration {
     
     public var visibleCount = 0
     public var minCellSize = CGSize(width: 50, height: 50)
@@ -26,17 +26,17 @@ open class CPTimeMachineLayoutConfiguration: CPLayoutConfiguration {
     
 }
 
-open class CPCollectionViewTimeMachineLayout: CPCollectionViewLayout {
+open class CollectionViewTimeMachineLayout: CollectionViewLayout {
     
-    public var configuration: CPTimeMachineLayoutConfiguration
+    public var configuration: TimeMachineLayoutConfiguration
     
-    public init(withConfiguration configuration: CPTimeMachineLayoutConfiguration) {
+    public init(withConfiguration configuration: TimeMachineLayoutConfiguration) {
         self.configuration = configuration
         super.init()
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        self.configuration =  CPTimeMachineLayoutConfiguration(withCellSize: CGSize(width: 100, height: 100))
+        self.configuration =  TimeMachineLayoutConfiguration(withCellSize: CGSize(width: 100, height: 100))
         super.init(coder: aDecoder)
     }
     
@@ -74,7 +74,7 @@ open class CPCollectionViewTimeMachineLayout: CPCollectionViewLayout {
     }
 }
 
-extension CPCollectionViewTimeMachineLayout: CollectionViewLayoutProtocol {
+extension CollectionViewTimeMachineLayout: CollectionViewLayoutProtocol {
     
     public var currentIndex: Int {
         let topItemIndex = calculateTopItemIndex()

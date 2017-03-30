@@ -1,5 +1,5 @@
 //
-//  CPCollectionViewCardLayout.swift
+//  CollectionViewCardLayout.swift
 //  CPCollectionViewKit
 //
 //  Created by Parsifal on 2017/2/13.
@@ -8,32 +8,32 @@
 
 import Foundation
 
-public enum CPCardRotationAxis {
+public enum CardRotationAxis {
     case x
     case y
     case z
 }
 
-public enum CPCardScrollDiretion {
+public enum CardScrollDiretion {
     case horizontal
     case vertical
 }
 
-open class CPCardLayoutConfiguration: CPLayoutConfiguration {
+open class CardLayoutConfiguration: LayoutConfiguration {
     
     public var fadeFactor: CGFloat = 0//(0,1)
     public var scaleFactorX: CGFloat = 0//zoomin:(-1,0) zoomout:(0,1)
     public var scaleFactorY: CGFloat = 0//zoomin:(-1,0) zoomout:(0,1)
     public var rotateFactor: CGFloat = 0
-    public var rotateDirection: CPCardRotationAxis = .z
+    public var rotateDirection: CardRotationAxis = .z
     public var stopAtItemBoundary: Bool = true
-    public var scrollDirection: CPCardScrollDiretion = .horizontal
+    public var scrollDirection: CardScrollDiretion = .horizontal
     
 }
 
-open class CPCollectionViewCardLayout: CPCollectionViewLayout {
+open class CollectionViewCardLayout: CollectionViewLayout {
     
-    public var configuration: CPCardLayoutConfiguration
+    public var configuration: CardLayoutConfiguration
     public var currentIndex: Int {
         guard let collectionView = collectionView else { return 0 }
         
@@ -47,13 +47,13 @@ open class CPCollectionViewCardLayout: CPCollectionViewLayout {
         return index
     }
     
-    public init(withConfiguration configuration: CPCardLayoutConfiguration) {
+    public init(withConfiguration configuration: CardLayoutConfiguration) {
         self.configuration = configuration
         super.init()
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        self.configuration =  CPCardLayoutConfiguration(withCellSize: CGSize(width: 100, height: 100))
+        self.configuration =  CardLayoutConfiguration(withCellSize: CGSize(width: 100, height: 100))
         super.init(coder: aDecoder)
     }
     

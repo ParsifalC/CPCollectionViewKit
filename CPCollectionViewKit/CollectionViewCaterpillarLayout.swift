@@ -1,5 +1,5 @@
 //
-//  CPCollectionViewCaterpillarLayout.swift
+//  CollectionViewCaterpillarLayout.swift
 //  CPCollectionViewKit
 //
 //  Created by Parsifal on 2017/1/21.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class CPCaterpillarLayoutConfiguration:CPLayoutConfiguration {
+open class CaterpillarLayoutConfiguration:LayoutConfiguration {
     
     // MARK: Properties
     public var topCellSizeScale:CGFloat
@@ -34,17 +34,17 @@ open class CPCaterpillarLayoutConfiguration:CPLayoutConfiguration {
     
 }
 
-open class CPCollectionViewCaterpillarLayout:CPCollectionViewLayout {
-    open var configuration: CPCaterpillarLayoutConfiguration
+open class CollectionViewCaterpillarLayout:CollectionViewLayout {
+    open var configuration: CaterpillarLayoutConfiguration
     
     // MARK: Properties
-    public init(withConfiguration configuration:CPCaterpillarLayoutConfiguration) {
+    public init(withConfiguration configuration:CaterpillarLayoutConfiguration) {
         self.configuration = configuration
         super.init()
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        self.configuration = CPCaterpillarLayoutConfiguration.init(withCellSize: CGSize(width: 50, height: 50), visibleCount: 1)
+        self.configuration = CaterpillarLayoutConfiguration.init(withCellSize: CGSize(width: 50, height: 50), visibleCount: 1)
         super.init(coder: aDecoder)
     }
 

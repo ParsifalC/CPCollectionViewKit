@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  CPCollectionViewStageLayoutDemo
+//  CollectionViewStageLayoutDemo
 //
 //  Created by Parsifal on 2017/2/17.
 //  Copyright © 2017年 Parsifal. All rights reserved.
@@ -11,11 +11,11 @@ import CPCollectionViewKit
 
 class ViewController: UIViewController {
 
-    let cellIdentifier = "CPCollectionViewCell"
+    let cellIdentifier = "CollectionViewCell"
     @IBOutlet weak var collectionView: UICollectionView!
     var colorsArray = [UIColor]()
-    var stageLayout: CPCollectionViewStageLayout!
-    var configuration: CPStageLayoutConfiguration!
+    var stageLayout: CollectionViewStageLayout!
+    var configuration: StageLayoutConfiguration!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
             colorsArray.append(randomColor())
         }
         
-        stageLayout = collectionView.collectionViewLayout as! CPCollectionViewStageLayout
+        stageLayout = collectionView.collectionViewLayout as! CollectionViewStageLayout
         configuration = stageLayout.configuration
         configuration.moveAnimationStyle = .somefault
         configuration.leaveStageAnimationStyle = .fadeAwayAndZoomin
