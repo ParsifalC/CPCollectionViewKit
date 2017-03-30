@@ -11,7 +11,7 @@ import CPCollectionViewKit
 
 class ViewController: UIViewController {
 
-    let cellIdentifier = "CollectionViewCell"
+    let cellIdentifier = "CPCollectionViewCell"
     @IBOutlet weak var collectionView: UICollectionView!
     var colorsArray = [UIColor]()
     var stageLayout: CollectionViewStageLayout!
