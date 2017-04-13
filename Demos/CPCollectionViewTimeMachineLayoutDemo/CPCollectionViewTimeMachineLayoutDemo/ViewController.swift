@@ -13,8 +13,8 @@ class ViewController: UIViewController {
 
     let cellIdentifier = "CPCollectionViewCell"
     @IBOutlet weak var collectionView: UICollectionView!
-    var timeMachineLayout: CPCollectionViewTimeMachineLayout!
-    var layoutConfiguration: CPTimeMachineLayoutConfiguration!
+    var timeMachineLayout: CollectionViewTimeMachineLayout!
+    var layoutConfiguration: TimeMachineLayoutConfiguration!
     var colorsArray = [UIColor]()
     @IBOutlet weak var spacingXSlider: UISlider!
     @IBOutlet weak var spacingYSlider: UISlider!
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
             colorsArray.append(randomColor())
         }
         
-        timeMachineLayout = collectionView.collectionViewLayout as! CPCollectionViewTimeMachineLayout
+        timeMachineLayout = collectionView.collectionViewLayout as! CollectionViewTimeMachineLayout
         layoutConfiguration = timeMachineLayout.configuration
         layoutConfiguration.cellSize = CGSize(width: 250, height: 250)
         layoutConfiguration.visibleCount = 6
