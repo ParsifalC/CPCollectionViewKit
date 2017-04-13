@@ -1,6 +1,6 @@
 # CPCollectionViewKit
 
-#### CPCollectionViewTransitionLayout [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/README.md)
+#### CollectionViewTransitionLayout [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTransitionDemo/README.md)
 <table>
 <tr>
 <th>FlowAndStage</th>
@@ -27,7 +27,7 @@
 </tr>
 </table>
 
-#### CPCollectionViewTimeMachineLayout [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTimeMachineLayoutDemo/README.md)
+#### CollectionViewTimeMachineLayout [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewTimeMachineLayoutDemo/README.md)
 <table>
 <tr>
 <th>Left</th>
@@ -49,7 +49,7 @@
 </tr>
 </table>
 
-#### CPCollectionViewWheelLayout  [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewWheelLayoutSwiftDemo/README.md)
+#### CollectionViewWheelLayout  [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewWheelLayoutSwiftDemo/README.md)
 <table>
 <tr>
 </tr>
@@ -77,7 +77,7 @@
 </tr>
 </table>
 
-#### CPCollectionViewCardLayout   [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCardLayoutDemo/README.md)
+#### CollectionViewCardLayout   [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCardLayoutDemo/README.md)
 <table>
 <tr>
 </tr>
@@ -105,7 +105,7 @@
 </tr>
 </table>
 
-#### CPCollectionViewStageLayout   [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewStageLayoutDemo/README.md)
+#### CollectionViewStageLayout   [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewStageLayoutDemo/README.md)
 <table>
 <tr>
 <th>Waltz</th>
@@ -121,7 +121,7 @@
 </tr>
 </table>
 
-#### CPCollectionViewCircleLayout   [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCircleLayoutDemo/README.md)
+#### CollectionViewCircleLayout   [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCircleLayoutDemo/README.md)
 <table>
 <tr>
 <th>Circle</th>
@@ -138,7 +138,7 @@
 </table>
 
 
-#### CPCollectionViewCaterpillarLayout   [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCaterpillarLayoutDemo/README.md)
+#### CollectionViewCaterpillarLayout   [Readme](https://github.com/ParsifalC/CPCollectionViewKit/blob/master/Demos/CPCollectionViewCaterpillarLayoutDemo/README.md)
 <table>
 <tr>
 <th>Caterpillar</th>
@@ -178,7 +178,7 @@ pod "CPCollectionViewKit"
 ```
 ## TODO
 - [ ] Update Usage
-- [ ] Support `CPCollectionViewCaterpillarLayout` Direction Settings
+- [ ] Support `CollectionViewCaterpillarLayout` Direction Settings
 - [ ] Unit Test
 - [ ] Support `Cocoapods` & `Carthage`
 - [x] Layout Transition
