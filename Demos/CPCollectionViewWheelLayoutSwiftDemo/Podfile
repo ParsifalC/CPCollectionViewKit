@@ -2,10 +2,10 @@ platform:ios, 8.0
 
 use_frameworks!
 inhibit_all_warnings!
-target 'CPCollectionViewWheelLayoutSwift_Example' do
+target 'CollectionViewWheelLayoutSwift_Example' do
     pod 'CPCollectionViewKit', :path => '../..'
     pod 'Reveal-iOS-SDK', :configurations => ['Debug']
-  target 'CPCollectionViewWheelLayoutSwift_Tests' do
+  target 'CollectionViewWheelLayoutSwift_Tests' do
     inherit! :search_paths
   end
 end

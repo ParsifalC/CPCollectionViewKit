@@ -1,6 +1,6 @@
 //
 //  CPColletionViewCell.swift
-//  CPCollectionViewWheelLayout-Swift
+//  CollectionViewWheelLayout-Swift
 //
 //  Created by Parsifal on 2016/12/29.
 //  Copyright © 2016年 Parsifal. All rights reserved.

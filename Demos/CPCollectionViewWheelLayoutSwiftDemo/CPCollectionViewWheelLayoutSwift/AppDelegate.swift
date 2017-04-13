@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  CPCollectionViewWheelLayoutSwift
+//  CollectionViewWheelLayoutSwift
 //
 //  Created by Parsifal on 01/09/2017.
 //  Copyright (c) 2017 Parsifal. All rights reserved.

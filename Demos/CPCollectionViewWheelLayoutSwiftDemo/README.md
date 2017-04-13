@@ -1,19 +1,19 @@
-# CPCollectionViewWheelLayoutSwift
+# CollectionViewWheelLayoutSwift
 
 <p align="center">
-	   <img style=" float:left; display:inline" src="https://github.com/ParsifalC/CPCollectionViewWheelLayoutSwift/blob/master/ScreenShot.png?raw=true" width="160" height="275" align="center">
+	   <img style=" float:left; display:inline" src="https://github.com/ParsifalC/CollectionViewWheelLayoutSwift/blob/master/ScreenShot.png?raw=true" width="160" height="275" align="center">
 	   <img style=" float:left; display:inline" src="http://ojg3xdx9d.bkt.clouddn.com//CPCollectionViewLayout-BottomCenter.gif" width="160" height="275" align="center">
       <img style=" float:left; display:inline" src="http://ojg3xdx9d.bkt.clouddn.com//CPCollectionViewLayout-LeftBottom.gif" width="160" height="275" align="center">
       <img style=" float:left; display:inline" src="http://ojg3xdx9d.bkt.clouddn.com//CPCollectionViewLayout-LeftCenter.gif" width="160" height="275" align="center">
       <img style=" float:left; display:inline" src="http://ojg3xdx9d.bkt.clouddn.com//CPCollectionViewLayout-TopCenter.gif" width="160" height="275" align="center">
  </p>
 
-[![CI Status](http://img.shields.io/travis/ParsifalC/CPCollectionViewWheelLayoutSwift.svg?style=flat)](https://travis-ci.org/Parsifal/CPCollectionViewWheelLayoutSwift)
-[![Version](https://img.shields.io/cocoapods/v/CPCollectionViewWheelLayoutSwift.svg?style=flat)](http://cocoapods.org/pods/CPCollectionViewWheelLayoutSwift)
+[![CI Status](http://img.shields.io/travis/ParsifalC/CollectionViewWheelLayoutSwift.svg?style=flat)](https://travis-ci.org/Parsifal/CollectionViewWheelLayoutSwift)
+[![Version](https://img.shields.io/cocoapods/v/CollectionViewWheelLayoutSwift.svg?style=flat)](http://cocoapods.org/pods/CollectionViewWheelLayoutSwift)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![License](https://img.shields.io/cocoapods/l/CPCollectionViewWheelLayoutSwift.svg?style=flat)]
-(http://cocoapods.org/pods/CPCollectionViewWheelLayoutSwift)
-[![Platform](https://img.shields.io/cocoapods/p/CPCollectionViewWheelLayoutSwift.svg?style=flat)](http://cocoapods.org/pods/CPCollectionViewWheelLayoutSwift)
+[![License](https://img.shields.io/cocoapods/l/CollectionViewWheelLayoutSwift.svg?style=flat)]
+(http://cocoapods.org/pods/CollectionViewWheelLayoutSwift)
+[![Platform](https://img.shields.io/cocoapods/p/CollectionViewWheelLayoutSwift.svg?style=flat)](http://cocoapods.org/pods/CollectionViewWheelLayoutSwift)
 
 ## Example
 
@@ -25,38 +25,38 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 - **iOS 8.0+**    
 
 ## Installation    
-CPCollectionViewWheelLayoutSwift supports multiple methods for installing the library in a project.    
+CollectionViewWheelLayoutSwift supports multiple methods for installing the library in a project.    
 ### Installation with CocoaPods    
-CPCollectionViewWheelLayoutSwift is available through [CocoaPods](http://cocoapods.org). To install
+CollectionViewWheelLayoutSwift is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "CPCollectionViewWheelLayoutSwift"
+pod "CollectionViewWheelLayoutSwift"
 ```
 ### Installation with Carthage
 [Carthage](https://github.com/Carthage/Carthage) is supported as well.To install
 it, add the following line to your Cartfile, then Drag the Framework to your Project:
 
 ```ruby
-github "ParsifalC/CPCollectionViewWheelLayoutSwift"
+github "ParsifalC/CollectionViewWheelLayoutSwift"
 ```
 ### Install manually
 1. Clone OR Download this repo.    
-2. Drag **"CPCollectionViewWheelLayoutSwift.swift"** to your project.    
+2. Drag **"CollectionViewWheelLayoutSwift.swift"** to your project.    
 
 ## USAGE    
 
 Just config your CollectionView with this layout:
 ```Swift
-let configuration = CPWheelLayoutConfiguration.init(withCellSize: CGSize.init(width: 100, height: 100), radius: 200, angular: 20, wheelType:wheelType)
-let wheelLayout = CPCollectionViewWheelLayout.init(withConfiguration: configuration)
+let configuration = WheelLayoutConfiguration.init(withCellSize: CGSize.init(width: 100, height: 100), radius: 200, angular: 20, wheelType:wheelType)
+let wheelLayout = CollectionViewWheelLayout.init(withConfiguration: configuration)
 let colletionView = UICollectionView.init(frame: view.frame, collectionViewLayout:wheelLayout)
 ```
 
 Support 8 types layout:    
 
 ```Swift
-public enum CPWheelLayoutType:Int {
+public enum WheelLayoutType:Int {
     case leftBottom = 0
     case rightBottom
     case leftTop
@@ -71,7 +71,7 @@ public enum CPWheelLayoutType:Int {
 Customize your layout:    
 
 ```Swift
-public struct CPWheelLayoutConfiguration {
+public struct WheelLayoutConfiguration {
     public var cellSize:CGSize
     public var radius:Double
     public var angular:Double   
@@ -90,4 +90,4 @@ Parsifal, zmw@izmw.me
 
 ## License
 
-CPCollectionViewWheelLayoutSwift is available under the MIT license. See the LICENSE file for more info.
+CollectionViewWheelLayoutSwift is available under the MIT license. See the LICENSE file for more info.

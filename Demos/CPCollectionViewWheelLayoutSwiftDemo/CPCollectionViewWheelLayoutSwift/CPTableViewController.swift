@@ -1,6 +1,6 @@
 //
 //  CPTableViewController.swift
-//  CPCollectionViewWheelLayout-Swift
+//  CollectionViewWheelLayout-Swift
 //
 //  Created by Parsifal on 2017/1/7.
 //  Copyright © 2017年 Parsifal. All rights reserved.
@@ -14,7 +14,7 @@ class CPTableViewController:UITableViewController {
                       "leftTop", "rightTop",
                       "leftCenter", "rightCenter",
                       "topCenter", "bottomCenter"]
-    var selectType = CPWheelLayoutType.leftBottom
+    var selectType = WheelLayoutType.leftBottom
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,6 @@ class CPTableViewController:UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let indexPath = tableView.indexPath(for: sender as! UITableViewCell)
         let vc = segue.destination as! CPViewController
-        vc.wheelType = CPWheelLayoutType(rawValue: (indexPath?.row)!)!
+        vc.wheelType = WheelLayoutType(rawValue: (indexPath?.row)!)!
     }
 }
