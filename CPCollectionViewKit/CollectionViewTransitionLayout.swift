@@ -1,5 +1,5 @@
 //
-//  CPCollectionViewTransitionLayout.swift
+//  CollectionViewTransitionLayout.swift
 //  CPCollectionViewKit
 //
 //  Created by Parsifal on 2017/2/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class CPCollectionViewTransitionLayout: UICollectionViewTransitionLayout {
+open class CollectionViewTransitionLayout: UICollectionViewTransitionLayout {
     
     public var fromContentOffset = CGPoint(x: 0, y: 0)
     public var toContentOffset = CGPoint(x: 0, y: 0)

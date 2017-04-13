@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         tableView.tableFooterView = UIView()
         fromLayout = createFlowLayout()
         toLayout = createStageLayout()
-        pickerViewDataSource = ["UICollectionViewFlowLayout", "CPCollectionViewStageLayout", "CPCollectionViewTimeMachineLayout", "CPCollectionViewCircleLayout"]
+        pickerViewDataSource = ["UICollectionViewFlowLayout", "CollectionViewStageLayout", "CollectionViewTimeMachineLayout", "CollectionViewCircleLayout"]
     }
 
     func done() {
@@ -118,24 +118,24 @@ class ViewController: UIViewController {
         return flowLayout
     }
     
-    func createStageLayout() -> CPCollectionViewStageLayout {
-        let stageConfiguration = CPStageLayoutConfiguration(withCellSize: CGSize(width: 50, height: 50))
-        let stageLayout = CPCollectionViewStageLayout(withConfiguration: stageConfiguration)
+    func createStageLayout() -> CollectionViewStageLayout {
+        let stageConfiguration = StageLayoutConfiguration(withCellSize: CGSize(width: 50, height: 50))
+        let stageLayout = CollectionViewStageLayout(withConfiguration: stageConfiguration)
         return stageLayout
     }
     
-    func createTimeMachineLayout() -> CPCollectionViewTimeMachineLayout {
-        let configuration = CPTimeMachineLayoutConfiguration(withCellSize: CGSize(width: 200, height: 200))
+    func createTimeMachineLayout() -> CollectionViewTimeMachineLayout {
+        let configuration = TimeMachineLayoutConfiguration(withCellSize: CGSize(width: 200, height: 200))
         configuration.spacingX = 30
         configuration.spacingY = 30
         configuration.visibleCount = 20
-        let timeMachineLayout = CPCollectionViewTimeMachineLayout(withConfiguration: configuration)
+        let timeMachineLayout = CollectionViewTimeMachineLayout(withConfiguration: configuration)
         return timeMachineLayout
     }
     
-    func createCircleLayout() -> CPCollectionViewCircleLayout {
-        let configuration = CPCircleLayoutConfiguration(withCellSize: CGSize(width: 50, height: 50), spacing: screenWidth/2-50, offsetX: 0, offsetY: screenHeight/2)
-        let circleLayout = CPCollectionViewCircleLayout(withConfiguration: configuration)
+    func createCircleLayout() -> CollectionViewCircleLayout {
+        let configuration = CircleLayoutConfiguration(withCellSize: CGSize(width: 50, height: 50), spacing: screenWidth/2-50, offsetX: 0, offsetY: screenHeight/2)
+        let circleLayout = CollectionViewCircleLayout(withConfiguration: configuration)
         return circleLayout
     }
     

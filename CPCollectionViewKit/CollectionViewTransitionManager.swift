@@ -13,7 +13,7 @@ open class TransitionManager {
     public var toContentOffset = CGPoint(x: 0, y: 0)
     let collectionView: UICollectionView
     let toLayout: UICollectionViewLayout
-    var transitionLayout: CPCollectionViewTransitionLayout!
+    var transitionLayout: CollectionViewTransitionLayout!
     let duration: TimeInterval
     var timer: CADisplayLink!
     fileprivate var startTime: TimeInterval!
@@ -34,7 +34,7 @@ open class TransitionManager {
                 UIApplication.shared.endIgnoringInteractionEvents()
                 completion()
             }
-        } as! CPCollectionViewTransitionLayout
+        } as! CollectionViewTransitionLayout
         
         startTimer()
     }

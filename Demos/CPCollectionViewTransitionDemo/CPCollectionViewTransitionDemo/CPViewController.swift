@@ -92,7 +92,7 @@ extension CPViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout {
-        let customTransitionLayout = CPCollectionViewTransitionLayout(currentLayout: fromLayout, nextLayout: toLayout)
+        let customTransitionLayout = CollectionViewTransitionLayout(currentLayout: fromLayout, nextLayout: toLayout)
         customTransitionLayout.fromContentOffset = fromContentOffset
         customTransitionLayout.toContentOffset = toContentOffset
         return customTransitionLayout
