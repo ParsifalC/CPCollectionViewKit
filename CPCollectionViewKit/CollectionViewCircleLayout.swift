@@ -115,7 +115,7 @@ extension CollectionViewCircleLayout: CollectionViewLayoutProtocol {
         attributes.size = cellSize
         
         var itemOffset = index-topItemIndex
-        let floatPI = CGFloat(M_PI)
+        let floatPI = CGFloat(Double.pi)
         let radian = CGFloat(floatPI/visibleCount*itemOffset)
         let y = height+contentOffsetY-cellWidth/2-cos(radian)*(cellWidth/2+configuration.spacing)
         let x = sin(radian)*(cellSize.width/2+configuration.spacing)+width/2

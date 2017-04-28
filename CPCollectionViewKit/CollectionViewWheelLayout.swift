@@ -109,7 +109,7 @@ open class CollectionViewWheelLayout: CollectionViewLayout {
         let fadeAway = configuration.fadeAway
         let contentOffset = collectionView.contentOffset
         let visibleCellIndex = Double(indexPath.item)-invisibleCellCount
-        var angle = angular/90.0*Double(visibleCellIndex)*M_PI_2
+        var angle = angular/90.0*Double(visibleCellIndex)*Double.pi * 0.5
         let angleOffset = asin(Double(cellSize.width)/radius)
         
         var translation = CGAffineTransform.identity
@@ -122,7 +122,7 @@ open class CollectionViewWheelLayout: CollectionViewLayout {
             attributes.center = CGPoint(x: contentOffset.x+cellSize.width/2.0,
                                         y: contentOffset.y+viewSize.height-cellSize.height/2)
             
-            if (angle <= (M_PI_2+2.0*angleOffset+angular/90.0)) && (angle >= -angleOffset) {
+            if (angle <= (Double.pi * 0.5+2.0*angleOffset+angular/90.0)) && (angle >= -angleOffset) {
                 attributes.isHidden = false
                 translation = CGAffineTransform(translationX: CGFloat(sin(angle)*radius),
                                                 y: -(CGFloat(cos(angle)*radius)+cellSize.height/2.0))
@@ -131,7 +131,7 @@ open class CollectionViewWheelLayout: CollectionViewLayout {
             attributes.center = CGPoint(x: contentOffset.x+viewSize.width-cellSize.width/2.0,
                                         y: contentOffset.y+viewSize.height-cellSize.height/2)
             
-            if (angle <= (M_PI_2+2.0*angleOffset+angular/90.0)) && (angle >= -angleOffset) {
+            if (angle <= (Double.pi * 0.5+2.0*angleOffset+angular/90.0)) && (angle >= -angleOffset) {
                 attributes.isHidden = false
                 translation = CGAffineTransform(translationX: CGFloat(-sin(angle)*radius),
                                                 y: -(CGFloat(cos(angle)*radius)+cellSize.height/2.0))
@@ -140,7 +140,7 @@ open class CollectionViewWheelLayout: CollectionViewLayout {
             attributes.center = CGPoint(x: contentOffset.x+cellSize.width/2.0,
                                         y: contentOffset.y)
             
-            if (angle <= (M_PI_2+2.0*angleOffset+angular/90.0)) && (angle >= -angleOffset) {
+            if (angle <= (Double.pi * 0.5+2.0*angleOffset+angular/90.0)) && (angle >= -angleOffset) {
                 attributes.isHidden = false
                 translation = CGAffineTransform(translationX: CGFloat(cos(angle)*radius), y: (CGFloat(sin(angle)*radius)+cellSize.height/2.0))
             }
@@ -148,7 +148,7 @@ open class CollectionViewWheelLayout: CollectionViewLayout {
             attributes.center = CGPoint(x: contentOffset.x+viewSize.width-cellSize.width/2.0,
                                         y: contentOffset.y)
             
-            if (angle <= (M_PI_2+2.0*angleOffset+angular/90.0)) && (angle >= -angleOffset) {
+            if (angle <= (Double.pi * 0.5+2.0*angleOffset+angular/90.0)) && (angle >= -angleOffset) {
                 attributes.isHidden = false
                 translation = CGAffineTransform(translationX: CGFloat(-cos(angle)*radius), y: (CGFloat(sin(angle)*radius)+cellSize.height/2.0))
             }
@@ -198,7 +198,7 @@ open class CollectionViewWheelLayout: CollectionViewLayout {
         var fadeFactor:Double
         switch configuration.wheelType {
         case .bottomCenter,.topCenter,.rightCenter,.leftCenter:
-            fadeFactor = 1-fabs(angle-M_PI_2)*0.5
+            fadeFactor = 1-fabs(angle-Double.pi * 0.5)*0.5
         default:
             fadeFactor = 1-fabs(angle-M_PI_4)
         }

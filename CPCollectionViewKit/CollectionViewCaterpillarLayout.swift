@@ -90,7 +90,7 @@ open class CollectionViewCaterpillarLayout:CollectionViewLayout {
                                      height:cellSize.height*scaleFactor)
 
             // circle
-            let floatPI = CGFloat(M_PI)
+            let floatPI = CGFloat(Double.pi)
             let radian = CGFloat(floatPI/2*itemOffset)
             let x = sin(radian)*(cellSpacing/2)+width/2
             let y = height/2+contentOffsetY-cos(radian)*(cellSpacing/2)
