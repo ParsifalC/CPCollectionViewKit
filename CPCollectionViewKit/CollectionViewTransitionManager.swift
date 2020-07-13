@@ -34,7 +34,7 @@ open class TransitionManager {
                 UIApplication.shared.endIgnoringInteractionEvents()
                 completion()
             }
-        } as! CollectionViewTransitionLayout
+            } as? CollectionViewTransitionLayout
         
         startTimer()
     }
@@ -50,7 +50,7 @@ extension TransitionManager {
         timer.add(to: RunLoop.current, forMode: .commonModes)
     }
     
-    dynamic func updateTransitionProgress() {
+    @objc dynamic func updateTransitionProgress() {
         var progress = (timer.timestamp - startTime) / duration
         //limit [0-1]
         progress = max(0, min(1, progress))
