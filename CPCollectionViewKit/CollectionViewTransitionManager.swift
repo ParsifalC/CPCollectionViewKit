@@ -47,10 +47,10 @@ extension TransitionManager {
         startTime = CACurrentMediaTime()
         timer = CADisplayLink(target: self, selector: #selector(updateTransitionProgress))
         timer.frameInterval = 1
-        timer.add(to: RunLoop.current, forMode: .commonModes)
+        timer.add(to: RunLoop.current, forMode: RunLoop.Mode.common)
     }
     
-    dynamic func updateTransitionProgress() {
+    @objc dynamic func updateTransitionProgress() {
         var progress = (timer.timestamp - startTime) / duration
         //limit [0-1]
         progress = max(0, min(1, progress))
