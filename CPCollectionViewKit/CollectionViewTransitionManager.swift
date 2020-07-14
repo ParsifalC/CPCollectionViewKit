@@ -34,7 +34,7 @@ open class TransitionManager {
                 UIApplication.shared.endIgnoringInteractionEvents()
                 completion()
             }
-        } as! CollectionViewTransitionLayout
+            } as? CollectionViewTransitionLayout
         
         startTimer()
     }
