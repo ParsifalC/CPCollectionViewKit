@@ -1,42 +1,40 @@
 #
-# Be sure to run `pod lib lint CPCollectionViewKit.podspec' to ensure this is a
+# CPCollectionViewKit.podspec
+#
+# Be sure to run `pod lib lint CPCollectionViewKit.podspec` to ensure this is a
 # valid spec before submitting.
 #
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
+# See http://guides.cocoapods.org/syntax/podspec.html for reference.
 #
 
 Pod::Spec.new do |s|
   s.name             = 'CPCollectionViewKit'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of CPCollectionViewKit.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.version          = '1.0.0'
+  s.summary          = 'A collection of creative UICollectionView layouts for iOS.'
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+CPCollectionViewKit provides a suite of highly customizable UICollectionView layout
+subclasses, including:
+
+- CardLayout      — Scrollable cards with fade, scale, and 3D rotation effects
+- CaterpillarLayout — Items arranged along a circular arc like a caterpillar
+- CircleLayout    — Items distributed on a full circle arc
+- StageLayout     — One featured "on-stage" item with side items queuing up
+- TimeMachineLayout — Stacked deck of cards with depth scaling
+- WheelLayout     — Items arranged around a wheel at 8 anchor positions
+- TransitionLayout — Smooth animated transitions between any two layouts
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/CPCollectionViewKit'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/ParsifalC/CPCollectionViewKit'
+  s.screenshots      = 'https://github.com/ParsifalC/CPCollectionViewKit/raw/master/Demos/CPCollectionViewCardLayoutDemo/CardLayoutZoominout.gif',
+                       'https://github.com/ParsifalC/CPCollectionViewKit/raw/master/Demos/CPCollectionViewWheelLayoutSwiftDemo/WheelLayoutLeftBottom.gif'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Parsifal' => 'zmw@izmw.me' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/CPCollectionViewKit.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/ParsifalC/CPCollectionViewKit.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '14.0'
+  s.swift_versions        = ['5.0', '5.1', '5.5', '5.10']
 
   s.source_files = 'CPCollectionViewKit/*.swift'
-  
-  # s.resource_bundles = {
-  #   'CPCollectionViewKit' => ['CPCollectionViewKit/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.frameworks   = 'UIKit'
 end

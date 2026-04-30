@@ -3,111 +3,122 @@
 //  CPCollectionViewKit
 //
 //  Created by Parsifal on 2017/2/18.
-//  Copyright © 2017年 Parsifal. All rights reserved.
+//  Copyright © 2017-2026 Parsifal. All rights reserved.
 //
 
 import UIKit
 
+/// A `UICollectionViewTransitionLayout` subclass that smoothly interpolates
+/// between two layouts that conform to `CollectionViewLayoutProtocol`.
+///
+/// Used in conjunction with `TransitionManager` to animate layout changes.
 open class CollectionViewTransitionLayout: UICollectionViewTransitionLayout {
-    
-    public var fromContentOffset = CGPoint(x: 0, y: 0)
-    public var toContentOffset = CGPoint(x: 0, y: 0)
-    var attributesArray = [UICollectionViewLayoutAttributes]()
-    
+
+    // MARK: - Properties
+
+    /// The content offset of the source layout before transition starts.
+    public var fromContentOffset = CGPoint.zero
+
+    /// The content offset of the destination layout after transition completes.
+    public var toContentOffset = CGPoint.zero
+
+    private var attributesArray = [UICollectionViewLayoutAttributes]()
+
+    // MARK: - Transition Progress
+
     open override var transitionProgress: CGFloat {
         didSet {
             transitionProgressUpdated(currentProgress: transitionProgress)
         }
     }
-    
-    func transitionProgressUpdated(currentProgress: CGFloat) {
-        if let collectionView = collectionView {
-            let fromProgress = currentProgress
-            let toProgress = 1 - currentProgress
-            
-            var offset = CGPoint(x: 0, y: 0)
-            offset.x = toProgress * fromContentOffset.x + fromProgress * toContentOffset.x
-            offset.y = toProgress * fromContentOffset.y + fromProgress * toContentOffset.y
-            collectionView.contentOffset = offset
-        }
+
+    private func transitionProgressUpdated(currentProgress: CGFloat) {
+        guard let collectionView = collectionView else { return }
+
+        let fromProgress = currentProgress
+        let toProgress = 1 - currentProgress
+
+        let offset = CGPoint(
+            x: toProgress * fromContentOffset.x + fromProgress * toContentOffset.x,
+            y: toProgress * fromContentOffset.y + fromProgress * toContentOffset.y
+        )
+        collectionView.contentOffset = offset
     }
-    
+
+    // MARK: - UICollectionViewLayout
+
     open override func prepare() {
         super.prepare()
-        
-        if let collectionView = collectionView {
-            let cellCount = collectionView.numberOfItems(inSection: 0)
-            attributesArray.removeAll()
-            for index in 0..<cellCount {
-                let indexPath = IndexPath(item: index, section: 0)
-                var attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-                
-                var fromAttributes: UICollectionViewLayoutAttributes?
-                var toAttributes: UICollectionViewLayoutAttributes?
-                
-                if let tempAttributes = (self.currentLayout as? CollectionViewLayoutProtocol)?.attributesForCollectionView(collectionView: collectionView, indexPath: indexPath) {
-                    fromAttributes = tempAttributes
-                } else {
-                    fromAttributes = self.currentLayout.layoutAttributesForItem(at: indexPath)
-                }
-                
-                if let tempAttributes = (self.nextLayout as? CollectionViewLayoutProtocol)?.attributesForCollectionView(collectionView: collectionView, indexPath: indexPath) {
-                    toAttributes = tempAttributes
-                } else {
-                    toAttributes = self.nextLayout.layoutAttributesForItem(at: indexPath)
-                }
-                
-                if let fromAttributes = fromAttributes,
-                   let toAttributes = toAttributes {
-                    let fx = fromAttributes.center.x
-                    let fy = fromAttributes.center.y
-                    let tx = toAttributes.center.x
-                    let ty = toAttributes.center.y
-                    
-                    var center = CGPoint(x: fx, y: fy)
-                    center.x = updateValue(fromValue: fx, toValue: tx)
-                    center.y = fx == tx ? (updateValue(fromValue: fy, toValue: ty)) : ty + ((fy - ty) * (center.x - tx)) / (fx - tx)
-                    attributes.center = center
 
-                    //(y-y2)/(y1-y2) = (x-x2)/(x1-x2)
-                    var newSize = fromAttributes.size
-                    newSize.width = updateValue(fromValue: fromAttributes.size.width, toValue: toAttributes.size.width)
-                    newSize.height = updateValue(fromValue: fromAttributes.size.height, toValue: toAttributes.size.height)
-                    attributes.size = newSize
-                    attributes.zIndex = toAttributes.zIndex
-                    
-                    let toAlpha = toAttributes.isHidden == true ? 0 : toAttributes.alpha
-                    attributes.alpha = updateValue(fromValue: fromAttributes.alpha, toValue: toAlpha)
-                    
-                    var newScale = CGAffineTransform.identity
-                    newScale.a = updateValue(fromValue: fromAttributes.transform.a, toValue: toAttributes.transform.a)
-                    newScale.d = updateValue(fromValue: fromAttributes.transform.d, toValue: toAttributes.transform.d)
-                    attributes.transform = newScale
-                    
-                    attributesArray.append(attributes)
-                }
+        guard let collectionView = collectionView else { return }
+
+        let cellCount = collectionView.numberOfItems(inSection: 0)
+        attributesArray.removeAll()
+
+        for index in 0..<cellCount {
+            let indexPath = IndexPath(item: index, section: 0)
+            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+
+            let fromAttributes: UICollectionViewLayoutAttributes?
+            let toAttributes: UICollectionViewLayoutAttributes?
+
+            if let protocol_ = self.currentLayout as? CollectionViewLayoutProtocol {
+                fromAttributes = protocol_.attributesForCollectionView(collectionView: collectionView, indexPath: indexPath)
+            } else {
+                fromAttributes = self.currentLayout.layoutAttributesForItem(at: indexPath)
             }
+
+            if let protocol_ = self.nextLayout as? CollectionViewLayoutProtocol {
+                toAttributes = protocol_.attributesForCollectionView(collectionView: collectionView, indexPath: indexPath)
+            } else {
+                toAttributes = self.nextLayout.layoutAttributesForItem(at: indexPath)
+            }
+
+            guard let from = fromAttributes, let to = toAttributes else { continue }
+
+            let fx = from.center.x
+            let fy = from.center.y
+            let tx = to.center.x
+            let ty = to.center.y
+
+            var center = CGPoint(x: fx, y: fy)
+            center.x = interpolate(from: fx, to: tx)
+            center.y = fx == tx
+                ? interpolate(from: fy, to: ty)
+                : ty + ((fy - ty) * (center.x - tx)) / (fx - tx)
+            attributes.center = center
+
+            var newSize = from.size
+            newSize.width = interpolate(from: from.size.width, to: to.size.width)
+            newSize.height = interpolate(from: from.size.height, to: to.size.height)
+            attributes.size = newSize
+            attributes.zIndex = to.zIndex
+
+            let toAlpha = to.isHidden ? 0 : to.alpha
+            attributes.alpha = interpolate(from: from.alpha, to: toAlpha)
+
+            var newScale = CGAffineTransform.identity
+            newScale.a = interpolate(from: from.transform.a, to: to.transform.a)
+            newScale.d = interpolate(from: from.transform.d, to: to.transform.d)
+            attributes.transform = newScale
+
+            attributesArray.append(attributes)
         }
     }
-    
-    func updateValue(fromValue: CGFloat, toValue: CGFloat) -> CGFloat {
-        return ((toValue - fromValue) * transitionProgress + fromValue)
-    }
-    
+
     open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        var array = [UICollectionViewLayoutAttributes]()
-        
-        for attributes in attributesArray {
-            if rect.intersects(attributes.frame) {
-                array.append(attributes)
-            }
-        }
-        
-        return attributesArray
+        // Bug fix: return only attributes whose frames intersect rect, not the full array.
+        return attributesArray.filter { rect.intersects($0.frame) }
     }
-    
+
     open override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
-    
+
+    // MARK: - Private
+
+    /// Linearly interpolates from `from` to `to` using the current `transitionProgress`.
+    private func interpolate(from fromValue: CGFloat, to toValue: CGFloat) -> CGFloat {
+        return (toValue - fromValue) * transitionProgress + fromValue
+    }
 }
